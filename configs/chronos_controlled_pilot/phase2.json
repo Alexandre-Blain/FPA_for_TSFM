@@ -1,0 +1,24 @@
+{
+  "protocol": "chronos_phase2_controlled_v1",
+  "model_id": "amazon/chronos-t5-mini",
+  "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+  "benchmark_folder": "data/raw/chronos_benchmark",
+  "historical_source": "result/clean_confirm_no_refinement_20260915_114823",
+  "context_len": 512,
+  "horizon": 64,
+  "temperature": 1.0,
+  "sample_top_k": 50,
+  "num_samples": 50,
+  "nested_sample_counts": [20, 50],
+  "seeds": [1729, 2718],
+  "cpu_threads": 1,
+  "max_wall_seconds": 14400,
+  "timing_safety_factor": 1.5,
+  "probability_thresholds": [0.0, 0.001, 0.01, 0.05],
+  "cases": [
+    {"dataset_name": "ercot", "series_id": "EAST", "window_id": 0, "window_start": 0, "branch_steps": [0, 16], "top_k": 3, "stratum": "main"},
+    {"dataset_name": "exchange_rate", "series_id": "currency_3", "window_id": 0, "window_start": 0, "branch_steps": [0, 16], "top_k": 3, "stratum": "main"},
+    {"dataset_name": "m4_daily", "series_id": "T000001", "window_id": 0, "window_start": 0, "branch_steps": [0, 16], "top_k": 3, "stratum": "main"},
+    {"dataset_name": "exchange_rate", "series_id": "currency_5", "window_id": 3, "window_start": 96, "branch_steps": [8], "top_k": 5, "stratum": "stress"}
+  ]
+}

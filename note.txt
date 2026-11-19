@@ -1,0 +1,8 @@
+comparer le shift selon transfo appliquer a la data ?
+
+
+metrique d'incertitude du modele verifier correlation avec metrique d'incertitude
+
+outcome
+
+EXTREME : regarde survey XAI energie et montre que c'est de la merde

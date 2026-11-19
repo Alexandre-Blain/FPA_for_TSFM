@@ -1,0 +1,8 @@
+# Direct dependencies from the existing local research environment.
+# Keep these in sync with pyproject.toml.
+numpy==2.4.4
+pandas==3.0.2
+matplotlib==3.10.8
+torch==2.11.0
+transformers==5.12.1
+datasets==5.0.0

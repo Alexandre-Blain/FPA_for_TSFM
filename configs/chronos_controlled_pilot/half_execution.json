@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "reason": "User requested half of the fourteen-group pilot for workflow validation: seven total including the completed ERCOT point. Keep six standard points at seed 1729 and one ERCOT repeat at seed 2718; defer the rare-token stress case. The original scientific configuration remains unchanged.",
+  "max_wall_seconds": 28800,
+  "groups": [
+    {"seed": 1729, "dataset_name": "ercot", "series_id": "EAST", "window_id": 0, "branch_step": 0},
+    {"seed": 2718, "dataset_name": "ercot", "series_id": "EAST", "window_id": 0, "branch_step": 0},
+    {"seed": 1729, "dataset_name": "ercot", "series_id": "EAST", "window_id": 0, "branch_step": 16},
+    {"seed": 1729, "dataset_name": "exchange_rate", "series_id": "currency_3", "window_id": 0, "branch_step": 0},
+    {"seed": 1729, "dataset_name": "exchange_rate", "series_id": "currency_3", "window_id": 0, "branch_step": 16},
+    {"seed": 1729, "dataset_name": "m4_daily", "series_id": "T000001", "window_id": 0, "branch_step": 0},
+    {"seed": 1729, "dataset_name": "m4_daily", "series_id": "T000001", "window_id": 0, "branch_step": 16}
+  ]
+}

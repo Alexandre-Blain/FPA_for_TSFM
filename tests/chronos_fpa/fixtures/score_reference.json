@@ -1,0 +1,95 @@
+{
+  "source": "result/clean_confirm_no_refinement_20260915_114823/chronos_scan_summary.csv",
+  "source_sha256": "04a41da4b55ed353986796c1378ede65abe4d269e20a520ea2f344c75c75021e",
+  "rtol": 1e-12,
+  "atol": 1e-12,
+  "cases": [
+    {
+      "identity": {"case_id": "001", "source_row_zero_based": 0},
+      "inputs": {
+        "mean_law_shift": 208.78883343935013,
+        "max_law_shift": 454.1912536621094,
+        "positive_law_amplification": 0.6369498042644468,
+        "shape_break": 0.0220645372087112,
+        "max_widening_10_90": 797.8974609375,
+        "last_over_max_law": 0.4279277768994417,
+        "monotonic_growth_fraction": 0.5873015873015873,
+        "early_law_shift": 117.94939197193492,
+        "mid_law_shift": 335.52818516322543,
+        "late_law_shift": 177.21461087181456,
+        "peak_law_shift": 454.1912536621094,
+        "persistence_ratio": 0.4279277768994417,
+        "late_over_early_law": 1.502463114977153,
+        "context_iqr": 1212.73486328125,
+        "window_scale": 8461.75546842616
+      },
+      "expected": {
+        "token_bin_forking_score": 276.95084180937795,
+        "progressive_token_bin_forking_score": 156.93087295845,
+        "context_iqr_scaled_token_bin_forking_score": 0.3260371522885674,
+        "context_iqr_scaled_progressive_token_bin_forking_score": 0.184745042084936,
+        "instant_forking_score": 0.0972590098158832,
+        "persistent_forking_score": 0.1043301685298396,
+        "progressive_forking_score": 0.0582729902170812
+      }
+    },
+    {
+      "identity": {"case_id": "002", "source_row_zero_based": 500},
+      "inputs": {
+        "mean_law_shift": 0.0063293975581473,
+        "max_law_shift": 0.0114704566076397,
+        "positive_law_amplification": 0.3204507056816372,
+        "shape_break": 0.440551687032479,
+        "max_widening_10_90": 0.0262368917465209,
+        "last_over_max_law": 0.6740333893863819,
+        "monotonic_growth_fraction": 0.5396825396825397,
+        "early_law_shift": 0.0049805598947304,
+        "mid_law_shift": 0.0076681552011342,
+        "late_law_shift": 0.0064037079435019,
+        "peak_law_shift": 0.0114704566076397,
+        "persistence_ratio": 0.6740333893863819,
+        "late_over_early_law": 1.2857405751263502,
+        "context_iqr": 0.0207999944686889,
+        "window_scale": 0.7782073645408852
+      },
+      "expected": {
+        "token_bin_forking_score": 0.1001458369053144,
+        "progressive_token_bin_forking_score": 0.0645309724380607,
+        "context_iqr_scaled_token_bin_forking_score": 0.4778470285642337,
+        "context_iqr_scaled_progressive_token_bin_forking_score": 0.307910287464495,
+        "instant_forking_score": 0.2394500586155371,
+        "persistent_forking_score": 0.257692878943749,
+        "progressive_forking_score": 0.0677238128431681
+      }
+    },
+    {
+      "identity": {"case_id": "003", "source_row_zero_based": 1000},
+      "inputs": {
+        "mean_law_shift": 35.00595718622208,
+        "max_law_shift": 52.91872787475586,
+        "positive_law_amplification": 1.019460075349045,
+        "shape_break": 0.3074570560552072,
+        "max_widening_10_90": 54.2369384765625,
+        "last_over_max_law": 0.994660160476321,
+        "monotonic_growth_fraction": 0.5396825396825397,
+        "early_law_shift": 22.8683987530795,
+        "mid_law_shift": 36.543547766549246,
+        "late_law_shift": 46.18390401204427,
+        "peak_law_shift": 52.91872787475586,
+        "persistence_ratio": 0.994660160476321,
+        "late_over_early_law": 2.019551281692824,
+        "context_iqr": 225.72494506835932,
+        "window_scale": 1446.9093708918124
+      },
+      "expected": {
+        "token_bin_forking_score": 32.839423407741926,
+        "progressive_token_bin_forking_score": 25.213644792660027,
+        "context_iqr_scaled_token_bin_forking_score": 0.3283352967631276,
+        "context_iqr_scaled_progressive_token_bin_forking_score": 0.2520911966903306,
+        "instant_forking_score": 0.1013109062720292,
+        "persistent_forking_score": 0.2040562981645403,
+        "progressive_forking_score": 0.1605910545326233
+      }
+    }
+  ]
+}
