@@ -3,7 +3,7 @@
 **Integration annotation - 2026-11-19:** H1-H9 are **hypotheses** and their tests
 are **suggested**. F1-F6 are **observed (historical reports)**, with artifact
 integrity checked but statistics not recomputed. See
-[verified status](FPA_STATUS.md) and [audit](FPA_IMPLEMENTATION_AUDIT.md).
+[verified status](../research/FPA_STATUS.md) and [audit](../archive/FPA_IMPLEMENTATION_AUDIT.md).
 
 **2026-11-19 | hypotheses, NOT results.** To be updated from evidence after each experimental milestone. This is not a grant of inference budget.
 

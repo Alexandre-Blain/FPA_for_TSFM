@@ -3,7 +3,7 @@
 This is a research workspace for Forking Paths Analysis of time-series
 foundation models. The active implementation uses original Chronos-T5 models.
 
-Read `README.md`, `README_CHRONOS.md`, `docs/PROJECT_STRUCTURE.md` and
+Read `README.md`, `docs/reference/README_CHRONOS.md`, `docs/reference/PROJECT_STRUCTURE.md` and
 `tests/README.md` before changing the workflow.
 
 ## Layout
@@ -34,14 +34,14 @@ and do not rewrite historical outputs as a side effect of source maintenance.
 There is no TimesFM library or forecasting skill in the active repository.
 Earlier TimesFM code is archived in the original workspace.
 
-## Research workflow integrated on 2026-11-19
+## Current research workflow
 
-The operational rules above remain in force. Canonical workflow navigation:
-[workflow guide](docs/research/README_WORKFLOW_V2.md),
-[integration report](docs/research/FPA_INTEGRATION_REPORT.md), and
-[implementation audit](docs/research/FPA_IMPLEMENTATION_AUDIT.md).
-This integration authorizes documentation and static checks only; future model
-execution needs a separately approved bounded task.
+Start with the single [documentation index](docs/README.md) and the
+[workflow](docs/research/README_WORKFLOW_V2.md). Six active documents live in
+docs/research/; methods and useful reports in docs/reference/; completed prompts,
+superseded plans and old audits in docs/archive/. Archives are provenance,
+never current execution instructions. The [current task](codex-prompts/CURRENT_TASK.md)
+records the authorized pilot, presently paused by the researcher for maintenance.
 
 ## Before work
 
@@ -74,7 +74,7 @@ execution needs a separately approved bounded task.
 
 - Work only on the **bounded task explicitly approved in the current prompt**. Writing a protocol, discussing a 24h campaign, or adding this AGENTS file is not run authorization.
 - No nontrivial inference, dataset download, dependency changes, cloud compute, training, fine-tuning, new models, or execution > specified ceiling without explicit user authorization.
-- Never overwrite historical runs or source documents. Legacy plans may be superseded only in a documented addendum with user approval; leave historical records intact.
+- Never overwrite historical runs or scientific source content. Researcher-authorized documentation maintenance may move reports and rebase links while preserving their content and provenance. Superseded plans belong in docs/archive/.
 - Prioritize parity and measured bottlenecks before optimizing. Do not assume T5 encoder cache, decoder KV cache or batching improve throughput until measured. Demonstrate that cached decoding preserves conditioning on preceding generated tokens.
 - Persist per-branch raw tokens/numeric paths, policy metadata, logits/activation availability, hashes, actual runtimes and completed status. Atomic checkpoints must be safe under crashes. Analysis must read **atomically finalized checkpoints only**, not partially written files; these do not require a Git commit.
 - For a long campaign, predefine the experiment grid and stopping budget; adaptive expansions must be logged and distinguished from the prospectively sampled portion. Separate the inference process from the scientific review process.
@@ -91,8 +91,8 @@ For every substantive iteration:
 ## Historical anchors
 
 - Bigelow et al., *Forking Paths in Neural Text Generation*, ICLR 2025, arXiv:2412.07961.
-- Local legacy plan: `docs/future works/FPA_CHRONOS_RESEARCH_PLAN (1).md` (verify actual path).
-- Reports: `docs/CHRONOS_PHASE2.md`, `docs/CHRONOS_PHASE3_DESIGN.md`.
+- Local legacy plan: `docs/archive/FPA_CHRONOS_RESEARCH_PLAN (1).md` (verify actual path).
+- Reports: `docs/reference/CHRONOS_PHASE2.md`, `docs/reference/CHRONOS_PHASE3_DESIGN.md`.
 - Completed run: `result/phase2_controlled_pilot_20261116_195533/`.
 - Offline controls: `result/phase3_offline_controls_20261117_175121/`.
 
@@ -100,8 +100,9 @@ For every substantive iteration:
 
 - At each completed prompt, run `scripts/maintenance/prepare_chatgpt_handout.py`.
   It replaces generated upload copies in `docs/chatgpt-handout/` and produces
-  `docs/chatgpt-handout.zip`, including all changed/new documents and essential
-  historical context. The combined `CHATGPT_HANDOUT.md` is the easy upload entry.
+  `docs/chatgpt-handout.zip`, including changed/new active documents and needed
+  scientific references. Archives are excluded even when changed or linked.
+  The combined `CHATGPT_HANDOUT.md` is the easy upload entry.
 - Keep these disposable copies ignored. Edit canonical documents, never the
   handout copies. The refresher refuses to delete unexpected or manually edited
   files and validates that all managed paths stay in its dedicated folder.

@@ -17,15 +17,12 @@ import zipfile
 SCHEMA = "fpa_chatgpt_handout_v1"
 MARKER = "HANDOUT_MANIFEST.json"
 SUPPORT = (
-    "AGENTS.md", "README.md", "README_CHRONOS.md", "docs/PROJECT_STRUCTURE.md",
-    "tests/README.md", "docs/CHRONOS_PHASE1.md", "docs/CHRONOS_PHASE2.md",
-    "docs/CHRONOS_PHASE3_DESIGN.md",
-    "docs/future works/FPA_CHRONOS_RESEARCH_PLAN (1).md",
     "docs/research/README_WORKFLOW_V2.md", "docs/research/FPA_NORTH_STAR.md",
     "docs/research/FPA_STATUS.md", "docs/research/FPA_DECISIONS.md",
-    "docs/research/FPA_PROTOCOL_EXPLORATORY.md", "docs/research/FPA_HYPOTHESES.md",
-    "docs/research/FPA_TECHNICAL_GATES.md", "docs/research/FPA_REFERENCES.md",
-    "docs/research/FPA_HANDOFF.md",
+    "docs/research/FPA_PROTOCOL_EXPLORATORY.md", "docs/research/FPA_HANDOFF.md",
+    "docs/reference/BENCHMARK_REPORT.md", "docs/reference/FPA_HYPOTHESES.md",
+    "docs/reference/CHRONOS_PHASE2.md", "docs/reference/CHRONOS_PHASE3_DESIGN.md",
+    "codex-prompts/CURRENT_TASK.md",
 )
 
 
@@ -39,7 +36,7 @@ def document_path(name: str) -> bool:
     path = PurePosixPath(name)
     return (
         not path.is_absolute() and ".." not in path.parts
-        and not name.startswith(("docs/chatgpt-handout/", "docs/.chatgpt-handout-"))
+        and not name.startswith(("docs/archive/", "docs/chatgpt-handout/", "docs/.chatgpt-handout-"))
         and (path.suffix == ".md" or (name.startswith(("docs/", "configs/")) and path.suffix in {".json", ".txt"}))
     )
 
@@ -48,7 +45,7 @@ def collect_documents(root: Path) -> list[str]:
     changed = git(root, "diff", "HEAD", "--name-only", "--diff-filter=ACMRT", "-z").split("\0")
     changed += git(root, "ls-files", "--others", "--exclude-standard", "-z").split("\0")
     priority = {name: i for i, name in enumerate((
-        "docs/research/FPA_HANDOFF.md", "docs/research/BENCHMARK_REPORT.md",
+        "docs/research/FPA_HANDOFF.md", "docs/reference/BENCHMARK_REPORT.md",
         "docs/research/FPA_STATUS.md", "docs/research/FPA_DECISIONS.md",
         "docs/research/FPA_NORTH_STAR.md", "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
     ))}
@@ -58,6 +55,8 @@ def collect_documents(root: Path) -> list[str]:
         source = pending.pop()
         if not source.endswith(".md"):
             continue
+        if not (root / source).resolve().is_relative_to(root.resolve()):
+            raise ValueError(f"Source escapes repository: {source}")
         for link in markdown_links((root / source).read_text(encoding="utf-8")):
             target = local_target(source, link["target"])
             if target is None:
@@ -185,15 +184,9 @@ def audit_links(root, names):
 
 
 def document_group(name):
-    if name.startswith(("docs/recherche/", "docs/future works/", "docs/research/FPA_INTEGRATION")) or name in {
-        "CHRONOS_FPA_FUTURE_IDEAS.md", "FPA_CET1_RESEARCH_HANDOFF.md",
-        "docs/CHRONOS_PHASE1.md", "docs/CHRONOS_PHASE2.md", "docs/CHRONOS_PHASE3_DESIGN.md",
-        "docs/research/FPA_IMPLEMENTATION_AUDIT.md", "docs/maintenance/CLEANUP_REPORT.md",
-    }:
-        return "Historical reports and plans"
     if name.startswith(("docs/research/", "project-chatgpt/", "codex-prompts/")):
         return "Current research and workflow"
-    return "Repository guides and supporting files"
+    return "References and supporting files"
 
 
 def contained(directory: Path, name: str) -> Path:
@@ -273,8 +266,9 @@ def build_handout(root: Path) -> dict:
         "Upload CHATGPT_HANDOUT.md for one readable document, or the sibling "
         "chatgpt-handout.zip for source copies and hashes. Canonical originals "
         "remain in the repository. This generated folder is replaced at each "
-        "completed prompt; do not edit copies here. All linked Markdown guides "
-        "and supporting document files are included. Code, datasets and model "
+        "completed prompt; do not edit copies here. Active documents and their "
+        "linked references are included. Archives are excluded even when changed "
+        "or linked by the documentation index. Archived documents, code, datasets and model "
         "outputs are not included; their references are shown as plain repository "
         "paths. Start with FPA_HANDOFF, BENCHMARK_REPORT and FPA_STATUS. "
         "Older reports are historical evidence. Document copies live under "
@@ -284,7 +278,7 @@ def build_handout(root: Path) -> dict:
         "non-Markdown attachments available in the ZIP.\n\n"
     )
     index, combined = [intro], [intro, "## Contents\n\n"]
-    for group in ("Current research and workflow", "Repository guides and supporting files", "Historical reports and plans"):
+    for group in ("Current research and workflow", "References and supporting files"):
         index.append(f"## {group}\n\n")
         combined.append(f"### {group}\n\n")
         for name in sources:

@@ -2,6 +2,9 @@
 
 Ce guide explique ce que chaque graphe essaie de montrer.
 
+Les figures standard sont dans `result/NOM_DU_RUN/figures/`; les figures
+exploratoires dans `result/NOM_DU_RUN/figures/recherche/`.
+
 ## Figures Standard
 
 ### `chronos_top_branch_scores.png`

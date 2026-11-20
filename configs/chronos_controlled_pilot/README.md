@@ -4,7 +4,7 @@ This is the approved small pilot, not Phase 3 or a benchmark scan. One cached
 Chronos mini model runs sequentially on CPU, offline, with one Torch thread.
 
 The reduced seven-group pilot is now complete. See
-[the final report](../../docs/CHRONOS_PHASE2.md) for findings, limitations and
+[the final report](../../docs/reference/CHRONOS_PHASE2.md) for findings, limitations and
 the unexecuted Phase 3 proposal. Its final outputs are in `analysis_half/`;
 the original one-group `analysis/` snapshot is preserved.
 

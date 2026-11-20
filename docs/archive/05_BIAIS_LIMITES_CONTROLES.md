@@ -6,7 +6,7 @@ projet si on ne les surveille pas.
 ## Mise A Jour Maintenance V2
 
 Les resultats historiques sont conserves sans recalcul, y compris les runs
-partiels. L'[inventaire](../maintenance/CLEANUP_REPORT.md) distingue couverture,
+partiels. L'[inventaire](CLEANUP_REPORT.md) distingue couverture,
 integrite et completion. Une interruption materielle n'invalide pas les
 observations deja sauvegardees.
 

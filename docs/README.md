@@ -1,78 +1,58 @@
-# Chronos FPA - Documentation
+# Documentation FPA / Chronos
 
-Lire les documents courants avant les anciens bilans. Les dossiers sont
-organises par usage; les rapports historiques conservent leur chemin et leur
-contenu scientifique.
+Pour comprendre et reprendre le projet, lire **l'objectif, le statut puis le
+handoff**. Les six documents actifs ci-dessous font autorité pour le workflow
+courant. Les rapports et archives ne constituent pas des ordres d'exécution.
 
-## 1. Recherche courante
+## Documentation active — docs/research/
 
-| Besoin | Document |
+| Question | Source de vérité |
 | --- | --- |
-| Travail termine, limites et prochaine etape | [Statut verifie](research/FPA_STATUS.md) |
-| Transmission a ChatGPT | [Dernier handoff](research/FPA_HANDOFF.md) |
-| Resultats techniques de Prompt 2 | [Benchmark](research/BENCHMARK_REPORT.md), [preuves](research/FPA_PROMPT02_EVIDENCE.json), [tests](research/FPA_PROMPT02_TESTS.txt) |
-| Cadre scientifique | [North star](research/FPA_NORTH_STAR.md), [hypotheses](research/FPA_HYPOTHESES.md), [protocole candidat](research/FPA_PROTOCOL_EXPLORATORY.md) |
-| Decisions et autorisations | [Decisions](research/FPA_DECISIONS.md), [workflow](research/README_WORKFLOW_V2.md) |
-| Proposition non autorisee | [Grille exploratoire](research/FPA_PROPOSED_GRID.json) |
-| Organisation et liens des documents | [Bilan de nettoyage](maintenance/DOCUMENTATION_LINKS.md) |
+| Quel est l'objectif scientifique ? | [Objectif et contributions candidates](research/FPA_NORTH_STAR.md) |
+| Quel protocole utiliser ? | [Protocole expérimental](research/FPA_PROTOCOL_EXPLORATORY.md) |
+| Qu'a-t-on réellement exécuté et appris ? | [Statut et limites](research/FPA_STATUS.md) |
+| Où reprendre et quelle est la prochaine étape ? | [Handoff](research/FPA_HANDOFF.md) |
+| Quelles décisions ont été validées ? | [Journal chronologique](research/FPA_DECISIONS.md) |
+| Comment travailler entre chercheur, Codex et ChatGPT ? | [Workflow](research/README_WORKFLOW_V2.md) |
 
-Pour ChatGPT, utiliser le fichier local
-`docs/chatgpt-handout/CHATGPT_HANDOUT.md` ou `docs/chatgpt-handout.zip`.
-Ces fichiers generes sont ignores par Git : leurs chemins restent en texte
-pour ne pas creer de liens GitHub vers des fichiers absents du depot.
-Ces copies temporaires sont remplacees apres chaque prompt par
-`.venv/Scripts/python.exe scripts/maintenance/prepare_chatgpt_handout.py`.
-Le document combine utilise des liens internes; le ZIP inclut les guides
-Markdown references et les fichiers documentaires associes.
+Le pilote multi-séries est **en pause à la demande du chercheur**.
+Son autorisation détaillée est conservée dans
+[la tâche courante](../codex-prompts/CURRENT_TASK.md).
 
-## 2. Utilisation et methodes
+## Documentation de référence — docs/reference/
 
-| Besoin | Document |
-| --- | --- |
-| Commandes et configuration | [Guide pratique](../README_CHRONOS.md), [scan](../configs/chronos_benchmark_scan/README.md), [refinement](../configs/chronos_targeted_refinement/README.md) |
-| Emplacement du code et des fichiers | [Structure du projet](PROJECT_STRUCTURE.md) |
-| Definitions et calculs | [Metriques](CHRONOS_METRICS.md), [audit mathematique](CHRONOS_MATH_AUDIT.md) |
-| Figures et interpretation | [Index des figures](graphes/README.md), [guide detaille](graphes/CHRONOS_FIGURES_GUIDE.md) |
-| Validation hors ligne | [Guide des tests](../tests/README.md) |
+- [Hypothèses et explications concurrentes](reference/FPA_HYPOTHESES.md),
+  [sources scientifiques](reference/FPA_REFERENCES.md).
+- [Définitions des métriques](reference/CHRONOS_METRICS.md),
+  [audit mathématique](reference/CHRONOS_MATH_AUDIT.md),
+  [contrats techniques](reference/FPA_TECHNICAL_GATES.md).
+- [Benchmark Prompt 2](reference/BENCHMARK_REPORT.md),
+  [preuves originales](reference/FPA_PROMPT02_EVIDENCE.json),
+  [tests de ce benchmark](reference/FPA_PROMPT02_TESTS.txt).
+- Rapports scientifiques : [Phase 1](reference/CHRONOS_PHASE1.md),
+  [Phase 2 terminée](reference/CHRONOS_PHASE2.md),
+  [Phase 3 : contrôles offline et ancien design](reference/CHRONOS_PHASE3_DESIGN.md).
+- [Guide pratique](reference/README_CHRONOS.md),
+  [structure du code](reference/PROJECT_STRUCTURE.md),
+  [tests](../tests/README.md), [figures](reference/CHRONOS_FIGURES_GUIDE.md).
 
-## 3. Rapports historiques et provenance
+## Archives — docs/archive/
 
-| Periode / objet | Document |
-| --- | --- |
-| Phase 1 : implementation des distances | [Phase 1](CHRONOS_PHASE1.md) |
-| Phase 2 : pilote termine | [Phase 2](CHRONOS_PHASE2.md) |
-| Phase 3 : controles offline et proposition de replication | [Phase 3](CHRONOS_PHASE3_DESIGN.md) |
-| Integration documentaire du 19 novembre | [Rapport](research/FPA_INTEGRATION_REPORT.md), [audit initial](research/FPA_IMPLEMENTATION_AUDIT.md) |
-| Anciennes analyses et pistes | [Notes historiques](recherche/README.md) |
-| Plan scientifique anterieur | [Plan historique](<future works/FPA_CHRONOS_RESEARCH_PLAN (1).md>) |
-| Ancien handoff et idees | [Handoff CET1](../FPA_CET1_RESEARCH_HANDOFF.md), [idees historiques](../CHRONOS_FPA_FUTURE_IDEAS.md) |
-| Nettoyage anterieur du depot | [Audit de maintenance](maintenance/CLEANUP_REPORT.md) |
+[Anciens travaux et preuves de maintenance](archive/) : plans remplacés,
+prompts terminés, notes historiques et audits. Ils conservent leur provenance
+et ne gouvernent pas le travail actuel. Les anciens chemins dans les manifestes
+figés décrivent leur instantané d'origine. Les données et résultats n'ont pas
+été déplacés.
 
-Les expressions "actuel" ou "en cours" dans les anciens documents se rapportent
-a leur date d'origine. Elles ne remplacent pas le statut courant et ne donnent
-aucune nouvelle autorisation de calcul.
+## Transmission à ChatGPT
 
-## Sources Experimentales Historiques
+`docs/chatgpt-handout/CHATGPT_HANDOUT.md` et `docs/chatgpt-handout.zip` sont
+des copies locales jetables, ignorées par Git. Les régénérer avec :
 
-Le scan propre historique de septembre est :
-
-```text
-result/clean_confirm_no_refinement_20260915_114823
+```powershell
+.venv/Scripts/python.exe scripts/maintenance/prepare_chatgpt_handout.py
 ```
 
-Le refinement partiel reste une source experimentale utile :
-
-```text
-result/refinement_faster_global_20260728_125930
-```
-
-Voir [l'audit de maintenance](maintenance/CLEANUP_REPORT.md), les
-[tests](../tests/README.md) et l'inventaire d'integrite. Les runs partiels ne
-sont ni supprimes ni declasses scientifiquement par leur seule incompletion.
-
-Certains anciens runs Chronos avaient deja ete archives dans :
-
-```text
-result/archive/obsolete_chronos_runs/
-```
+Le générateur exporte les documents actifs et les références nécessaires,
+avec des liens vérifiés. **Les archives ne sont pas exportées automatiquement.**
 

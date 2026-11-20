@@ -97,7 +97,7 @@ estimator-boundary calibration and parity gates must precede collection.
   [machine-readable evidence](FPA_INTEGRATION_EVIDENCE.json) for exact counts
   and scope. No local Bigelow PDF was provided; six primary literature landing
   pages were checked for metadata only, with citations in
-  [references](FPA_REFERENCES.md).
+  [references](../reference/FPA_REFERENCES.md).
 
 ## Researcher-only Git review
 
@@ -159,9 +159,9 @@ SHA after the researcher commits/pushes; this report cannot predict it.
 
 ## Next bounded gate
 
-**Suggested:** send this report, [handoff](FPA_HANDOFF.md) and full audit to
+**Suggested:** send this report, [handoff](../research/FPA_HANDOFF.md) and full audit to
 ChatGPT for skeptical scientific review. The sole next recommendation is the
-[proposed Phase0](../../codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md), with
+[proposed Phase0](PROMPT_00_BOUNDED_BENCHMARK.md), with
 30minutes total and any separately approved cached-model portion capped at180s.
 Checkpoint/access-denial readiness is a prior gate; no automatic sampling,
 implementation campaign or StageA follows.

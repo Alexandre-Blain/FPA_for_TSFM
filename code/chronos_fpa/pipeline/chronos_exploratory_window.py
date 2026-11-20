@@ -31,6 +31,8 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
     shared = {**provenance, "context_sha256": hashlib.sha256(context.tobytes()).hexdigest(),
               "policy": POLICY_VERSION, "horizon": 32, "batch_size": batch_size,
               "sampling_seed": seed}
+    if store.scope is not None:
+        store._check_scope(shared)
     accounting = {"new_ensembles": 0, "reused_ensembles": 0, "new_paths": 0, "reused_paths": 0}
     timings, fork_rows, distances, outcomes, p10 = [], [], [], {}, None
 
@@ -101,12 +103,16 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
                               **metrics, "w1_profile": profile.tolist(),
                               "same_token_null": null_metrics})
         support = torch.where(q > 0)[0].tolist()
+        q_normalized = q.double() / q.double().sum()
+        p_positive = p_sel[p_sel > 0].double()
         fork_rows.append({"b": b, "greedy_token": greedy,
                           "selected_tokens": list(selected.token_ids), "selected_weights": list(selected.weights),
                           "p_sel_selected": [float(p_sel[t]) for t in selected.token_ids],
                           "selected_mass": selected.selected_mass, "residual_mass": selected.residual_mass,
                           "residual_ids": list(selected.residual_ids), "target_attained": selected.target_attained,
                           "q50_support_ids": support, "q50_support_weights": (q.double() / q.double().sum())[support].tolist(),
+                          "entropy_q50_nats": float(-(q_normalized[q_normalized > 0] * q_normalized[q_normalized > 0].log()).sum()),
+                          "entropy_p_sel_nats": float(-(p_positive * p_positive.log()).sum()),
                           "sampling_temperature": 1., "sample_top_k": 50, "top_p": 1.})
         publish_fork_manifest(store.directory.parent / "forks", store.directory, fork_rows[-1])
         if b == 9:

@@ -1,32 +1,57 @@
-# Local environments, caches and build products.
+
+# ============================================================
+# FPA for TSFM - Git ignore
+# ============================================================
+
+# 1. Python environments and dependency caches
 .venv/
+venv/
+.env/
 .uv_cache/
 .uv-cache/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 __pycache__/
 *.py[cod]
 *.egg-info/
 /dist/
 /build/
 
-# Local data, model weights and generated research artifacts.
+# 2. Raw datasets and locally generated data
 /data/raw/
+/datasets/
+
+# 3. Experimental outputs and checkpoints
 /result/
 /results/
-/presentations/
 /checkpoints/
 /wandb/
-/datasets/
-*.zip
 
-# Refreshable ChatGPT upload copies; canonical documents stay versioned.
+# 4. Model weights and local model caches
+/models/
+/model_cache/
+*.safetensors
+*.ckpt
+
+# 5. Generated presentations
+/presentations/
+
+# 6. Temporary archives and ChatGPT handouts
+/*.zip
 /docs/chatgpt-handout/
+/docs/chatgpt-handout*.zip
 /docs/.chatgpt-handout-*/
+/docs/.chatgpt-handout*.zip
 /docs/.chatgpt-handout.zip.tmp
 
-# Local configuration and logs.
+# 7. Local configuration and secrets
 .env
 .env.*
 !.env.example
+
+# 8. Logs and temporary files
 debug.log
+*.log
+*.tmp
+

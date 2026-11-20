@@ -126,3 +126,31 @@ def test_broken_canonical_link_preserves_previous_export(tmp_path, monkeypatch):
         handout.build_handout(tmp_path)
     assert previous.read_bytes() == before
     assert source.read_text() == "[Missing document](absent.md)\n"
+
+
+def test_archives_are_excluded_even_when_changed_and_linked(tmp_path, monkeypatch):
+    (tmp_path / "docs/archive").mkdir(parents=True)
+    (tmp_path / "docs/reference").mkdir()
+    (tmp_path / "docs/current.md").write_text(
+        "# Current\n\n[Old plan](archive/old.md)\n[Method](reference/method.md)\n"
+    )
+    (tmp_path / "docs/archive/old.md").write_text("# Superseded instructions must stay archived\n")
+    (tmp_path / "docs/reference/method.md").write_text("# Required scientific method\n")
+
+    def fake_git(root, *args):
+        if args[0] == "diff":
+            return "docs/current.md\0docs/archive/old.md\0"
+        if args[0] in {"branch", "rev-parse"}:
+            return "test-head\n"
+        return ""
+
+    monkeypatch.setattr(handout, "git", fake_git)
+    handout.build_handout(tmp_path)
+    folder = tmp_path / "docs/chatgpt-handout"
+    manifest = json.loads((folder / handout.MARKER).read_text())
+    assert set(manifest["source_files"]) == {"docs/current.md", "docs/reference/method.md"}
+    combined = (folder / "CHATGPT_HANDOUT.md").read_text()
+    assert "Superseded instructions must stay archived" not in combined
+    assert "Required scientific method" in combined
+    assert "repository reference: `docs/archive/old.md`" in combined
+    assert handout.audit_links(folder, ["CHATGPT_HANDOUT.md", "README.md"])["broken_links"] == []

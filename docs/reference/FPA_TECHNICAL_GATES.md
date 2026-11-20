@@ -5,7 +5,7 @@ cached context, including target N20, full-prefix/cache parity, residual
 mixtures, exhaustive replay on named paths, interrupted-ensemble resume and
 complete-only fork snapshots. The [benchmark report](BENCHMARK_REPORT.md)
 records exact coverage and untested cases. The full offline suite passed 250.
-The [November 19 audit](FPA_IMPLEMENTATION_AUDIT.md) is historical evidence;
+The [November 19 audit](../archive/FPA_IMPLEMENTATION_AUDIT.md) is historical evidence;
 its capability inventory is superseded by the current report.
 Legacy GroupStore.recover() still writes exports; use the new pure snapshot
 reader for prototype analysis. Full-capture streaming/cache eviction, formal

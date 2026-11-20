@@ -1,12 +1,12 @@
-﻿# Chronos FPA Math Audit
+# Chronos FPA Math Audit
 
 Audit des choix mathematiques actuels pour eviter que des erreurs se propagent dans les analyses.
 
 Le nettoyage v2 conserve les formules du score et corrige les contrats de
 donnees et d'analyse : une normalisation explicite, identifiants preserves,
 extrema ex aequo signales et reprises atomiques. Les anciens CSV ne sont pas
-recalcules. Voir [le bilan](maintenance/CLEANUP_REPORT.md) et
-[la suite de tests](../tests/README.md) pour les verifications reproductibles.
+recalcules. Voir [le bilan](../archive/CLEANUP_REPORT.md) et
+[la suite de tests](../../tests/README.md) pour les verifications reproductibles.
 
 ## 1. Comparaison Des Branches
 

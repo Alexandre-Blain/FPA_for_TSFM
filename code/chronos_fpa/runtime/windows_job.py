@@ -8,7 +8,7 @@ import time
 
 
 class WindowsJobProcess:
-    def __init__(self, command, cwd, env, log, memory_limit):
+    def __init__(self, command, cwd, env, log, memory_limit=None):
         if os.name != "nt":
             raise RuntimeError("Windows Job Objects require native Windows")
         import _winapi
@@ -53,8 +53,10 @@ class WindowsJobProcess:
         if not self.job:
             raise ctypes.WinError(ctypes.get_last_error())
         limit = ExtendedLimit()
-        limit.basic.flags = 0x2000 | 0x100 | 0x200  # kill-on-close, process and aggregate job committed memory.
-        limit.process_memory_limit = limit.job_memory_limit = int(memory_limit)
+        limit.basic.flags = 0x2000  # Always kill descendants when the supervisor closes.
+        if memory_limit is not None:
+            limit.basic.flags |= 0x100 | 0x200
+            limit.process_memory_limit = limit.job_memory_limit = int(memory_limit)
         if not self.kernel.SetInformationJobObject(self.job, 9, ctypes.byref(limit), ctypes.sizeof(limit)):
             self.close()
             raise ctypes.WinError(ctypes.get_last_error())

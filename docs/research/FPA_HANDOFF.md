@@ -1,83 +1,59 @@
-# FPA handoff - bounded Prompt 2 validation
+# Handoff — pilote local en pause
 
-**Observed: 2026-11-20.** Branch `main`; HEAD before the next researcher commit:
-`558846c82002c2cb6070fbfff9bed22f514424a3` (`smoke test`).
-This externally created commit contains the earlier work. Codex performed
-no Git writes; the current documentation cleanup remains unstaged.
-Its exact status and paths are in the
-[documentation audit](../maintenance/DOCUMENTATION_LINKS.json).
-The [benchmark report](BENCHMARK_REPORT.md) and
-[evidence](FPA_PROMPT02_EVIDENCE.json) retain the earlier pre-commit snapshot.
+**20 novembre 2026.** Branche `main`, HEAD de départ :
+`b9c6a011e14a93235ed90cf88a11a25cead7264a`. Codex n'a effectué aucune écriture
+Git. La modification personnelle de `.gitignore` est préservée.
 
-**Documentation follow-up, 2026-11-20:** current research, practical guides
-and historical reports now have separate navigation in [the index](../README.md).
-Linked guides are included in the ZIP; the combined handout uses internal
-section links. [The cleanup report](../maintenance/DOCUMENTATION_LINKS.md)
-records this later change. Prompt2's benchmark evidence remains frozen.
+Le chercheur a autorisé [le pilote local](../../codex-prompts/CURRENT_TASK.md) :
+six séries originales, jusqu'à dix cellules fenêtre-graine au total
+(six primaires + quatre réplications sur deux fenêtres). Il a ensuite demandé
+une **pause pour simplifier la documentation**. Aucune inférence nouvelle n'a
+été lancée; aucune sélection n'est figée. La tâche reste à reprendre.
 
-**Authorized scope:** Prompt2, four hours implementation/tests, at most
-30 minutes of model work. One cached M4/T000001 C512 context, original
-Chronos-T5-mini, H32, CPU float32/eager/one thread; no downloads, installations,
-cloud/GPU, full campaign or Stage A. Start `2026-11-20T15:37:06Z`.
-Model subprocess wall time totaled **205.829 s**, including load/replay.
-Correct native process-tree committed-memory peak: **747.04 MiB** under 2 GiB.
-The initial redirector-only memory measurement was invalid; corrected
-supervision and its limitation are documented. Output ceiling was 512 MiB.
+## Point de reprise
 
-**Observed implementation:** q50 cumulative coverage/cap 8, conditional residual,
-independent null, full token/value paths, encoder reuse, decoder prefix KV
-cache with isolation, batching, signed J and fixed22/full W1/ED. Fixed
-terminal/last8 events are estimated at P0..15 using q50 mixtures, P10 reuse,
-and direct N60 P11..15. Formal BEAST/change-point fitting was not implemented.
-Immutable ensemble objects and completed parent-fork manifests support
-committed-only read snapshots; interrupted-ensemble resume is tested.
-Persistent Windows CSV replacement failures retain complete pending output.
+Checkpoint local : `result/local_pilot_20261120T184035Z/RESUME.json`.
+Il conserve l'autorisation originale, les hashes des six fichiers scientifiques
+en cours et les étapes restantes.
 
-**Observed real checks:** initial N2 cell: 58 ensembles/580 paths/36.796 s;
-target N20 cell: 58 ensembles/1,480 paths/**78.922 s**. Same original context,
-separate experiment identities/streams. Another 78 executed timing slots
-reuse seeds and are not independent replications. Cached N2 b0 decoding was
-0.314 s versus 11.558 s reference, about 36.8x in one warm timing comparison;
-this is not an end-to-end campaign speedup. Three tokens covered
-0.98108..0.99001 q50 mass at all ten dense positions.
+Déjà fait : stockage isolé par fenêtre/graine, contrôle des objets étrangers,
+tests d'exécution entrelacée/interruption/reprise, cas cap8 avec résidu 84 %,
+supervision Windows sans ancien plafond arbitraire. Le module de sélection
+context-only et sa configuration sont rédigés mais non validés/figés.
+**15 tests ciblés passés en 74.49 s**; aucune nouvelle suite complète.
 
-**Observed white-box checks:** eight named saved reference/alternative paths
-per cell at actual b0/b9, all layers/heads, before/after forced tokens and
-all 32 queries. Other samples explicitly omit replayable activation arrays.
-Full all-step decoder/logit payload is **3,002,752 raw bytes/path** plus
-shared encoder data. Cached versus full-prefix and attention replay passed
-declared atol/rtol and exact support checks. No GPU/fast-kernel claim follows.
+## Prochaine étape à la reprise
 
-**Observed tests:** **250 passed in 41.26 s**, offline; the later handout
-ordering check passed **4 tests in 2.45 s**. Covers mathematical identities, known-mixture calibration,
-cache isolation, crash/resume, checksum rejection, complete-only analysis,
-Windows child-process accounting/termination and canonical-doc preservation.
-Source archives preserve all 26 exact collection versions. Final historical
-content/inventory and Git-index checks are in current evidence. Older
-integration reports remain dated evidence, not current implementation status.
+Terminer et tester la sélection/QC, puis figer les six fenêtres **avant modèle**.
+Ne pas refaire l'audit général ni reprendre depuis zéro. Ensuite : addendum
+de provenance N20, driver multi-fenêtres, suite complète, deux cellules validées
+avant les quatre autres et les quatre réplications autorisées, calibration et
+analyse. Les détails opérationnels et formules sont dans le checkpoint.
 
-**Artifacts:** ignored `result/prompt02_micro_20261120T153706Z/` contains
-summaries, complete token/value ensembles, q50 metadata, outcome laws,
-snapshots, parity, named captures, supervision audit and original source
-copies. The [report](BENCHMARK_REPORT.md), [evidence](FPA_PROMPT02_EVIDENCE.json),
-[test log](FPA_PROMPT02_TESTS.txt) and
-[proposed grid](FPA_PROPOSED_GRID.json) are the reviewable deliverables.
+Le champ `target_N20` des preuves historiques a été écrasé par une variable
+de parsing de liens lors de leur rédaction; le résumé N20 brut est intact.
+L'original figé est conservé et le driver intermédiaire N20 n'a pas été
+archivé indépendamment : ces limites restent à documenter explicitement.
 
-**Scientific limits:** one previously studied context with a flat greedy path;
-no population inference, no formal CPD validation, no added-information
-claim beyond probability/entropy/J. Real mixture/direct overlap discrepancies
-reach 0.236; conditional plug-in SEs are not CIs. Full-capture streaming/cache
-eviction and new-domain resource bounds remain open. StageA H64/N50 seed2718
-and the multi-series H32 campaign remain unexecuted.
+## Documents et Git
 
-**Single next suggestion:** after skeptical ChatGPT review, approve a
-30-minute **data-only** task to freeze/QC six original-series windows
-(two per three reviewed datasets, representative and diversity strata).
-No model draws. Stop on invalid scale, missing identity/hash, future leakage
-or accidental duplicate series; retain exclusions. A campaign still needs
-a frozen grid, capture architecture, hours/storage and separate approval.
+L'[index unique](../README.md) donne les six sources actives, références et
+archives. Les définitions restent dans le protocole; les résultats historiques
+dans leurs rapports. Le handout exclut les archives par défaut.
 
-**Upload:** `docs/chatgpt-handout/CHATGPT_HANDOUT.md` or
-`docs/chatgpt-handout.zip`. The refresher replaces only validated generated
-copies between prompts. Historical plans/reports remain canonical.
-Only the researcher stages, commits and pushes.
+Pour le chercheur uniquement : examiner `git status --short` et `git diff`,
+puis sélectionner les déplacements documentaires et le générateur/tests.
+Ne pas stage les fichiers scientifiques du pilote en pause sans leur revue.
+Commandes documentaires suggérées, jamais exécutées par Codex :
+
+```powershell
+git add -- README.md AGENTS.md docs codex-prompts project-chatgpt
+git add -u -- README_CHRONOS.md CHRONOS_FPA_FUTURE_IDEAS.md FPA_CET1_RESEARCH_HANDOFF.md
+git add -- scripts/maintenance/prepare_chatgpt_handout.py tests/chronos_fpa/integration/test_chatgpt_handout.py
+git add -- configs/chronos_benchmark_scan/README.md configs/chronos_controlled_pilot/README.md configs/chronos_targeted_refinement/README.md
+git diff --cached
+```
+
+Message proposé : `docs: simplify active research documentation and archive provenance`.
+Le SHA d'un prochain commit n'existe pas encore. Les données, résultats,
+checkpoints, source ZIP et handouts générés restent hors staging.

@@ -244,7 +244,7 @@ The mutable ledger's last-stage peak is not the maximum across all stages.
 
 ## Planning grid and scientific limitations
 
-The [proposed grid](FPA_PROPOSED_GRID.json) is **not frozen, not executable
+The [proposed grid](../archive/FPA_PROPOSED_GRID.json) is **not frozen, not executable
 and not authorized**: six distinct original-series windows, one per series,
 two per proposed M4/ERCOT/Exchange Rate dataset: one representative and one
 context-diversity stratum. Selection rules, seeds, eligible pools, IDs,

@@ -4,7 +4,7 @@
 sont **observed (rapports sources)**, les mécanismes proposés sont
 **hypothesis**, les protocoles et tests sont **suggested**. Les vérifications
 locales portent sur les fichiers, manifestes et sources, sans nouvelle
-inférence ni recalcul statistique. Voir le [statut](FPA_STATUS.md), le
+inférence ni recalcul statistique. Voir le [statut](../research/FPA_STATUS.md), le
 [rapport complet](FPA_INTEGRATION_REPORT.md) et l'[audit](FPA_IMPLEMENTATION_AUDIT.md).
 
 **19 novembre 2026 | Version de cadrage, non résultat de campagne.** Ce document vise à transmettre nos arbitrages sans dépendre de l’historique d'un chat. Les protocoles et rapports originaux font foi pour les details.

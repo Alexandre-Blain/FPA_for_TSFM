@@ -1,4 +1,4 @@
-﻿# Chronos Benchmark Scan Configs
+# Chronos Benchmark Scan Configs
 
 Ces fichiers remplacent les longues lignes d'arguments.
 
@@ -9,7 +9,7 @@ controle independant avec le meme token. `save_trajectories` (false) sauvegarde
 les samples individuels et implique ces metriques. `sampling_seed` (0) fixe
 les flux RNG par fenetre/fork/token. Ces options necessitent `branch_modes`
 egal a `single` et se transmettent au refinement automatique. Elles ne changent
-pas le score historique. Voir [schema et formules](../../docs/CHRONOS_PHASE1.md).
+pas le score historique. Voir [schema et formules](../../docs/reference/CHRONOS_PHASE1.md).
 
 Commande :
 

@@ -1,7 +1,7 @@
 # Paper 1: Strict-Suffix Distances And Numeric Ensembles
 
-Active specifications: [research plan](<future works/FPA_CHRONOS_RESEARCH_PLAN (1).md>)
-and [Phase 1 prompt](<future works/CODEX_PHASE_PROMPTS (1).md>).
+Active specifications: [research plan](<../archive/FPA_CHRONOS_RESEARCH_PLAN (1).md>)
+and [Phase 1 prompt](<../archive/CODEX_PHASE_PROMPTS (1).md>).
 Implementation stops at Phase 1. No benchmark scan or Phase 2 pilot is launched.
 
 ## Enable In A New Run

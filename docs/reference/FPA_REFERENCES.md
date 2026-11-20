@@ -44,9 +44,9 @@ Raw trajectories + manifest + hash and measured environment > executed test logs
 without edits; historical absolute paths in manifests are provenance, not current
 lookup paths. Relative Phase 3 input hashes match the current local Phase 2 files.
 
-- [Phase 1](../CHRONOS_PHASE1.md), [Phase 2](../CHRONOS_PHASE2.md), [Phase 3](../CHRONOS_PHASE3_DESIGN.md)
-- [Historical scientific plan](<../future works/FPA_CHRONOS_RESEARCH_PLAN (1).md>) and [historical phase prompts](<../future works/CODEX_PHASE_PROMPTS (1).md>)
-- [Legacy handoff](../../FPA_CET1_RESEARCH_HANDOFF.md) and [future ideas](../../CHRONOS_FPA_FUTURE_IDEAS.md)
+- [Phase 1](CHRONOS_PHASE1.md), [Phase 2](CHRONOS_PHASE2.md), [Phase 3](CHRONOS_PHASE3_DESIGN.md)
+- [Historical scientific plan](<../archive/FPA_CHRONOS_RESEARCH_PLAN (1).md>) and [historical phase prompts](<../archive/CODEX_PHASE_PROMPTS (1).md>)
+- [Legacy handoff](../archive/FPA_CET1_RESEARCH_HANDOFF.md) and [future ideas](../archive/CHRONOS_FPA_FUTURE_IDEAS.md)
 - [Phase 2 frozen config](../../configs/chronos_controlled_pilot/phase2.json) and [reduced scope](../../configs/chronos_controlled_pilot/half_execution.json)
 - Local-only artifacts: result/phase2_controlled_pilot_20261116_195533/ config.json, execution_plan.json, selection.json, progress.json; seed-specific branch_groups and trajectory manifests; and result/phase3_offline_controls_20261117_175121/protocol.json.
-- [Integrity evidence](FPA_INTEGRATION_EVIDENCE.json) lists exact inspected paths/hashes. These ignored run artifacts are not guaranteed available from a remote Git checkout; attach the required manifests/report evidence for external review.
+- [Integrity evidence](../archive/FPA_INTEGRATION_EVIDENCE.json) lists exact inspected paths/hashes. These ignored run artifacts are not guaranteed available from a remote Git checkout; attach the required manifests/report evidence for external review.

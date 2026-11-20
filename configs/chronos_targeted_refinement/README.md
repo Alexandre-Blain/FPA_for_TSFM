@@ -1,9 +1,9 @@
-﻿# Chronos Targeted Refinement Configs
+# Chronos Targeted Refinement Configs
 
 Les cles optionnelles `trajectory_metrics` (false), `save_trajectories` (false)
 et `sampling_seed` (0) sont disponibles. La sauvegarde implique W1/ED et un
 controle independant ; utiliser `branch_modes: "single"`. Voir
-[schema et formules](../../docs/CHRONOS_PHASE1.md).
+[schema et formules](../../docs/reference/CHRONOS_PHASE1.md).
 
 Ces configs lancent uniquement le refinement cible a partir d'un run deja
 existant.

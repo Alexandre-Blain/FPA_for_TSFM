@@ -1,0 +1,84 @@
+{
+  "protocol": "local_multiseries_pilot_v1",
+  "authorization": "2026-11-20 attached NEXT CODEX ITERATION - Local multi-series FPA pilot and estimator validation",
+  "model_id": "amazon/chronos-t5-mini",
+  "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+  "datasets": [
+    "m4_daily",
+    "ercot",
+    "exchange_rate"
+  ],
+  "context_len": 512,
+  "horizon": 32,
+  "samples_per_group": 20,
+  "direct_samples": 60,
+  "batch_size": 8,
+  "overlap_positions": [
+    0,
+    9,
+    10
+  ],
+  "selected_token_cap": 8,
+  "target_q50_mass": 0.9,
+  "primary_seed": 20261120,
+  "replication_seeds": [
+    20261121,
+    20261122
+  ],
+  "selection_seed": 20261120,
+  "max_original_series": 6,
+  "max_complete_cells": 10,
+  "calibration_rule": "representative M4 and representative ERCOT, chosen before FPA outcomes",
+  "known_studied_series": {
+    "m4_daily": [
+      "T000001"
+    ],
+    "ercot": [
+      "EAST"
+    ],
+    "exchange_rate": [
+      "currency_3"
+    ]
+  },
+  "origin_rule": "length minus32, one origin per original series; only preceding512 values used for QC/selection",
+  "representative_rule": "uniform draw from sorted eligible original series with per-dataset SHA-derived RNG seed",
+  "diversity_rule": "farthest rank-feature distance from representative among other eligible series inside90th-percentile rank-radius from population median; lexical ID ties",
+  "features": [
+    "trend_iqr",
+    "diff_std_iqr",
+    "lag1",
+    "lag24",
+    "half_shift_iqr",
+    "zero_fraction"
+  ],
+  "device": "auto_local",
+  "dtype": "float32",
+  "attention_backend": "eager",
+  "cpu_threads": "profile_1_2_4_greedy_no_draws",
+  "whitebox": {
+    "primary_paths": 8,
+    "positions": [
+      0,
+      9
+    ],
+    "roles": [
+      "reference",
+      "first_alternative_by_declared_q50_order"
+    ],
+    "paths_per_role": 2,
+    "capture_batch_size": 2,
+    "fields": "all layers, all heads, all32queries; static encoder once per window",
+    "replications": "full tokens/values with replay metadata; no duplicated activations"
+  },
+  "network_downloads": false,
+  "dependency_changes": false,
+  "scope_exclusions": [
+    "large campaign",
+    "second model",
+    "remote/cloud",
+    "StageA H64/N50",
+    "training",
+    "formal change-point fit",
+    "Git writes"
+  ]
+}

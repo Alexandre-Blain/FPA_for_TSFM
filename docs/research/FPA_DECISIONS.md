@@ -43,17 +43,17 @@ future scientific effects are hypotheses, and unexecuted work is suggested.
 
 | Date | Status | Exact action / limit | Rationale and evidence |
 | --- | --- | --- | --- |
-| 2026-11-19 | User-authorized preparation; observed completion | Install canonical workflow documents, merge compatible AGENTS rules, inspect code/manifests, run document/archive integrity checks; no inference or dependency installation by Codex | Current PROMPT 01; [integration report](FPA_INTEGRATION_REPORT.md) and [evidence](FPA_INTEGRATION_EVIDENCE.json). Researcher exclusively controls all Git writes. |
+| 2026-11-19 | User-authorized preparation; observed completion | Install canonical workflow documents, merge compatible AGENTS rules, inspect code/manifests, run document/archive integrity checks; no inference or dependency installation by Codex | Current PROMPT 01; [integration report](../archive/FPA_INTEGRATION_REPORT.md) and [evidence](../archive/FPA_INTEGRATION_EVIDENCE.json). Researcher exclusively controls all Git writes. |
 | 2026-11-19 | User-restated design; no execution approval | Preserve C512/H32, dense b0..9, N20, q50 90% target/max8 including greedy, residual and independent null, fixed22/full W1+ED, per-window P0..15 and direct N60 P11..15 | Current prompt's explicit invariants. No grid, implementation, runtime budget or positive outcome follows from this record. |
 | 2026-11-19 | Limited scope supersession authorized by current prompt | Historical plan's BEAST/white-box exclusion and no-Phase-0 wording no longer prohibit candidate CPD/capture design or proposing a technical preflight | Historical plan remains unchanged. This does not authorize BEAST inference, broad audit repetition, production optimization or a campaign. |
 | 2026-11-19 | Preserved earlier proposal | Stage A M4 H64/N50, seed2718 remains a separate unexecuted replication cell | Read Phase 3 design and completed Phase 2 plan/artifacts; do not substitute H32 exploration or claim it ran. |
 | 2026-11-19 | User environment update | Researcher installed the repository venv during integration; Codex may continue quick existing offline tests | Follow-up user message. No model inference or dependency changes by Codex authorized. Newly generated uv.lock belongs to the researcher's setup and is preserved separately. |
 
-**Suggested, not decided:** the [bounded Phase-0 proposal](../../codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md)
+**Suggested, not decided:** the [bounded Phase-0 proposal](../archive/PROMPT_00_BOUNDED_BENCHMARK.md)
 is the single next recommendation after scientific review. Actual micro-inference,
 production code changes and later grid selection require separate explicit
 authorization. Pending scientific choices are listed in
-[FPA_INTEGRATION_CONFLICTS.md](FPA_INTEGRATION_CONFLICTS.md).
+[FPA_INTEGRATION_CONFLICTS.md](../archive/FPA_INTEGRATION_CONFLICTS.md).
 
 ## 2026-11-20 - bounded Prompt 2 and handout authorization
 
@@ -66,12 +66,12 @@ authorization. Pending scientific choices are listed in
 separate N2 and N20 cells on the same context (580 and1,480 paths), exhaustive
 replay on eight named paths/cell,250 passing offline tests and205.829 seconds
 model subprocess time. Exact methods, monitor correction, source versions,
-limitations and artifacts are in [BENCHMARK_REPORT.md](BENCHMARK_REPORT.md).
+limitations and artifacts are in [BENCHMARK_REPORT.md](../reference/BENCHMARK_REPORT.md).
 No Git writes, Stage A, formal change-point fitting or full campaign occurred.
 
 **Suggested, not approved:** freeze/QC six original-series windows in a
 30-minute data-only task after scientific review. The
-[planning grid](FPA_PROPOSED_GRID.json) is neither frozen nor executable.
+[planning grid](../archive/FPA_PROPOSED_GRID.json) is neither frozen nor executable.
 No further model work follows from this suggestion or the unused balance
 of the completed task's resource budget.
 
@@ -86,10 +86,29 @@ methods and historical reports. Export collection follows linked documents;
 the combined Markdown uses internal section links, and unbundled code/data
 references are rendered as explicit repository paths. Canonical historical
 reports and paths remain preserved. See the
-[cleanup report](../maintenance/DOCUMENTATION_LINKS.md).
+[cleanup report](../archive/DOCUMENTATION_LINKS.md).
 
 **Observed repository state:** an external Git operation advanced main to
 `558846c82002c2cb6070fbfff9bed22f514424a3` (`smoke test`) during this
 follow-up. Codex performed no Git writes. The current documentation audit
 uses this HEAD; the prior benchmark/integration evidence retains its
 original pre-commit SHA and status.
+
+## 2026-11-20 - pilote local autorisé puis pause de maintenance
+
+- **Autorisation explicite du chercheur :** pilote local sur six séries
+  originales au maximum, et calibration sur deux fenêtres avec trois graines
+  au total par fenêtre, soit **dix cellules complètes au maximum**.
+  Les anciens plafonds CPU/mémoire/temps de Prompt 2 ne s'appliquent pas.
+  Aucun téléchargement, changement de dépendances, cloud, second modèle,
+  Stage A ou élargissement automatique de campagne n'est autorisé.
+  [La demande courante](../../codex-prompts/CURRENT_TASK.md) conserve le texte.
+- **Instruction explicite ultérieure :** mettre ce pilote en pause à une étape
+  reprenable et simplifier la documentation. Aucun fichier scientifique ou
+  paramètre expérimental en cours ne doit être modifié pendant cette maintenance;
+  préserver notamment la modification personnelle de .gitignore.
+- **Organisation demandée :** six sources actives, références utiles, archives
+  séparées; index unique docs/README.md; pas de nouveau rapport volumineux;
+  handout sans archives automatiques. Aucun changement de décision scientifique.
+
+Le checkpoint de reprise est indiqué dans [FPA_HANDOFF.md](FPA_HANDOFF.md).

@@ -11,9 +11,9 @@ See the [integration report](FPA_INTEGRATION_REPORT.md) and
 **Observed:** branch `main`, starting HEAD
 `687c34f5f144476ea530c4210d3ed294c3b543e9`. The initial worktree was clean.
 Read the existing entry-point guides, all supplied proposal documents,
-[Phase 1](../CHRONOS_PHASE1.md), [Phase 2](../CHRONOS_PHASE2.md),
-[Phase 3](../CHRONOS_PHASE3_DESIGN.md), and the
-[historical plan](<../future works/FPA_CHRONOS_RESEARCH_PLAN (1).md>).
+[Phase 1](../reference/CHRONOS_PHASE1.md), [Phase 2](../reference/CHRONOS_PHASE2.md),
+[Phase 3](../reference/CHRONOS_PHASE3_DESIGN.md), and the
+[historical plan](<FPA_CHRONOS_RESEARCH_PLAN (1).md>).
 No historical report, executable source, configuration, dataset or run was edited.
 
 **Observed:** a standard-library check validated seven Phase 2 group table/RNG
@@ -144,6 +144,6 @@ today. Future performance work still requires explicit approval and a fresh
 resource check.
 
 **Suggested next bounded task:** the
-[Phase-0 proposal](../../codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md), after
+[Phase-0 proposal](PROMPT_00_BOUNDED_BENCHMARK.md), after
 skeptical scientific review and explicit authorization. No major feature is
 implemented by this audit.

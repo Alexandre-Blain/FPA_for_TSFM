@@ -75,9 +75,9 @@ Prompt 2 adds `scripts/runs/run_chronos_microbenchmark.py`, with
 `core/chronos_exploratory.py`, `metrics/chronos_outcomes.py`,
 `pipeline/chronos_exploratory_window.py`, `runtime/ensemble_store.py`
 and native `runtime/windows_job.py`. It is separate from historical launchers.
-The [benchmark report](research/BENCHMARK_REPORT.md) records its dated resource
+The [benchmark report](BENCHMARK_REPORT.md) records its dated resource
 authorization and measured limits; the configuration is not permanent
-permission to repeat inference. The [current handoff](research/FPA_HANDOFF.md)
+permission to repeat inference. The [current handoff](../research/FPA_HANDOFF.md)
 is mirrored into ignored `docs/chatgpt-handout/` at each completed prompt.
 
 ## Import Rule

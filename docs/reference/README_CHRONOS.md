@@ -3,8 +3,8 @@
 La FPA mesure comment les continuations changent quand on force un token de
 prevision. Elle ne mesure pas directement la qualite de prediction.
 
-Le [statut scientifique courant](docs/research/FPA_STATUS.md) et le
-[workflow versionne](docs/research/README_WORKFLOW_V2.md) donnent les prochaines
+Le [statut scientifique courant](../research/FPA_STATUS.md) et le
+[workflow versionne](../research/README_WORKFLOW_V2.md) donnent les prochaines
 autorisations et le handoff. Le prototype opt-in de Prompt 2 est distinct des
 launchers historiques : `scripts/runs/run_chronos_microbenchmark.py`, avec
 `configs/chronos_microbenchmark/prompt02.json`. Sa configuration fige une
@@ -13,16 +13,16 @@ permanente de nouvelle inference.
 
 ## Points D'Entree
 
-- [Parametres du scan](configs/chronos_benchmark_scan/README.md) : chaque cle JSON.
-- [Parametres du refinement](configs/chronos_targeted_refinement/README.md).
-- [Metriques et equations](docs/CHRONOS_METRICS.md).
-- [Paper 1 : W1, Energy Distance et samples individuels](docs/CHRONOS_PHASE1.md).
-- [Paper 1 : bilan du pilote Phase 2 termine](docs/CHRONOS_PHASE2.md).
-- [Paper 1 : controles offline et proposition Phase 3, non lancee](docs/CHRONOS_PHASE3_DESIGN.md).
-- [Guide des figures](docs/graphes/CHRONOS_FIGURES_GUIDE.md).
-- [Recherche, resultats et limites](docs/recherche/README.md).
-- [Tests](tests/README.md).
-- [Audit et nettoyage](docs/maintenance/CLEANUP_REPORT.md).
+- [Parametres du scan](../../configs/chronos_benchmark_scan/README.md) : chaque cle JSON.
+- [Parametres du refinement](../../configs/chronos_targeted_refinement/README.md).
+- [Metriques et equations](CHRONOS_METRICS.md).
+- [Paper 1 : W1, Energy Distance et samples individuels](CHRONOS_PHASE1.md).
+- [Paper 1 : bilan du pilote Phase 2 termine](CHRONOS_PHASE2.md).
+- [Paper 1 : controles offline et proposition Phase 3, non lancee](CHRONOS_PHASE3_DESIGN.md).
+- [Guide des figures](CHRONOS_FIGURES_GUIDE.md).
+- [Recherche, resultats et limites](../archive/RESEARCH_NOTES_INDEX.md).
+- [Tests](../../tests/README.md).
+- [Audit et nettoyage](../archive/CLEANUP_REPORT.md).
 
 Le code est organise en modules Python simples. Aucun package recherche a
 installer. Utiliser le Python de l'environnement evite de reconstruire TimesFM

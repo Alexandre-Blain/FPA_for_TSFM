@@ -11,14 +11,14 @@ de la pipeline, les resultats, les limites et les prochaines idees.
 
 ## Paper 1 : Etat Au 2026-11-17
 
-Le [bilan Phase 2](../CHRONOS_PHASE2.md) est le point d'entree actuel pour les
+Le [bilan Phase 2](../reference/CHRONOS_PHASE2.md) est le point d'entree actuel pour les
 nouvelles distances W1/ED et leurs controles independants. Le pilote reduit est
 termine : 7/7 groupes, trois series, douze forks alternatifs distincts. Les
 analyses finales sont dans
 `result/phase2_controlled_pilot_20261116_195533/analysis_half/`.
 Les conclusions historiques ci-dessous ne doivent pas etre confondues avec
 ce nouveau protocole. La Phase 3 reste une proposition non lancee.
-Voir les [controles offline et le design Phase 3](../CHRONOS_PHASE3_DESIGN.md) :
+Voir les [controles offline et le design Phase 3](../reference/CHRONOS_PHASE3_DESIGN.md) :
 permutations de trajectoires entieres, stabilite, descripteurs morphologiques
 simples et budget de replication. Aucune nouvelle inference n'a ete lancee.
 
@@ -35,10 +35,10 @@ simples et budget de replication. Aucune nouvelle inference n'a ete lancee.
 
 ## Documents techniques associes
 
-- [Workflow pratique Chronos](../../README_CHRONOS.md)
-- [Definition des metriques](../CHRONOS_METRICS.md)
-- [Audit mathematique](../CHRONOS_MATH_AUDIT.md)
-- [Structure du projet](../PROJECT_STRUCTURE.md)
+- [Workflow pratique Chronos](../reference/README_CHRONOS.md)
+- [Definition des metriques](../reference/CHRONOS_METRICS.md)
+- [Audit mathematique](../reference/CHRONOS_MATH_AUDIT.md)
+- [Structure du projet](../reference/PROJECT_STRUCTURE.md)
 
 ## Runs de reference
 

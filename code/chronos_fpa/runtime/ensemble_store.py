@@ -49,11 +49,27 @@ def read_object(directory):
 
 
 class EnsembleStore:
-    def __init__(self, directory):
+    def __init__(self, directory, scope=None):
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
+        marker = self.directory / "_scope.json"
+        existing = json.loads(marker.read_text(encoding="utf-8")) if marker.exists() else None
+        if scope is not None:
+            scope = json.loads(canonical(scope))
+            if existing is not None and existing != scope:
+                raise ValueError("Window scope differs from the existing ensemble store")
+            if existing is None:
+                if any(self.directory.iterdir()):
+                    raise ValueError("Cannot assign a window scope to an existing unscoped store")
+                save_json(marker, scope)
+        self.scope = existing if scope is None else scope
+
+    def _check_scope(self, identity):
+        if self.scope is not None and any(identity.get(k) != v for k, v in self.scope.items()):
+            raise ValueError("Ensemble identity belongs to another window/seed scope")
 
     def get(self, identity):
+        self._check_scope(identity)
         path = self.directory / task_id(identity)
         if not path.exists():
             return None
@@ -86,13 +102,27 @@ class EnsembleStore:
         if path.parent != self.directory.resolve() or not path.name.startswith(".pending-"):
             raise ValueError("Pending object must remain in this ensemble store")
         manifest, _ = read_object(path)
+        self._check_scope(manifest["identity"])
         publish_directory(path, self.directory / manifest["task_id"])
         return manifest["task_id"]
 
 
-def read_snapshot(directory, object_ids=None):
+def isolated_window_store(campaign_directory, scope):
+    """One immutable cell namespace, even for identical tokens/seeds/positions."""
+    required = {"dataset_id", "series_id", "forecast_origin", "context_sha256",
+                "model_revision", "grid_revision", "policy", "sampling_seed"}
+    if not required.issubset(scope):
+        raise ValueError("Incomplete window scope")
+    return EnsembleStore(Path(campaign_directory) / "cells" / task_id(scope) / "ensembles", scope=scope)
+
+
+def read_snapshot(directory, object_ids=None, expected_scope=None):
     """No mkdir, recovery, export writes or RNG restoration; freeze IDs first."""
     directory = Path(directory)
+    marker = directory / "_scope.json"
+    scope = json.loads(marker.read_text(encoding="utf-8")) if marker.exists() else None
+    if expected_scope is not None and scope != expected_scope:
+        raise ValueError("Snapshot belongs to another window/seed scope")
     names = sorted(p.name for p in directory.iterdir()
                    if p.is_dir() and re.fullmatch("[0-9a-f]{64}", p.name)) if object_ids is None else sorted(object_ids)
     if len(set(names)) != len(names) or any(not re.fullmatch("[0-9a-f]{64}", name) for name in names):
@@ -101,6 +131,8 @@ def read_snapshot(directory, object_ids=None):
     for name in names:
         path = directory / name
         manifest, arrays = read_object(path)
+        if scope is not None and any(manifest["identity"].get(k) != v for k, v in scope.items()):
+            raise ValueError("Foreign window ensemble in scoped snapshot")
         if manifest["task_id"] != name:
             raise ValueError("Ensemble directory/manifest identity mismatch")
         hashes[name] = hashlib.sha256((path / "manifest.json").read_bytes()).hexdigest()
@@ -119,7 +151,14 @@ def publish_fork_manifest(directory, store_directory, fork):
     expected.add(("null", greedy))
     if fork["residual_mass"] > 0:
         expected.add(("residual", None))
-    records = [(m, a) for m, a in read_snapshot(store_directory)["records"]
+    all_records = read_snapshot(store_directory)["records"]
+    collection_keys = {canonical({k: v for k, v in m["identity"].items()
+                                 if k not in {"role", "position", "token", "prefix", "sample_count"}})
+                       for m, _ in all_records}
+    if len(collection_keys) != 1:
+        raise ValueError("Mixed or missing window scopes; use isolated window stores")
+    collection_identity = json.loads(next(iter(collection_keys)))
+    records = [(m, a) for m, a in all_records
                if m["identity"]["position"] == b and (m["identity"]["role"], m["identity"]["token"]) in expected]
     identities = [(m["identity"]["role"], m["identity"]["token"]) for m, _ in records]
     if len(records) != len(expected) or set(identities) != expected:
@@ -134,6 +173,10 @@ def publish_fork_manifest(directory, store_directory, fork):
         objects.append({"task_id": manifest["task_id"], "relative_directory": relative,
                         "manifest_sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     result = {"schema": "chronos_complete_fork_v1", "fork": fork, "objects": objects}
+    # Legacy parents retain their original schema/content; new scoped stores bind
+    # the entire collection identity before the manifest becomes visible.
+    if (store_directory / "_scope.json").exists():
+        result["collection_identity"] = collection_identity
     directory.mkdir(parents=True, exist_ok=True)
     destination = directory / f"b{b:02d}.json"
     if destination.exists():
@@ -144,7 +187,7 @@ def publish_fork_manifest(directory, store_directory, fork):
     return result
 
 
-def read_fork_snapshot(directory):
+def read_fork_snapshot(directory, expected_scope=None):
     """Read finalized fork manifests and bound object hashes, without any writes."""
     directory = Path(directory)
     paths = sorted(directory.glob("b[0-9][0-9].json"))
@@ -154,6 +197,10 @@ def read_fork_snapshot(directory):
         manifest = json.loads(content)
         if manifest.get("schema") != "chronos_complete_fork_v1":
             raise ValueError("Unsupported fork schema")
+        collection = manifest.get("collection_identity")
+        if expected_scope is not None and (collection is None or any(collection.get(k) != v for k, v in expected_scope.items())):
+            raise ValueError("Fork belongs to another window/seed scope")
+        seen_collections = set()
         for obj in manifest["objects"]:
             target = (directory / obj["relative_directory"]).resolve()
             if not target.is_relative_to(directory.parent.resolve()):
@@ -164,6 +211,13 @@ def read_fork_snapshot(directory):
             record, _ = read_object(target)
             if record["task_id"] != obj["task_id"]:
                 raise ValueError("Finalized fork object identity mismatch")
+            key = {k: v for k, v in record["identity"].items()
+                   if k not in {"role", "position", "token", "prefix", "sample_count"}}
+            seen_collections.add(canonical(key))
+            if collection is not None and key != collection:
+                raise ValueError("Foreign window child in finalized fork")
+        if len(seen_collections) != 1:
+            raise ValueError("Mixed window identities in finalized fork")
         forks.append(manifest)
         hashes[path.name] = hashlib.sha256(content).hexdigest()
     return {"snapshot_id": task_id(hashes), "forks": forks, "manifest_sha256": hashes}

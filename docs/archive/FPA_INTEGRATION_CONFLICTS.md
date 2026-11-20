@@ -21,5 +21,5 @@ and future scientific choices, not permission to execute or change the protocol.
 **Suggested review:** assess these choices using the
 [integration report](FPA_INTEGRATION_REPORT.md),
 [implementation audit](FPA_IMPLEMENTATION_AUDIT.md) and
-[handoff](FPA_HANDOFF.md). No unresolved replacement requires the researcher to
+[handoff](../research/FPA_HANDOFF.md). No unresolved replacement requires the researcher to
 move files or create directories.
