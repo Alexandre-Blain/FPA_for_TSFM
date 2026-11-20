@@ -1,11 +1,19 @@
 # FPA handoff - bounded Prompt 2 validation
 
-**Observed: 2026-11-20.** Branch `main`; pre-user-commit HEAD
-`687c34f5f144476ea530c4210d3ed294c3b543e9`.
-**No new commit SHA exists.** Worktree changes are unstaged; `uv.lock` is
-the researcher's separate, unchanged environment artifact. Exact status,
-paths/reasons and selective manual Git commands are in the
-[benchmark report](BENCHMARK_REPORT.md) and [evidence](FPA_PROMPT02_EVIDENCE.json).
+**Observed: 2026-11-20.** Branch `main`; HEAD before the next researcher commit:
+`558846c82002c2cb6070fbfff9bed22f514424a3` (`smoke test`).
+This externally created commit contains the earlier work. Codex performed
+no Git writes; the current documentation cleanup remains unstaged.
+Its exact status and paths are in the
+[documentation audit](../maintenance/DOCUMENTATION_LINKS.json).
+The [benchmark report](BENCHMARK_REPORT.md) and
+[evidence](FPA_PROMPT02_EVIDENCE.json) retain the earlier pre-commit snapshot.
+
+**Documentation follow-up, 2026-11-20:** current research, practical guides
+and historical reports now have separate navigation in [the index](../README.md).
+Linked guides are included in the ZIP; the combined handout uses internal
+section links. [The cleanup report](../maintenance/DOCUMENTATION_LINKS.md)
+records this later change. Prompt2's benchmark evidence remains frozen.
 
 **Authorized scope:** Prompt2, four hours implementation/tests, at most
 30 minutes of model work. One cached M4/T000001 C512 context, original

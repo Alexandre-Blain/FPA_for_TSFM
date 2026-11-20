@@ -1,0 +1,126 @@
+{
+  "schema": "fpa_documentation_links_audit_v1",
+  "observed_utc": "2026-11-20T18:13:30.945712+00:00",
+  "scope": "Markdown navigation, local document links and generated upload bundle; no model work",
+  "canonical": {
+    "markdown_files": 56,
+    "local_links_checked": 201,
+    "broken_links": []
+  },
+  "generated_export": {
+    "markdown_files": 55,
+    "local_links_checked": 470,
+    "broken_links": []
+  },
+  "bundle": {
+    "source_documents": 66,
+    "markdown_documents": 53,
+    "export_link_adjusted_copies": [
+      "docs/maintenance/CLEANUP_REPORT.md",
+      "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+    ],
+    "archive_integrity": true,
+    "source_hashes_and_copy_hashes_verified_separately": true
+  },
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/chronos_fpa/integration/test_chatgpt_handout.py -q",
+    "passed": 7,
+    "seconds": 4.26,
+    "exit_code": 0,
+    "pretrained_models_loaded": false
+  },
+  "preservation": {
+    "protected_historical_content_files": 114,
+    "historical_content_mismatches": [],
+    "preexisting_data_result_records": 797,
+    "metadata_mismatches": [],
+    "original_source_zip_unchanged": true,
+    "uv_lock_unchanged": true,
+    "no_research_model_work_by_codex": true,
+    "git_index_unchanged_since_observed_external_commit": true
+  },
+  "git": {
+    "branch": "main",
+    "head": "558846c82002c2cb6070fbfff9bed22f514424a3",
+    "external_commit_observed": "558846c82002c2cb6070fbfff9bed22f514424a3 smoke test",
+    "codex_git_writes": false,
+    "status_short": " M README.md\n M docs/README.md\n M docs/recherche/README.md\n M docs/research/FPA_DECISIONS.md\n M docs/research/FPA_HANDOFF.md\n M docs/research/FPA_STATUS.md\n M docs/research/README_WORKFLOW_V2.md\n M scripts/maintenance/prepare_chatgpt_handout.py\n M tests/README.md\n M tests/chronos_fpa/integration/test_chatgpt_handout.py\n?? docs/maintenance/DOCUMENTATION_LINKS.json\n?? docs/maintenance/DOCUMENTATION_LINKS.md\n?? docs/maintenance/DOCUMENTATION_LINKS_TESTS.txt",
+    "diff_stat": " README.md                                          |   5 +\n docs/README.md                                     | 111 ++++++-----\n docs/recherche/README.md                           |   2 +-\n docs/research/FPA_DECISIONS.md                     |  19 ++\n docs/research/FPA_HANDOFF.md                       |  20 +-\n docs/research/FPA_STATUS.md                        |  14 +-\n docs/research/README_WORKFLOW_V2.md                |  10 +-\n scripts/maintenance/prepare_chatgpt_handout.py     | 210 +++++++++++++++++++--\n tests/README.md                                    |   3 +\n .../integration/test_chatgpt_handout.py            |  69 +++++++\n 10 files changed, 378 insertions(+), 85 deletions(-)",
+    "staged_paths": []
+  },
+  "changed_paths": [
+    {
+      "path": "README.md",
+      "reason": "Route readers to current documentation index and handoff"
+    },
+    {
+      "path": "docs/README.md",
+      "reason": "Group current work, methods and history with explicit links"
+    },
+    {
+      "path": "docs/maintenance/DOCUMENTATION_LINKS.json",
+      "reason": "Report organization/link changes, verification and current Git handoff"
+    },
+    {
+      "path": "docs/maintenance/DOCUMENTATION_LINKS.md",
+      "reason": "Report organization/link changes, verification and current Git handoff"
+    },
+    {
+      "path": "docs/maintenance/DOCUMENTATION_LINKS_TESTS.txt",
+      "reason": "Report organization/link changes, verification and current Git handoff"
+    },
+    {
+      "path": "docs/recherche/README.md",
+      "reason": "Label older research notes as historical"
+    },
+    {
+      "path": "docs/research/FPA_DECISIONS.md",
+      "reason": "Record current documentation follow-up and externally observed Git HEAD without rewriting frozen benchmark evidence"
+    },
+    {
+      "path": "docs/research/FPA_HANDOFF.md",
+      "reason": "Record current documentation follow-up and externally observed Git HEAD without rewriting frozen benchmark evidence"
+    },
+    {
+      "path": "docs/research/FPA_STATUS.md",
+      "reason": "Record current documentation follow-up and externally observed Git HEAD without rewriting frozen benchmark evidence"
+    },
+    {
+      "path": "docs/research/README_WORKFLOW_V2.md",
+      "reason": "Record current documentation follow-up and externally observed Git HEAD without rewriting frozen benchmark evidence"
+    },
+    {
+      "path": "scripts/maintenance/prepare_chatgpt_handout.py",
+      "reason": "Include linked documents and create valid standalone/exported links; add read-only link audit"
+    },
+    {
+      "path": "tests/README.md",
+      "reason": "Describe added offline document-export contracts"
+    },
+    {
+      "path": "tests/chronos_fpa/integration/test_chatgpt_handout.py",
+      "reason": "Test transitive links, spaces, section IDs, code examples and broken-link refusal"
+    }
+  ],
+  "current_changed_source_hashes": {
+    "README.md": "e489386459ddb654924b8e5915e3e520c070ea30d0cc9bfa8b8730e23ad066ea",
+    "docs/README.md": "ffa83982eca81b4b65df99a50b54567d6245f8d0c9dabe81bd1988f381e58efe",
+    "docs/maintenance/DOCUMENTATION_LINKS.md": "5d5ac8cad78b382440ac21d2d1988b12e38d19492c04d2179ef437b566d8a8bd",
+    "docs/maintenance/DOCUMENTATION_LINKS_TESTS.txt": "f5812bec3b01bf488f698bfd7b57102e70aa397395e8fe145d6bc0c25115a5d9",
+    "docs/recherche/README.md": "da1c713bf3e4b5943d1a927606e65e9d599da4d9971c5fcff98cbbae2b9f0a97",
+    "docs/research/FPA_DECISIONS.md": "37153ff7d0c43896b2ac51183f5ddacdf9367d96ed151a0cbeccf4488dcc0b19",
+    "docs/research/FPA_HANDOFF.md": "50ddaada29ca58b464052803fcddafde34da94adead85cbdfc86fc7fa909936d",
+    "docs/research/FPA_STATUS.md": "6346a98e4d909f24c238db306540f7a1de73bf662cb83a588d8f7697c07cf4d0",
+    "docs/research/README_WORKFLOW_V2.md": "70e1bca64b4ec3c361804b3aa3b715734ea6dcb53b608604b0959d30945f72c7",
+    "scripts/maintenance/prepare_chatgpt_handout.py": "f1a275b2ac3b7ea32570cc1216e909d95f5ea97525ea2c367e8592e8f386aeba",
+    "tests/README.md": "4b3789c49b099c93675835ac5cb1c3f04a0bf6ebc6927f828cda97db552d9ac3",
+    "tests/chronos_fpa/integration/test_chatgpt_handout.py": "6d968765f63cea022f7958801264f07ff2ad69b5dadc2a3b50ebf58fb8bdcd56"
+  },
+  "handoff_words": 611,
+  "frozen_previous_evidence": "docs/research/FPA_PROMPT02_EVIDENCE.json retains the completed Prompt2 snapshot and its earlier HEAD; not recomputed by cleanup",
+  "limitations": [
+    "Only local file/heading targets audited; external URLs unchanged and not checked over the network",
+    "Copied documents may contain export-only link edits; canonical scientific sources remain unchanged",
+    "The combined document names non-Markdown ZIP attachments as paths rather than unusable standalone hyperlinks"
+  ]
+}

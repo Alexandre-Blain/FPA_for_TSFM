@@ -1,9 +1,17 @@
 # FPA / Chronos - verified research status
 
-**Observed snapshot: 2026-11-20.** Branch `main`, existing HEAD
-`687c34f5f144476ea530c4210d3ed294c3b543e9`. All changes remain unstaged.
-No new commit exists. **Prompt 2's bounded technical validation is complete.**
+**Observed snapshot: 2026-11-20.** Branch `main`, current HEAD
+`558846c82002c2cb6070fbfff9bed22f514424a3` (`smoke test`, created outside
+Codex). Documentation follow-up changes remain unstaged; Codex made no Git
+writes. **Prompt 2's bounded technical validation is complete.**
 The full exploratory campaign and Stage A remain unexecuted.
+
+**Documentation follow-up, 2026-11-20:** [the index](../README.md) now separates
+current research, practical methods and historical reports. The handout
+refresher includes referenced guides and rewrites combined-document links to
+internal sections. See the [link/organization report](../maintenance/DOCUMENTATION_LINKS.md).
+The Prompt2 evidence remains the frozen benchmark snapshot; no new inference
+was needed for this follow-up.
 
 Labels: **observed** = checked code/artifacts or attributed historical reports;
 **suggested** = proposed work; **hypothesis** = unestablished scientific claim.

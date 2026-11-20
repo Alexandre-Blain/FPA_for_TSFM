@@ -8,8 +8,14 @@ bounded Prompt 2 implementation/benchmark are complete. Read the current
 At each completed prompt, run
 `scripts/maintenance/prepare_chatgpt_handout.py` with the repository venv.
 It replaces validated generated copies in `docs/chatgpt-handout/` and the
-sibling ZIP. Upload `CHATGPT_HANDOUT.md` for the current review; original
-source copies and hashes are also provided. Keep generated copies ignored.
+sibling ZIP. Upload `CHATGPT_HANDOUT.md` for the current review. Its document
+links point to internal sections; the ZIP also includes transitively linked
+Markdown guides and supporting documentary files. Exported copies convert
+unbundled code/data links to explicit repository references. Canonical source
+hashes and generated-copy hashes are recorded separately.
+Run `scripts/maintenance/prepare_chatgpt_handout.py --check-links` for a
+read-only audit of canonical local file and heading links.
+Keep generated copies ignored.
 Canonical historical reports/plans remain available. Superseded proposals are
 labeled and obsolete navigation is corrected.
 

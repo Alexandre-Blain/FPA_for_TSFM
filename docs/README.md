@@ -1,61 +1,56 @@
-﻿# Chronos FPA Documentation
+# Chronos FPA - Documentation
 
-Point d'entree pour ne pas se perdre dans le projet.
+Lire les documents courants avant les anciens bilans. Les dossiers sont
+organises par usage; les rapports historiques conservent leur chemin et leur
+contenu scientifique.
 
-## Documents courants et transmission a ChatGPT
+## 1. Recherche courante
 
-- [Workflow de recherche actuel](research/README_WORKFLOW_V2.md),
-  [statut verifie](research/FPA_STATUS.md),
-  [decisions](research/FPA_DECISIONS.md) et [dernier handoff](research/FPA_HANDOFF.md).
-- [Bilan Prompt 2](research/BENCHMARK_REPORT.md), [preuves](research/FPA_PROMPT02_EVIDENCE.json)
-  et [grille proposee non autorisee](research/FPA_PROPOSED_GRID.json).
-- Dossier temporaire genere : `docs/chatgpt-handout/`. Ouvrir son
-  `CHATGPT_HANDOUT.md` ou transmettre `docs/chatgpt-handout.zip` a ChatGPT.
-  Les copies sont remplacees apres chaque prompt; les originaux restent ici.
-- Pour regenerer : `.venv/Scripts/python.exe scripts/maintenance/prepare_chatgpt_handout.py`.
-  Le manifeste identifie les chemins sources, hashes et commit de depart.
+| Besoin | Document |
+| --- | --- |
+| Travail termine, limites et prochaine etape | [Statut verifie](research/FPA_STATUS.md) |
+| Transmission a ChatGPT | [Dernier handoff](research/FPA_HANDOFF.md) |
+| Resultats techniques de Prompt 2 | [Benchmark](research/BENCHMARK_REPORT.md), [preuves](research/FPA_PROMPT02_EVIDENCE.json), [tests](research/FPA_PROMPT02_TESTS.txt) |
+| Cadre scientifique | [North star](research/FPA_NORTH_STAR.md), [hypotheses](research/FPA_HYPOTHESES.md), [protocole candidat](research/FPA_PROTOCOL_EXPLORATORY.md) |
+| Decisions et autorisations | [Decisions](research/FPA_DECISIONS.md), [workflow](research/README_WORKFLOW_V2.md) |
+| Proposition non autorisee | [Grille exploratoire](research/FPA_PROPOSED_GRID.json) |
+| Organisation et liens des documents | [Bilan de nettoyage](maintenance/DOCUMENTATION_LINKS.md) |
 
-Les guides ci-dessous restent utiles pour leur objet. Les anciens bilans ne
-definissent pas a eux seuls le statut courant ni une autorisation de calcul.
+Pour ChatGPT, utiliser le fichier local
+`docs/chatgpt-handout/CHATGPT_HANDOUT.md` ou `docs/chatgpt-handout.zip`.
+Ces fichiers generes sont ignores par Git : leurs chemins restent en texte
+pour ne pas creer de liens GitHub vers des fichiers absents du depot.
+Ces copies temporaires sont remplacees apres chaque prompt par
+`.venv/Scripts/python.exe scripts/maintenance/prepare_chatgpt_handout.py`.
+Le document combine utilise des liens internes; le ZIP inclut les guides
+Markdown references et les fichiers documentaires associes.
 
-## Guides Principaux
+## 2. Utilisation et methodes
 
-- [Paper 1 : proposition Phase 3](CHRONOS_PHASE3_DESIGN.md)
-  Controles par permutation/subsampling, interpretation et budgets soumis a approbation.
+| Besoin | Document |
+| --- | --- |
+| Commandes et configuration | [Guide pratique](../README_CHRONOS.md), [scan](../configs/chronos_benchmark_scan/README.md), [refinement](../configs/chronos_targeted_refinement/README.md) |
+| Emplacement du code et des fichiers | [Structure du projet](PROJECT_STRUCTURE.md) |
+| Definitions et calculs | [Metriques](CHRONOS_METRICS.md), [audit mathematique](CHRONOS_MATH_AUDIT.md) |
+| Figures et interpretation | [Index des figures](graphes/README.md), [guide detaille](graphes/CHRONOS_FIGURES_GUIDE.md) |
+| Validation hors ligne | [Guide des tests](../tests/README.md) |
 
-- [Paper 1 : pilote Phase 2 termine](CHRONOS_PHASE2.md)
-  Sept groupes valides : bruit de sampling, W1/ED, entropie, figures et limites.
+## 3. Rapports historiques et provenance
 
-- [Workflow Chronos](../README_CHRONOS.md)
-  Commandes pratiques, options CLI, outputs, checkpoints, refinement et visualisations.
+| Periode / objet | Document |
+| --- | --- |
+| Phase 1 : implementation des distances | [Phase 1](CHRONOS_PHASE1.md) |
+| Phase 2 : pilote termine | [Phase 2](CHRONOS_PHASE2.md) |
+| Phase 3 : controles offline et proposition de replication | [Phase 3](CHRONOS_PHASE3_DESIGN.md) |
+| Integration documentaire du 19 novembre | [Rapport](research/FPA_INTEGRATION_REPORT.md), [audit initial](research/FPA_IMPLEMENTATION_AUDIT.md) |
+| Anciennes analyses et pistes | [Notes historiques](recherche/README.md) |
+| Plan scientifique anterieur | [Plan historique](<future works/FPA_CHRONOS_RESEARCH_PLAN (1).md>) |
+| Ancien handoff et idees | [Handoff CET1](../FPA_CET1_RESEARCH_HANDOFF.md), [idees historiques](../CHRONOS_FPA_FUTURE_IDEAS.md) |
+| Nettoyage anterieur du depot | [Audit de maintenance](maintenance/CLEANUP_REPORT.md) |
 
-- [Configs de run](../configs/chronos_benchmark_scan/README.md)
-  Fichiers JSON pour lancer les scans sans longues lignes d'arguments.
-
-- [Structure du projet](PROJECT_STRUCTURE.md)
-  Organisation des dossiers `code/`, `scripts/`, `configs/`, `data/` et `result/`.
-
-- [Metriques Chronos FPA](CHRONOS_METRICS.md)
-  Definitions mathematiques des scores, normalisations, metriques logits et
-  metriques temporelles.
-
-- [Guide des graphes](graphes/README.md)
-  Explication de chaque figure et de ce qu'il faut regarder.
-
-- [Documentation recherche](recherche/README.md)
-  Contexte, etat actuel, resultats recents, axes futurs, biais et controles.
-
-- [Audit math](CHRONOS_MATH_AUDIT.md)
-  Verifications de coherence mathematique et smoke tests valides.
-
-## Ordre De Lecture Conseille
-
-1. Lire le [workflow](../README_CHRONOS.md) pour lancer un run.
-2. Choisir ou copier une [config de run](../configs/chronos_benchmark_scan/README.md).
-3. Lire les [metriques](CHRONOS_METRICS.md) pour comprendre les CSV.
-4. Lire le [guide des graphes](graphes/README.md) pour interpreter les figures.
-5. Lire la [documentation recherche](recherche/README.md) pour comprendre ou va le projet.
-6. Lire l'[audit math](CHRONOS_MATH_AUDIT.md) si une metrique semble suspecte.
+Les expressions "actuel" ou "en cours" dans les anciens documents se rapportent
+a leur date d'origine. Elles ne remplacent pas le statut courant et ne donnent
+aucune nouvelle autorisation de calcul.
 
 ## Sources Experimentales Historiques
 

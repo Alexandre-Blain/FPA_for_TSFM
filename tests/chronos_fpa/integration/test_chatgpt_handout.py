@@ -57,3 +57,72 @@ def test_manifest_cannot_delete_paths_outside_generated_folder(tmp_path, monkeyp
     with pytest.raises(ValueError, match="Unsafe"):
         handout.build_handout(tmp_path)
     assert source.read_text() == "Current science\n"
+
+
+def test_export_follows_document_links_and_rewrites_combined_targets(tmp_path, monkeypatch):
+    (tmp_path / "docs/guides").mkdir(parents=True)
+    (tmp_path / "configs").mkdir()
+    (tmp_path / "code").mkdir()
+    original = (
+        "# Start\n\n[Guide](<guides/Next (1).md#details>)\n"
+        "[Settings](../configs/example.json)\n[Implementation](../code/example.py)\n"
+        "[Website](https://example.org/reference)\n"
+        "`[inline example](missing.md)`\n\n"
+        "```markdown\n[code example](also-missing.md)\n```\n"
+    )
+    (tmp_path / "docs/current.md").write_text(original, encoding="utf-8")
+    (tmp_path / "docs/guides/Next (1).md").write_text("# Details\n\n[More](deeper.md)\n")
+    (tmp_path / "docs/guides/deeper.md").write_text("# More\n")
+    (tmp_path / "configs/example.json").write_text('{"frozen": true}\n')
+    (tmp_path / "code/example.py").write_text("# Repository-only implementation\n")
+
+    def fake_git(root, *args):
+        return "docs/current.md\0" if args[0] == "diff" else "test-head\n" if args[0] in {"branch", "rev-parse"} else ""
+
+    monkeypatch.setattr(handout, "git", fake_git)
+    handout.build_handout(tmp_path)
+    folder = tmp_path / "docs/chatgpt-handout"
+    manifest = json.loads((folder / handout.MARKER).read_text())
+    assert set(manifest["source_files"]) == {
+        "docs/current.md", "docs/guides/Next (1).md", "docs/guides/deeper.md", "configs/example.json",
+    }
+    combined = (folder / "CHATGPT_HANDOUT.md").read_text()
+    assert f'[Guide](#{handout.section_id("docs/guides/Next (1).md")}-details)' in combined
+    assert '[Website](https://example.org/reference)' in combined
+    assert "ZIP: `repository/configs/example.json`" in combined
+    assert "repository reference: `code/example.py`" in combined
+    assert "`[inline example](missing.md)`" in combined
+    assert "[code example](also-missing.md)" in combined
+    assert (tmp_path / "docs/current.md").read_text() == original
+    assert manifest["export_link_adjusted_copies"] == ["docs/current.md"]
+    exported_names = [p.relative_to(folder).as_posix() for p in folder.rglob("*.md")]
+    assert handout.audit_links(folder, exported_names)["broken_links"] == []
+
+
+def test_combined_heading_links_are_unique_across_documents(tmp_path, monkeypatch):
+    (tmp_path / "docs").mkdir()
+    for name in ("a", "b"):
+        (tmp_path / f"docs/{name}.md").write_text(
+            "# Same title\n\n## Details\n\n## Details\n\n[Second section](#details-1)\n"
+        )
+    monkeypatch.setattr(handout, "collect_documents", lambda _: ["docs/a.md", "docs/b.md"])
+    monkeypatch.setattr(handout, "git", lambda *args: "test-head\n")
+    handout.build_handout(tmp_path)
+    combined = (tmp_path / "docs/chatgpt-handout/CHATGPT_HANDOUT.md").read_text()
+    for name in ("a", "b"):
+        anchor = handout.section_id(f"docs/{name}.md") + "-details-1"
+        assert f'<a id="{anchor}"></a>' in combined
+        assert f"[Second section](#{anchor})" in combined
+    assert handout.audit_links(tmp_path / "docs/chatgpt-handout", ["CHATGPT_HANDOUT.md"])["broken_links"] == []
+
+
+def test_broken_canonical_link_preserves_previous_export(tmp_path, monkeypatch):
+    source = setup_sources(tmp_path, monkeypatch)
+    handout.build_handout(tmp_path)
+    previous = tmp_path / "docs/chatgpt-handout/CHATGPT_HANDOUT.md"
+    before = previous.read_bytes()
+    source.write_text("[Missing document](absent.md)\n")
+    with pytest.raises(ValueError, match="Canonical document links"):
+        handout.build_handout(tmp_path)
+    assert previous.read_bytes() == before
+    assert source.read_text() == "[Missing document](absent.md)\n"

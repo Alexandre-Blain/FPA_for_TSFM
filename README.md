@@ -8,6 +8,11 @@ forecast distribution changes.
 FPA measures sensitivity to those interventions. It does not directly measure
 forecast accuracy or establish a calibrated uncertainty estimate.
 
+Use the [documentation index](docs/README.md) to find current research,
+practical guides and historical reports. Start scientific review with the
+[latest handoff](docs/research/FPA_HANDOFF.md) and
+[verified status](docs/research/FPA_STATUS.md).
+
 ## Setup
 
 Use Python 3.11 or newer. From the repository root, with `uv` installed:

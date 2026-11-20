@@ -1,0 +1,5 @@
+Documentation export link checks; offline, no pretrained model.
+Command: .venv/Scripts/python.exe -m pytest tests/chronos_fpa/integration/test_chatgpt_handout.py -q
+
+.......                                                                  [100%]
+7 passed in 4.26s

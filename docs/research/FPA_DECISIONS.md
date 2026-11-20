@@ -74,3 +74,22 @@ No Git writes, Stage A, formal change-point fitting or full campaign occurred.
 [planning grid](FPA_PROPOSED_GRID.json) is neither frozen nor executable.
 No further model work follows from this suggestion or the unused balance
 of the completed task's resource budget.
+
+## 2026-11-20 - documentation navigation and exported links
+
+**User requested:** clean/reorganize Markdown navigation and correct document
+links, including the handout. This is documentation/tool maintenance, without
+model inference, scientific-design changes or Git writes.
+
+**Observed implementation:** the documentation index separates current work,
+methods and historical reports. Export collection follows linked documents;
+the combined Markdown uses internal section links, and unbundled code/data
+references are rendered as explicit repository paths. Canonical historical
+reports and paths remain preserved. See the
+[cleanup report](../maintenance/DOCUMENTATION_LINKS.md).
+
+**Observed repository state:** an external Git operation advanced main to
+`558846c82002c2cb6070fbfff9bed22f514424a3` (`smoke test`) during this
+follow-up. Codex performed no Git writes. The current documentation audit
+uses this HEAD; the prior benchmark/integration evidence retains its
+original pre-commit SHA and status.

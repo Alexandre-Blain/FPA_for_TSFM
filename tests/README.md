@@ -63,6 +63,9 @@ cover interruption, checksum rejection, complete-only snapshots and reuse.
 Native Windows Job Object tests exercise resource accounting and termination
 of a redirector/child process tree without Chronos. Handout tests preserve
 canonical documents and refuse unexpected files or path traversal.
+They also check transitive linked-document inclusion, standalone section links,
+duplicate headings, code examples left unchanged and preservation of the old
+export when a canonical link is broken.
 
 Paper 1 adds `unit/test_distances.py` and decoder/pipeline tests: exact empirical
 W1 (including unequal sample sizes), RMS-ground Energy V-statistic, independent

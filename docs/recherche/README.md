@@ -1,4 +1,4 @@
-# Documentation recherche - Chronos FPA
+# Notes historiques de recherche - Chronos FPA
 
 **Notes historiques :** les resultats et pistes ci-dessous sont conserves comme
 sources. Pour le travail courant, lire le [statut](../research/FPA_STATUS.md),
