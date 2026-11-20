@@ -1,5 +1,11 @@
 # Documentation recherche - Chronos FPA
 
+**Notes historiques :** les resultats et pistes ci-dessous sont conserves comme
+sources. Pour le travail courant, lire le [statut](../research/FPA_STATUS.md),
+les [decisions](../research/FPA_DECISIONS.md) et le
+[workflow versionne](../research/README_WORKFLOW_V2.md). Les formulations anciennes
+« actuel » ou « en cours » restent datees de leur rapport d'origine.
+
 Ce dossier sert de fil conducteur pour le projet. Il separe le contexte, l'etat
 de la pipeline, les resultats, les limites et les prochaines idees.
 

@@ -20,6 +20,11 @@ __pycache__/
 /datasets/
 *.zip
 
+# Refreshable ChatGPT upload copies; canonical documents stay versioned.
+/docs/chatgpt-handout/
+/docs/.chatgpt-handout-*/
+/docs/.chatgpt-handout.zip.tmp
+
 # Local configuration and logs.
 .env
 .env.*

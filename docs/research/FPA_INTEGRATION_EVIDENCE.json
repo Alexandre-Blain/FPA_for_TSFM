@@ -1,0 +1,1144 @@
+{
+  "audit_utc": "2026-11-19T15:04:57Z",
+  "root": "C:\\Users\\alexandre.blain\\dev\\FPA_for_TSFM",
+  "branch": "main",
+  "pre_user_commit_head": "687c34f5f144476ea530c4210d3ed294c3b543e9",
+  "initial_git_status": "",
+  "initial_index_sha256": "00ce2734d302562def6c52ffa81e4c4af58ee0db3bb7e6097851992f4813db09",
+  "bundle_sha256": "4496ef0dc1f2aea13275066f679c68f72b47cab250fefcee1f5bac9e587d0a73",
+  "bundle_manifest_entries": 18,
+  "phase2": {
+    "groups": [
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "ercot",
+          "EAST",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          16
+        ],
+        "sequence": 1,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/5f53a307f31e6474fec432a0b5ed8bb2c640e674dd136ac2cec9c9124e8dd9b8/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2181",
+          "token_2182",
+          "token_2180",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "m4_daily",
+          "T000001",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          0
+        ],
+        "sequence": 4,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/b41116a17794c84dd91f4213401afad6f02250086907cc49c9e90e0adc379e6d/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2188",
+          "token_2187",
+          "token_2189",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "exchange_rate",
+          "currency_3",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          0
+        ],
+        "sequence": 2,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ac8eed1a669856175881751b7dbf6635e1e1bdf16f570a52ad238c50f3694902/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2183",
+          "token_2184",
+          "token_2182",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "exchange_rate",
+          "currency_3",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          16
+        ],
+        "sequence": 3,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ab658592ad11b0c6ce8db4b7f50b70fa5cb62c6a7f6235b8a9ba9ed9c05877b6/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2183",
+          "token_2184",
+          "token_2182",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "m4_daily",
+          "T000001",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          16
+        ],
+        "sequence": 5,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/a96151dd073136b982de66b8660fd53436d938c4a936aaeae4a4d559bb95310f/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2188",
+          "token_2187",
+          "token_2189",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_1729",
+        "key": [
+          "autogluon/chronos_datasets",
+          "ercot",
+          "EAST",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          0
+        ],
+        "sequence": 0,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2230",
+          "token_2229",
+          "token_2228",
+          "same_token_null"
+        ]
+      },
+      {
+        "seed": "seed_2718",
+        "key": [
+          "autogluon/chronos_datasets",
+          "ercot",
+          "EAST",
+          0,
+          0,
+          512,
+          64,
+          "single",
+          0
+        ],
+        "sequence": 0,
+        "trajectory_manifest": "result/phase2_controlled_pilot_20261116_195533/seed_2718/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/manifest.json",
+        "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+        "sample_count": 50,
+        "array_keys": [
+          "context",
+          "greedy_prefix_tokens",
+          "greedy_prefix_values",
+          "token_2230",
+          "token_2229",
+          "token_2228",
+          "same_token_null"
+        ]
+      }
+    ],
+    "sampled_paths": 1400,
+    "strict_suffix_coordinates": 78600,
+    "npz_bytes": 78497,
+    "arrays_checksum_validated": 49,
+    "progress": {
+      "status": "complete",
+      "message": "All approved groups already committed; no inference",
+      "elapsed_wall_seconds": 21362.657999999952,
+      "completed_groups": 7,
+      "planned_groups": 7,
+      "groups": [
+        {
+          "seed": 1729,
+          "dataset_name": "ercot",
+          "series_id": "EAST",
+          "window_id": 0,
+          "branch_step": 0,
+          "seconds": 2642.5,
+          "work_units": 12600
+        },
+        {
+          "seed": 1729,
+          "dataset_name": "ercot",
+          "series_id": "EAST",
+          "window_id": 0,
+          "branch_step": 16,
+          "seconds": 1507.6879999999655,
+          "work_units": 9400
+        },
+        {
+          "seed": 1729,
+          "dataset_name": "exchange_rate",
+          "series_id": "currency_3",
+          "window_id": 0,
+          "branch_step": 0,
+          "seconds": 4564.485000000001,
+          "work_units": 12600
+        },
+        {
+          "seed": 1729,
+          "dataset_name": "exchange_rate",
+          "series_id": "currency_3",
+          "window_id": 0,
+          "branch_step": 16,
+          "seconds": 2893.2969999999987,
+          "work_units": 9400
+        },
+        {
+          "seed": 1729,
+          "dataset_name": "m4_daily",
+          "series_id": "T000001",
+          "window_id": 0,
+          "branch_step": 0,
+          "seconds": 3936.125,
+          "work_units": 12600
+        },
+        {
+          "seed": 1729,
+          "dataset_name": "m4_daily",
+          "series_id": "T000001",
+          "window_id": 0,
+          "branch_step": 16,
+          "seconds": 3079.0939999999973,
+          "work_units": 9400
+        }
+      ],
+      "pid": 18216,
+      "max_wall_seconds": 28800,
+      "execution_plan": "execution_plan.json"
+    },
+    "source_hashes_from_phase3_protocol_match": {
+      "config.json": true,
+      "execution_plan.json": true,
+      "seed_1729\\chronos_scan_summary.csv": true,
+      "seed_1729\\trajectories\\5f53a307f31e6474fec432a0b5ed8bb2c640e674dd136ac2cec9c9124e8dd9b8\\manifest.json": true,
+      "seed_1729\\trajectories\\5f53a307f31e6474fec432a0b5ed8bb2c640e674dd136ac2cec9c9124e8dd9b8\\ensembles.npz": true,
+      "seed_1729\\trajectories\\b41116a17794c84dd91f4213401afad6f02250086907cc49c9e90e0adc379e6d\\manifest.json": true,
+      "seed_1729\\trajectories\\b41116a17794c84dd91f4213401afad6f02250086907cc49c9e90e0adc379e6d\\ensembles.npz": true,
+      "seed_1729\\trajectories\\ac8eed1a669856175881751b7dbf6635e1e1bdf16f570a52ad238c50f3694902\\manifest.json": true,
+      "seed_1729\\trajectories\\ac8eed1a669856175881751b7dbf6635e1e1bdf16f570a52ad238c50f3694902\\ensembles.npz": true,
+      "seed_1729\\trajectories\\ab658592ad11b0c6ce8db4b7f50b70fa5cb62c6a7f6235b8a9ba9ed9c05877b6\\manifest.json": true,
+      "seed_1729\\trajectories\\ab658592ad11b0c6ce8db4b7f50b70fa5cb62c6a7f6235b8a9ba9ed9c05877b6\\ensembles.npz": true,
+      "seed_1729\\trajectories\\a96151dd073136b982de66b8660fd53436d938c4a936aaeae4a4d559bb95310f\\manifest.json": true,
+      "seed_1729\\trajectories\\a96151dd073136b982de66b8660fd53436d938c4a936aaeae4a4d559bb95310f\\ensembles.npz": true,
+      "seed_1729\\trajectories\\2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996\\manifest.json": true,
+      "seed_1729\\trajectories\\2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996\\ensembles.npz": true,
+      "seed_2718\\chronos_scan_summary.csv": true,
+      "seed_2718\\trajectories\\2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996\\manifest.json": true,
+      "seed_2718\\trajectories\\2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996\\ensembles.npz": true
+    }
+  },
+  "phase3": {
+    "scope": "Phase 3 Deliverable A only: bounded offline exploratory controls; no model inference",
+    "n_point_seed_groups": 7,
+    "permutations_per_test": 999,
+    "source_run_legacy_absolute_path": "C:\\Users\\alexandre.blain\\OneDrive - University of Luxembourg\\Desktop\\timesfm_fpa\\result\\phase2_controlled_pilot_20261116_195533",
+    "analysis_source_hash_matches_current": true,
+    "distance_source_hash_matches_current": true
+  },
+  "historical_september_summary_sha256": "04a41da4b55ed353986796c1378ede65abe4d269e20a520ea2f344c75c75021e",
+  "environment": {
+    "python": "3.12.12",
+    "python_path": "C:\\Users\\alexandre.blain\\AppData\\Roaming\\uv\\python\\cpython-3.12.12-windows-x86_64-none\\python.exe",
+    "repository_venv_exists": false,
+    "installed_dependencies": {
+      "numpy": null,
+      "pandas": null,
+      "torch": null,
+      "transformers": null,
+      "pytest": null
+    }
+  },
+  "protected_sha256": {
+    ".gitignore": "f50e71993bf2f783bcabcc038cfaafbe7fbf2c773f7b84bd92d4f82b5f562b48",
+    "CHRONOS_FPA_FUTURE_IDEAS.md": "e2e44d9344179885a10163233ee852fbba6f15eb186aae2beea396e91eeaef47",
+    "code/chronos_fpa/analysis/chronos_analysis_helpers.py": "dc40c8cbeaf95e1d69740bea19a43b04deecaf8c2e59968388eadd0b99800c91",
+    "code/chronos_fpa/analysis/chronos_scenario_sensitivity.py": "06410e51ee4abd52405c4fe4ab89759d100ec333cbd729d7fd248d4a3e71036d",
+    "code/chronos_fpa/analysis/chronos_uncertainty_alignment.py": "c67e38cf7484f6d3a74d7a6aa43782c636979109a7be449f046be59f3076f13c",
+    "code/chronos_fpa/bootstrap.py": "183a647f9931dc1411f77d76bb5132dca3ef4d634c76a862084561b00d5d9924",
+    "code/chronos_fpa/core/chronos_decoding.py": "a337f0affab8bc83508faea6259b4614a65b12e5f409ccb19819c0fe98c34b1a",
+    "code/chronos_fpa/core/chronos_io.py": "558bde33275a9cc86f2f1840695a0c145c6c27538849506b01b5955795cda132",
+    "code/chronos_fpa/data/chronos_data.py": "561310d2f6c37c6638f4085e322dcfe4168e2f9fc5cb32a7b3fcad04e544a78b",
+    "code/chronos_fpa/metrics/chronos_analysis.py": "e0c2a472867ab1bfec3756fd2b2d9ae7de5774cd5107b1f796e4e98462d00490",
+    "code/chronos_fpa/metrics/chronos_distances.py": "4841b73ad78a6ae648ead12212a2bcc21a07017b06a20fe2992f9ae387b3fd7e",
+    "code/chronos_fpa/metrics/chronos_scales.py": "a45277c0dc401bc105434d4ae6a9e2735d5a988952e1da5610577ebeacc37b1a",
+    "code/chronos_fpa/metrics/chronos_score.py": "d0016d04b38ebb7a83c7bd9be8bd408de42be0d2ed825038286acf0a4876f2b3",
+    "code/chronos_fpa/pipeline/chronos_benchmark_scan.py": "c4d06130f5421ea80580ffd16710be34e5d0cf1da09844710c01833db63f4b31",
+    "code/chronos_fpa/runtime/checkpoint_store.py": "e84973cf31394050acf18353c6dbebcd0bfd9a4eee94242e9f036ff3b02cefa4",
+    "code/chronos_fpa/runtime/controlled_pilot_plan.py": "b9cd0a2ae7189c06912eebc03010341f7811938e66eccd2311fd9798a6a5aeb4",
+    "code/chronos_fpa/runtime/research_schema.py": "ca9ab0509a651fc925ec8cbf126ee2f613d946074f9a7f4576b94e5a2cefeb11",
+    "code/chronos_fpa/runtime/results_io.py": "71a6847f3710584a4bf6ca5d4fafce4687ef9daf09aa494cc25de67dc0210eb7",
+    "code/chronos_fpa/runtime/run_config.py": "b5f3533f3ecb39ffa7adf4420b816be209d748b742b7e4b0d639ba49aab9926a",
+    "code/chronos_fpa/runtime/run_progress.py": "80e900eb6aeb4ee233be86e4c3fd2d655c2f84a2b4743c7e053c5de9e7164526",
+    "code/chronos_fpa/runtime/trajectory_export.py": "e578055eccc04a296e32dc67cad258e4c5cbbbe01655439ac64da8225fecd028",
+    "code/chronos_fpa/visualization/chronos_plotting.py": "301aa7429bfde25b38a119126fc8f9937239a30ddb9f9e6d23554ffe38ad3ea5",
+    "code/chronos_fpa/visualization/chronos_scan_visualization.py": "e503bd801d3358f0a4d12f9f7e6b28489bade0b488ac85f85293ed7fbea1a1c6",
+    "code/README.md": "46df9475f20dcae8313572b71ef7190ac73c9ca0887df1722a375cb630ae5395",
+    "configs/chronos_benchmark_scan/broad_with_refinement.json": "a96059b9178ba3da076b3005094d652d6a169f1f5336a3b9b1138e491398abeb",
+    "configs/chronos_benchmark_scan/default.json": "b99f06b5fd9b4d30f4da7eb4bca6cb2ef8e2011ae7a9fb1547734b0b7e0730a2",
+    "configs/chronos_benchmark_scan/README.md": "289e82905e903ae639cefecb0e63fc3160e957ab0df27418b4453c98e4d8d8d9",
+    "configs/chronos_benchmark_scan/smoke.json": "71e4e4bf1e7712c4d2f782560c0360d5b43278237d2d9911cb6bb3bddd56c51c",
+    "configs/chronos_controlled_pilot/half_execution.json": "57f8762d7e55b51217de1df65280bb91d89ca73f1899651d0c5a742c9d48bee4",
+    "configs/chronos_controlled_pilot/phase2.json": "73616bc47549a1bb2f4f49ddc00a48fa9a7c55f1d3b51b06f4316492099dde32",
+    "configs/chronos_controlled_pilot/README.md": "67264275a164e42b34c854a576effcea3276f8ef660091bc86d1cf7627679d39",
+    "configs/chronos_targeted_refinement/default.json": "a53cf72c7e24462c53af4ff29ad3eb1d7f9c865ae1d871fa2b3c56ef74cde99b",
+    "configs/chronos_targeted_refinement/README.md": "62d325fa587f345f1901d13db0035342327ad44969ee71277924baa76100265f",
+    "configs/README.md": "e0eb061e5fbeb7e5a56302535103f0a3b868b40ec767ae07ab098031290868c1",
+    "docs/CHRONOS_MATH_AUDIT.md": "86f726843fab946c6768f2af98c2872d8e92327172bd7e3fa9887c481a151faa",
+    "docs/CHRONOS_METRICS.md": "40bc431ac6424e3fd55a70a7d979b63492aaec25665f6bf0b2e442f8af40c480",
+    "docs/CHRONOS_PHASE1.md": "53e7f56f331d6abcffd48ceecb085d3cb9cb51786ec21e3c9d2a03c926d24c82",
+    "docs/CHRONOS_PHASE2.md": "8cb159085c05dc5c4435165d2a7634e8897499c6f10989a58d179b9b75b542a1",
+    "docs/CHRONOS_PHASE3_DESIGN.md": "9748525ac12f33b07e21c199b68da7e10f7b4dc3d8acda5b1c3f1a13906a7a04",
+    "docs/future works/CODEX_PHASE_PROMPTS (1).md": "96977942cbee2b7f28c990cbc4616b8eb8bd09cd8dc19e7cc8374c87644e8a2b",
+    "docs/future works/FPA_CHRONOS_RESEARCH_PLAN (1).md": "7a0c6ef2231b14ac2fb896d464896519b184ce0581d35c69d2d5b658766f884a",
+    "docs/graphes/CHRONOS_FIGURES_GUIDE.md": "c4b60a5414be87cf18228011d3ceb3768c11c3e71fa4e699087570d9a41a201c",
+    "docs/graphes/README.md": "fba18742b04b315c9427797909a41fcd8ea3fdf302b85d41f37c03ad6f880833",
+    "docs/maintenance/audit_20261116T130047_219742Z/audit.json": "e7e7b5ef780091f7a27c3ac55f3a952566706dd1dfd2ee98ee59301c32faee31",
+    "docs/maintenance/audit_20261116T130047_219742Z/inventory_after.csv": "252214ef6991e14f69b2b56637ab98a18c69a924ffe398a52272894b6aecb9da",
+    "docs/maintenance/audit_20261116T130047_219742Z/inventory_after.json": "7d150170e1afbbdc2134e06358f912c8539ac7aca6b1c785c9b8fe6c0e5bd49f",
+    "docs/maintenance/audit_20261116T130047_219742Z/inventory_before.csv": "252214ef6991e14f69b2b56637ab98a18c69a924ffe398a52272894b6aecb9da",
+    "docs/maintenance/audit_20261116T130047_219742Z/inventory_before.json": "5923d7ac46c988ca864c1eab9e57b66a4b9613ec18b20f977160f0fe250d71dc",
+    "docs/maintenance/audit_20261116T130047_219742Z/report.md": "10859ae4f95d8dbf5cf90840a94175d00a358a1fd871cdf9697189d3c2791a90",
+    "docs/maintenance/audit_20261116T131315_989918Z/audit.json": "8993f29ece6e4f6d6db3b62894498ae5191ac1ea2db2c0d434134e897a457d4c",
+    "docs/maintenance/audit_20261116T131315_989918Z/inventory_after.csv": "252214ef6991e14f69b2b56637ab98a18c69a924ffe398a52272894b6aecb9da",
+    "docs/maintenance/audit_20261116T131315_989918Z/inventory_after.json": "63d08b4d939075189bf6f67a512bfb0a1e914cb65eb56fd9006a736bdda82e5c",
+    "docs/maintenance/audit_20261116T131315_989918Z/inventory_before.csv": "252214ef6991e14f69b2b56637ab98a18c69a924ffe398a52272894b6aecb9da",
+    "docs/maintenance/audit_20261116T131315_989918Z/inventory_before.json": "aaeeb9da4145ff6ba8beae7eed5ff51044b5eb338c2b96ac63c81d6e6f0292f1",
+    "docs/maintenance/audit_20261116T131315_989918Z/report.md": "5bd4d1b57a73303061a38d9864965e9d63aee7ffa74708eab33e20cf54a28058",
+    "docs/maintenance/CLEANUP_REPORT.md": "8eea7b0b4dcc73c1d98f0cb7f11a58bcf673aa5de527c2e8a13e98f0d01d2615",
+    "docs/PROJECT_STRUCTURE.md": "54a7b2c42149500d2c72b619881232fbf53b66e1aee0baf4ca9219cdd3646cc5",
+    "docs/README.md": "97a909e6d667e12634d43424e3269584f38f5f56bcef3442466736a0c735a312",
+    "docs/recherche/01_CONTEXTE_RECHERCHE.md": "fc6ee6a78558aff115666568a24934c2921eb67d41a4a0c983292ccffd67878a",
+    "docs/recherche/02_ETAT_ACTUEL.md": "6099b5d1d528cbb535d7d63a41ac4959bfb2b5f27cfcaede3c97e02db2590a38",
+    "docs/recherche/03_RESULTATS_RECENTS.md": "c7345212a2da8f19228a17ba56ccf9bf9886418113380473338cd21476b9ccbf",
+    "docs/recherche/04_AXES_FUTURS.md": "fe95ff280b153932840818f4d79cd029740ecd476fa40ea8386a24a6bbc7e5ce",
+    "docs/recherche/05_BIAIS_LIMITES_CONTROLES.md": "1e13117db989cdeb39ce1b863fc43067a9126f54c8697f79451577a5508e4c8f",
+    "docs/recherche/06_REFINEMENT_FAST_GLOBAL_20260728.md": "c37b7daf833b3cc59c33233aa214e8b45859002fa8a549f9ff2b692b7166aba5",
+    "docs/recherche/07_INCERTITUDE_MODELE_VS_FPA.md": "a8c688ff4a9e30ad9cf95fc307def3f83aa7aab18a03f5c3383cf87429de9e66",
+    "docs/recherche/08_SCENARIOS_DECISIONNELS.md": "d7628f9bdc8af4b608b2cbe5b214de110ae97d1d8715af0966d6f21b8883b3da",
+    "docs/recherche/README.md": "3563865a650a096e3e74c12a59719dc015b8c0f1f9efbabdcc23dd03dd548c4a",
+    "FPA_CET1_RESEARCH_HANDOFF.md": "b22939ba3ad94a9cd73865ea78f25f42b56ba51090006b3a1c61d89127cf9db7",
+    "pyproject.toml": "00faa962ad5cc7e7d84dc1711c83ceeb5001e3b7a02a9741cd0a49b0e94d0118",
+    "README.md": "f2b045d9723b760da8d20980c5bc41024d0006ab1a5872e5941c68d348e4d895",
+    "README_CHRONOS.md": "8a0f5a7a5081b271a120d224a8de3690dfa286b84d09596e7cde9c5eebe41573",
+    "requirements-dev.txt": "11b0006f4e3d389726c8528c5b6797083f14aeaf1ea854cb961f975ad0ae3b39",
+    "requirements.txt": "8fcec05c13c0dd96054918677a7be9fd6056bbee71529cd5a5f262ca4128c426",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/analysis_protocol.json": "300227e8ca5dc3322042da6caba769509fc357b84f1204e344c531b552375e67",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/branch_effects.csv": "3da3b6b84d60095c504413c3dad84814ce5c0f970cb5d19cd3901e58323d3a76",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/descriptive_correlations.csv": "4ae13947d641f37e339cbb144d9525916308c026207417f2efbc861554b99c78",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/figures/effect_vs_same_token_control.png": "f5e9d1aff921d1d4bb58d072811bb22920de5789706a8613e777171654adca93",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/figures/morphology_candidates/near_control_main_seed_1729.png": "55fcb8131b3c96e9dcd2490ba63116af6a44c5da6b7d3d7d55eee3159f0c0bf8",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/figures/morphology_candidates/strong_main_ED_seed_1729.png": "e9a26d2865e779584ff7ad1d9c73084c81680857daef63e55386db42cf67d5b5",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/figures/nested_sample_comparison.png": "06f03f90d4a82c8c01c7a5c3a6e9cc968a5a3fb3a0094e733b0aca43c5a5fcc1",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/fork_points.csv": "778867ce61f26a4ce515f6b79ca94f68c3c5068f7699bb418dee89232981af07",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/INITIAL_PHASE2_REPORT.md": "3a33411199694649f7e7ed2983a8419c29cf8167b26c6e6c9206a464b64b4273",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/morphology_candidates.csv": "08c5db303d912d0bf545ec18f07e10497403a2e13f1f45b776bd8ebad44d1f16",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/nested_n_comparison.csv": "9ab929459ec7ba2afdd8f8f3513fd31e2d0cac7e832e9c0b793c4900cc4ff6b4",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/probability_coverage.csv": "407bfeff73ccabe614efcc2a8fd3b9715a7c59e0e94432e4f07f3b9af6239cbe",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/seed_stability.csv": "f79a548c144bbe60b597fe38405e355a46a33c5e2e58dbbda5ca6d8af728b853",
+    "result/phase2_controlled_pilot_20261116_195533/analysis/w1_profiles.csv": "e8734433a9c17561d92f97ea5760d23bb665a4a274486ed3c6516d7f34396c0e",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/analysis_protocol.json": "ed7ac17f00094062338f00f0b8b3f1739a911d84d529a8ee738c9ae1cd11033a",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/branch_effects.csv": "c4b6a99aa18de8934602a4a1e9044dded56770d1763c62ca63df0a0cdc32cb27",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/descriptive_correlations.csv": "f2cdbdcd3031753280112697069441aa52d67102e0265ba764fca73b7d9c889a",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/effect_vs_same_token_control.png": "7143d0d3d91acd547aa0f299f3b72c757a678b41282550ddd24859886b691b64",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/effect_per_direct_jump_seed_1729.png": "5bd402e064a786ce7efac47c72e848f22161432547d9d359e2db0d890f7d59bd",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/effect_per_direct_jump_seed_2718.png": "f3aa967d2ef9867b1eb784b71e855a49b985b62d9068d21fdc2160236670cf5b",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/middle_main_ED_seed_1729.png": "252e8f8440bc73dc72596457098355d5594ad18fb2613abbb414f29e2c708498",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/near_control_main_seed_1729.png": "1e676fb10b7c3362c277d9b8b969f653567b699bdaac0a385259cdbf41cea7dd",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/strong_main_ED_seed_1729.png": "8ae19947a9a48fd8d220c8e5906d8b9e8a19efad3a471205ec79b9d5c6509102",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/W1_ED_rank_disagreement_seed_1729.png": "05e5fb91ca883512b41f2eb5ce05afcdbf37b1df8878c3795f2ac6d88c1904bc",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/morphology_candidates/W1_ED_rank_disagreement_seed_2718.png": "55ced974737502fbc67f2f2c93bbe37080760c4b0b22bc8a9a7718c3d52c61f0",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/figures/nested_sample_comparison.png": "903506999ff5857e6111211b874d8940527212a8ccfb5f91c75308189e7f887c",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/fork_points.csv": "eb75777e20daaebcb820f3caa8f78627ce152e768062fe2386c519239d9a60c1",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/morphology_candidates.csv": "6475f124e16e9ee89a5888ab86f42717b8bf77edcc0ea8f9e2fdfe113e2a07cb",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/nested_n_comparison.csv": "ac2e05ce807c4cc624e35b2daa36228812b5eb0528c6bd5367f5369357a15862",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/probability_coverage.csv": "9c3e70a1222bc2c0aa53ef853e4a330bf91f1b392c7c8a7a1d834e9d385abb46",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/report_checks.json": "401d25ec9fb11846797e6fb63897ae06067b8a2adbece069ced3afd1d075ccfe",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/seed_stability.csv": "4a3d9309ffcbc31f012556b55f1703dffa0367e11d8ed932aa23ae9c8b1cc26a",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_half/w1_profiles.csv": "fcc1e1024cd3ed8a68f2e7720a03d7b9c21a5b80fabeee0a8bfbbcafdffd9253",
+    "result/phase2_controlled_pilot_20261116_195533/analysis_status.json": "34c8f74408bc4183b49f04a8136d278cf1d85c3415647a3e734dc82d5dd7e5c0",
+    "result/phase2_controlled_pilot_20261116_195533/checkpoint_recovery_20261116.json": "db9738caba09879f2ff4089d57d0f8f3ac2eb04289e5bd97a17191c78fdc4e1b",
+    "result/phase2_controlled_pilot_20261116_195533/checkpoint_resume_20261116_224551.stderr.log": "6c292c9dcf8bd5bfe9f8246303490733f280c91e26d6345e285b19e5de56f129",
+    "result/phase2_controlled_pilot_20261116_195533/checkpoint_resume_20261116_224551.stdout.log": "4260cef08c423d3be070d7777caca7e023caf5c778f150acadc4700031c3b48a",
+    "result/phase2_controlled_pilot_20261116_195533/config.json": "9d82e2bb8c735a1f2a9a9c6da0292d8916ae78698a6c5b8a2c41a6aaa1464cb4",
+    "result/phase2_controlled_pilot_20261116_195533/execution_plan.json": "d9e6e2d72ab1ed524265c7276a6ccadcaf2597daa8906455535100e5aaa2fb4c",
+    "result/phase2_controlled_pilot_20261116_195533/half_resume_20261116_211219.stderr.log": "7b233e26a70c1d52a12ca7ccc074cbbf79c22e6416ec83fd63a5f38f58ffaa5b",
+    "result/phase2_controlled_pilot_20261116_195533/half_resume_20261116_211219.stdout.log": "bd8fdd4879005f2ffae7436897a7ed6f46c0d298a33134ed3728878aa1909347",
+    "result/phase2_controlled_pilot_20261116_195533/progress.json": "de35ababb79eb178d859a16c0936ca5be89a9e21ee25118a24584cc6e6ae22d7",
+    "result/phase2_controlled_pilot_20261116_195533/progress_before_execution_plan.json": "cbaead38fb94af1236e59399e7e77265c5cc16416591ff6f8a524c776952af2e",
+    "result/phase2_controlled_pilot_20261116_195533/reboot_resume_20261117_102501.stderr.log": "0b0422a81fdb9127271916613e271d67abfb57b80f6f0971813159adfd4cf7d0",
+    "result/phase2_controlled_pilot_20261116_195533/reboot_resume_20261117_102501.stdout.log": "2480ade25be82c915b46056b48f2649927e2cf0dc37a12e15be78b3d618594de",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/18e1604572e3fc3dacec56ef05fbf439dd883d86473f37bf56606bc224ae00f1/manifest.json": "ac772ae4c043a9d2f1e303be11873d2934579a085667d3c29499e6914f382f54",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/18e1604572e3fc3dacec56ef05fbf439dd883d86473f37bf56606bc224ae00f1/rng.pt": "b181ee58c0884962a6ea9fa3f386fc9cc94558e515d6345b1bf2d0006c5d7cf0",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/18e1604572e3fc3dacec56ef05fbf439dd883d86473f37bf56606bc224ae00f1/steps.csv": "b4f4ae695bc8b520286933de882e5bf191552313d6b8179448b010096827532d",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/18e1604572e3fc3dacec56ef05fbf439dd883d86473f37bf56606bc224ae00f1/summary.csv": "a527d083d9814934118d6a04693274f308be597daf0e9d8ad754b90a5e319b59",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/4334107b76ab1c93f6d97f324b259837e90cf6924ff380bad2c60f33d5d105c3/manifest.json": "4ed25b54bdcf50ec682fcef568cfb5149c0d59b6731f5d53fad21ccde313a618",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/4334107b76ab1c93f6d97f324b259837e90cf6924ff380bad2c60f33d5d105c3/rng.pt": "133317a8ac0bae3fecdd1fc01304b16c744e5570ba605653b74900d336de1d9c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/4334107b76ab1c93f6d97f324b259837e90cf6924ff380bad2c60f33d5d105c3/steps.csv": "e3a2d38f67c76997bbb6c167ef4b8b5f0e777db672f7a515846852dce246cf52",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/4334107b76ab1c93f6d97f324b259837e90cf6924ff380bad2c60f33d5d105c3/summary.csv": "b827ba13f9832af2c9b58973c4687196d69f1cc60b17c1c0c24674ee3b3c37f5",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/59aa35186cc66c728ba66474079b09b28bb73aea7ed6ac0802e95480bdf67b7e/manifest.json": "cfd42c698884f99a0e71829918e71a8d001806a87199e1b0c6579c064f6ea9aa",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/59aa35186cc66c728ba66474079b09b28bb73aea7ed6ac0802e95480bdf67b7e/rng.pt": "133317a8ac0bae3fecdd1fc01304b16c744e5570ba605653b74900d336de1d9c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/59aa35186cc66c728ba66474079b09b28bb73aea7ed6ac0802e95480bdf67b7e/steps.csv": "780171105d4d9267beb51b187b91e3236ba76d82cb768721cf4efc4bac8ea4ce",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/59aa35186cc66c728ba66474079b09b28bb73aea7ed6ac0802e95480bdf67b7e/summary.csv": "fc8492f534d9c87d1c3c816f4e929a0b34c36d7d4c9ebbc76a9c358fa5752e51",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b72e776f4d3be1fdfe19ec73f12d605fcc567a3d0e16c1c506c48f8c1f753b4c/manifest.json": "c97bc12feed831395508f29b6f3a71e3b4810634e925647b8021152c890e833e",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b72e776f4d3be1fdfe19ec73f12d605fcc567a3d0e16c1c506c48f8c1f753b4c/rng.pt": "133317a8ac0bae3fecdd1fc01304b16c744e5570ba605653b74900d336de1d9c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b72e776f4d3be1fdfe19ec73f12d605fcc567a3d0e16c1c506c48f8c1f753b4c/steps.csv": "5ca312b27a7194e7e9dbeb9bdb9ad102079429749a184e787d2c49a3e5a3bc5c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b72e776f4d3be1fdfe19ec73f12d605fcc567a3d0e16c1c506c48f8c1f753b4c/summary.csv": "829ca306a2db9bbe7280fc5479f3083d85e3dc0be78977b6dd39fc8821c27cb4",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b7fc1e6c063b19c110f5d398b72cbc94f6b4c6228bc508f72a30038aa99d7456/manifest.json": "422df0c271b3393726c63109602071e2cd1853203be2dd7cf2086720dd3372dd",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b7fc1e6c063b19c110f5d398b72cbc94f6b4c6228bc508f72a30038aa99d7456/rng.pt": "133317a8ac0bae3fecdd1fc01304b16c744e5570ba605653b74900d336de1d9c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b7fc1e6c063b19c110f5d398b72cbc94f6b4c6228bc508f72a30038aa99d7456/steps.csv": "490a0f7482d143380900d222ea22cb88071b0d85bf5de73e7f422586692e673d",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/b7fc1e6c063b19c110f5d398b72cbc94f6b4c6228bc508f72a30038aa99d7456/summary.csv": "d7916e37ae94c63bb6d664917ceba539fffddf63f70e50f4d4be7fdbcbd76024",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/manifest.json": "be7ce072b9751335ee1cb4c5c4763bd5aed75e2efe3558815f374c93815e3d45",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/rng.pt": "c78f44f7ade5c139885dc48114a45b6f340b2c3f76b1d31eef12ec0906e37b3c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/steps.csv": "37694a602950c39a19ed97aa32ec78a0c21a78faea75555fc7d950fc3e662928",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/summary.csv": "f3b17f483b0bdd882121da7ac9d544b732d93e10079acb99e4f319691f3f0887",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/chronos_scan_steps.csv": "ff59414c11216bf45b81c3354071ce232cc74e138660142070a4715a8d5eecf5",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/chronos_scan_summary.csv": "5fdfbb085dc73f4a11418360b76f255346f72ee5af4d7e9f59b741bddb88f753",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/ensembles.npz": "eec7f29bc762219c2551cca4a3f79a0f35e8ad5f81b42c12febad5385baf248a",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/manifest.json": "8652dbb8c5471fae8377a9ba8835a9b7e65b654bc29879fa3c9535b35b2e4206",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/5f53a307f31e6474fec432a0b5ed8bb2c640e674dd136ac2cec9c9124e8dd9b8/ensembles.npz": "aaa0b6f27bbe5f2d565bf99ab72185c73da9e4b741c52b9e5e5d314283043935",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/5f53a307f31e6474fec432a0b5ed8bb2c640e674dd136ac2cec9c9124e8dd9b8/manifest.json": "cc94ab638bf9dccca649f33968bc334463b166472c4d39312cd008ef3533956a",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/a96151dd073136b982de66b8660fd53436d938c4a936aaeae4a4d559bb95310f/ensembles.npz": "bf8d2996b371459c7fc8b86b47bc660e232f6872d1893d8acd971c1b6a1b9135",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/a96151dd073136b982de66b8660fd53436d938c4a936aaeae4a4d559bb95310f/manifest.json": "d9b100aa114a7a683ebc549a85610f6b669a6b154027eb5ff6080d2a719dfe8a",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ab658592ad11b0c6ce8db4b7f50b70fa5cb62c6a7f6235b8a9ba9ed9c05877b6/ensembles.npz": "85ae3d5b5b5609a3c37e0e1361e0661c858cce833c7c050b3cad0f3053fd9913",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ab658592ad11b0c6ce8db4b7f50b70fa5cb62c6a7f6235b8a9ba9ed9c05877b6/manifest.json": "2f1e6eaffa73b03cbc7850d13c1d08f55882ee69a888590eed7c29142166d6bd",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ac8eed1a669856175881751b7dbf6635e1e1bdf16f570a52ad238c50f3694902/ensembles.npz": "d619fe3d345d5cea586ba70bd4a7a6e9c39c2e5117c392860c52670022644db6",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/ac8eed1a669856175881751b7dbf6635e1e1bdf16f570a52ad238c50f3694902/manifest.json": "4b1596a005bbbfd8f0c75308636098296fd277c3a5192f03c9a53895521f9dae",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/b41116a17794c84dd91f4213401afad6f02250086907cc49c9e90e0adc379e6d/ensembles.npz": "48c5c5f3353c3114654b6007e342629ffabafa2475fadef461f31e1c6c8968ab",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectories/b41116a17794c84dd91f4213401afad6f02250086907cc49c9e90e0adc379e6d/manifest.json": "db0e02fbe124f9140453a3e479909866f330dc1adc6b86eba73813da73c9d307",
+    "result/phase2_controlled_pilot_20261116_195533/seed_1729/trajectory_protocol.json": "ff82011d44a77b517b7bd2ee6962f354c16037ec7c751837c4440cf26bc0c57c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/manifest.json": "0af228a2d1dee5db09445e73670940b9a28b573c053d7ba935931af6cd23778d",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/rng.pt": "9453877e692fe836af97afd71c0b51beda7b5ab7b7aeeab59d12ff8126a712bb",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/steps.csv": "914c6e0c02dbab3dc0bef170e1b894184ccf1421c8cc0f9a0a3a256d2a5a7ad1",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/branch_groups/d6e69f8bc07ae23834c5dd17563b3ad5855a5ec187224aebd11e768b185a1dea/summary.csv": "2ac31800f241cb6819d6a24720573254ee82d59e0407d2d3ab5eb34a58992c2d",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/chronos_scan_steps.csv": "7cfeec6e77cb325226d12628e5c9a53fd1b6a14b5158eec01989e638d5f2642f",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/chronos_scan_summary.csv": "ece4535745ae1bfd752f85eee33b27184fe63d827b9008256d4a309a9638893c",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/ensembles.npz": "ee7e2c958713ef79222e65839936d9ca2f696846e71b74ff00634c86088d1002",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/trajectories/2d1472e887cf34d81c7d0f4b95e12c4484a18672466ef5545a7972af3ee8d996/manifest.json": "3f1e46f31976997c36f5498d85f756a278e7ec54ba159b676899103fe51a02e3",
+    "result/phase2_controlled_pilot_20261116_195533/seed_2718/trajectory_protocol.json": "295b9ebb877b1d08161a8c424dc0a39451e6f1f03990e6a8db03fd8a1845a02d",
+    "result/phase2_controlled_pilot_20261116_195533/selection.json": "82a2f85677c961b7a0b4dd76acc01fb8492ee54aae1bf3b8a245cc3f7c705563",
+    "result/phase3_offline_controls_20261117_175121/directional_asymmetry.csv": "17fa63620f524b85ce6e42293b3c69f57b7552009fe752402656ad62d6dd579e",
+    "result/phase3_offline_controls_20261117_175121/path_descriptor_values.csv": "d0a177da192d8dcedabbcf2daa08c3654cb06384bbcf1b62ffbb4fb5345f2fed",
+    "result/phase3_offline_controls_20261117_175121/path_descriptors.csv": "bc768886aa0dc050da0254ad4a1c8057c9d2e5e52d34c0f628c9d04b302b66d6",
+    "result/phase3_offline_controls_20261117_175121/permutation_distributions.npz": "3c9ec6198484715541b4896081140a5c15c81f581126729a75e077cd409d3ecf",
+    "result/phase3_offline_controls_20261117_175121/permutation_tests.csv": "6a206d9d1185d3cb51d25d605d4ac484ad2fc4ba5965a3fb40fdffb43f173504",
+    "result/phase3_offline_controls_20261117_175121/proposed_data_selection.json": "fe873acbc105e908e14b984e30980dcd04c845f0aff62847cef9307146e5720d",
+    "result/phase3_offline_controls_20261117_175121/protocol.json": "e785dcd9c21118b9e705ef557a17b405654b3afff1586b0df4b335c9866252bb",
+    "result/phase3_offline_controls_20261117_175121/subsampling_draws.csv": "f2bd3160cbfca3ce21cf3299d498b8dec2f0cec888a649585683e3a898b910f1",
+    "result/phase3_offline_controls_20261117_175121/subsampling_rank_stability.csv": "61fcba1dc4b2aba9e417552586e81fa01a2a16f8bf867dbd4f425e2b39e12f9a",
+    "result/phase3_offline_controls_20261117_175121/subsampling_stability.csv": "4d04f821b92f38a7ff4c8fb2b48a0b4e06156a2d1e72d0d5bee57ea2a56bb654",
+    "result/phase3_offline_controls_20261117_175121/temporal_localization.csv": "0f072dfeb969e03463e99171d4b5f896008873770e01fe3bf778aa57c2d350ea",
+    "scripts/data/download_chronos_benchmark_datasets.py": "6423db44e1476d1fe4ff4ae8c95fc15724ef0639f40280f71806be324ba75266",
+    "scripts/maintenance/audit_research_runs.py": "4620c4b90b517bb8f6bb01a84f0e95d1999b4e6d8637810fe555dbda80f429ad",
+    "scripts/presentations/create_chronos_findings_ppt.py": "a4f941f96d2149042c2a7c720b1949aa6a44871474bb759a018ec1444c5260bb",
+    "scripts/presentations/create_chronos_intro_ppt.py": "31b0750786c4ca5786266d043453cf972b331ae40dbd787de6bfc8d023ceae37",
+    "scripts/presentations/create_chronos_progress_ppt.py": "a073c4ba0447bdcf1419480155b2331057e3c27810c91d5348928d1c7f104799",
+    "scripts/presentations/create_chronos_uncertainty_alignment_ppt.py": "082d158e740852085645f2e37b35e1aa2f7449e41ac958c5c8a2c0963ba8f5e0",
+    "scripts/runs/run_chronos_benchmark_scan.py": "25838c10cb4ba9a16b39d1f6d01ad84e19ab7ecbffa38211fb71a3992ddcd8cb",
+    "scripts/runs/run_chronos_controlled_pilot.py": "7d0f301ade1d81c2fe9717f013183a3ddb838de742d5e112576da5c6b47a028b",
+    "scripts/runs/run_chronos_targeted_refinement.py": "caaf394cb99bbde2dc9ab20ee02dd4d1cac9640789c7cce8d8ee9a7abe521e35",
+    "scripts/viz/analyze_chronos_controlled_pilot.py": "bc668a6006689b92961d75d0caacd7d93cb1c5eebe565338cdd4aa9338e40933",
+    "scripts/viz/analyze_chronos_phase3_controls.py": "a7d62ef87ae8babcf0a86dfc8d06e15e5bc311215c294a9be6fe09de09c3bb7a",
+    "scripts/viz/analyze_chronos_probability_thresholds.py": "cf35e78c250c2e2258fbd419764070a5715400f78b1466eee143d5204c1605b1",
+    "scripts/viz/analyze_chronos_scenario_sensitivity.py": "a7bea186cee92aaa3f82f82dce54d1b1991000a48f22d6054628580f7efaf403",
+    "scripts/viz/analyze_chronos_uncertainty_alignment.py": "c2e2f8f163e66a66cbe1b2817ecb1ea5c5c69920a4821c5d5184f5940b17f817",
+    "scripts/viz/plot_chronos_benchmark_scan.py": "1c6880af39b6d1391fffd633831be213d42e9879468f7193545cde87b1dd4451",
+    "scripts/viz/plot_chronos_token_bins.py": "11797985c48c76aa8db242be74e2c097c0b674ab78a9e387835c66bbaa53753d",
+    "tests/chronos_fpa/conftest.py": "ed7d8cafebfc518ea75685be5850c6d31719b17f4beda032e2e4dbe804cdfd7c",
+    "tests/chronos_fpa/fixtures/fpa_test_tables.py": "fc8ab4db3156f31a9793c6f97ef3a89d69ed8771bd3c612dbe1290a76d9f63b7",
+    "tests/chronos_fpa/fixtures/score_reference.json": "2b16c6d0a91ab8e615ccb9d8d2c36ef0acabcd6037f6016a3c332804a37fded4",
+    "tests/chronos_fpa/integration/test_checkpoint_store.py": "bb55a19ff7dcf1ad2e880d204140535f09148885d64a6be11ec7a2e812e24678",
+    "tests/chronos_fpa/integration/test_pipeline.py": "f7b206cccf85e0a44b9e16faa9f683d0a31c5da6da602db3ef9b8fa450bd4a18",
+    "tests/chronos_fpa/integration/test_research_audit.py": "38917d864f8b8212395457b0860d6e6ba5b3a24ccdb098088c1b202b0e54c431",
+    "tests/chronos_fpa/regression/test_scan_visualization.py": "65180e705934223f2b2d3241b7019f82cd3f092696bd9a20a9bc9929421df4fc",
+    "tests/chronos_fpa/regression/test_score_reference.py": "32657653a892330c21392f71ef80517a78da9042446678032952e763c743ccbd",
+    "tests/chronos_fpa/unit/test_analysis_contracts.py": "9eae0eb0401aae2c060b97aca3bea75bacd13e9d9d6328d9aea31904d09049bb",
+    "tests/chronos_fpa/unit/test_analysis_formulas.py": "3f6b8557004e9ac3fe92172313e66f4fcff88d9f0693631d2c66cb2433b85c44",
+    "tests/chronos_fpa/unit/test_controlled_pilot.py": "3bf6cdd8cfd2aacd83cec5f940ececa72efd343f519aa79351228a51465d7600",
+    "tests/chronos_fpa/unit/test_controlled_pilot_analysis.py": "16754b9f51a5fa4aab06ffebb56a14eafa2abf52672d137e79fb232954bcffe9",
+    "tests/chronos_fpa/unit/test_data_windows.py": "8132aac6fd015750a1cc1bac811113f9196b82c98d54cf6a01419b0a830bac06",
+    "tests/chronos_fpa/unit/test_decoding.py": "6217895b80c9a3cbe6cc4d4ac08b7a0b935f27d7a9c377bf89c307c285ee374d",
+    "tests/chronos_fpa/unit/test_distances.py": "d9bb3678bd15cab1bbbfafed1e758e4c9379cd5b9c49451c5ca7b7087e78716c",
+    "tests/chronos_fpa/unit/test_phase3_controls.py": "91794c384ec3a1f42ccb8e52046d328511eb7ca97f86a7795e5466faf1b88ba3",
+    "tests/chronos_fpa/unit/test_probability_thresholds.py": "df1d257b3b197b0c4fdd3b5b22185fd637e91655e49a88af2320cdf9aa42c42d",
+    "tests/chronos_fpa/unit/test_scales.py": "673886d209eca11ba9d7432493d3eb26de81e2cce9274e1de4e6d84eeefd3252",
+    "tests/README.md": "f09aec4a43088f940a62487670fa78ba25334d4f01961f9a10ff368b348f7ae5"
+  },
+  "validation_seconds": 2.954,
+  "schema_version": "fpa_document_integration_audit_v1",
+  "bundle_file_mapping": [
+    {
+      "source": "docs/research/FPA_DECISIONS.md",
+      "target": "docs/research/FPA_DECISIONS.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_HANDOFF.md",
+      "target": "docs/research/FPA_HANDOFF.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_HYPOTHESES.md",
+      "target": "docs/research/FPA_HYPOTHESES.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_NORTH_STAR.md",
+      "target": "docs/research/FPA_NORTH_STAR.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
+      "target": "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_REFERENCES.md",
+      "target": "docs/research/FPA_REFERENCES.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_STATUS.md",
+      "target": "docs/research/FPA_STATUS.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/FPA_TECHNICAL_GATES.md",
+      "target": "docs/research/FPA_TECHNICAL_GATES.md",
+      "action": "installed"
+    },
+    {
+      "source": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+      "target": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+      "action": "installed"
+    },
+    {
+      "source": "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md",
+      "target": "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md",
+      "action": "installed"
+    },
+    {
+      "source": "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md",
+      "target": "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md",
+      "action": "installed"
+    },
+    {
+      "source": "codex-prompts/PROMPT_NEXT_ITERATION.md",
+      "target": "codex-prompts/PROMPT_NEXT_ITERATION.md",
+      "action": "installed"
+    },
+    {
+      "source": "project-chatgpt/CYCLE.md",
+      "target": "project-chatgpt/CYCLE.md",
+      "action": "installed"
+    },
+    {
+      "source": "project-chatgpt/NEW_CHAT_START.md",
+      "target": "project-chatgpt/NEW_CHAT_START.md",
+      "action": "installed"
+    },
+    {
+      "source": "project-chatgpt/PROJECT_INSTRUCTIONS.md",
+      "target": "project-chatgpt/PROJECT_INSTRUCTIONS.md",
+      "action": "installed"
+    },
+    {
+      "source": "README_START_HERE.md",
+      "target": "docs/research/README_WORKFLOW_V2.md",
+      "action": "installed; canonical name"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "AGENTS.md",
+      "action": "merged; original bytes preserved as prefix"
+    }
+  ],
+  "bundle_files_sha256": {
+    "AGENTS.md": "ba232ece001fba6966d5f62d2c7cc7ed5530c181bf855986c5fb8cf6c76c4834",
+    "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md": "cd3da11708314c5ad9ff6a7455299bd7536688f65590ca1b9e81cc7e70cc12dd",
+    "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md": "fd2201d125400e52626161fb70c05e5139b055eb6d45b5cfd920ff05efdd2b01",
+    "codex-prompts/PROMPT_NEXT_ITERATION.md": "798d438caf4513f9a392a8e004e2e1f6a48e44ecf9517279d98af6a5a874655e",
+    "docs/research/FPA_DECISIONS.md": "67e1c9e9245f7c1e944b3ccacce1b57ad5c6ce09e51d378ea8b974509cc906c7",
+    "docs/research/FPA_HANDOFF.md": "a221386252005f1df7ac2689951e8adcd1a16479572360e125a30b05be3ca175",
+    "docs/research/FPA_HYPOTHESES.md": "c62bcbaecaae2bc8cb2c7b1e3bc6278a201193f534ba39e5f080bf1eb04eee41",
+    "docs/research/FPA_NORTH_STAR.md": "c105272d891dedb457637f18b7856ded7b2cf262bfe6a0a96a5a8b3f6f93beae",
+    "docs/research/FPA_PROTOCOL_EXPLORATORY.md": "2eda93f3b8c7af508aa807bd35a25b1306a0ca92a09334b406a9422e907e2c0a",
+    "docs/research/FPA_REFERENCES.md": "356fa1e01054c59b427219b28ea1e1fd2cffbb759a610e2cbe6e1337c88d77d0",
+    "docs/research/FPA_STATUS.md": "81da842462085ab59b6b6e15fc60c6d3a11c7a5189e3f593e1d33ab08f4bf8de",
+    "docs/research/FPA_TECHNICAL_GATES.md": "7817dc9352ac0dffeeffa86ed91778bbbf7c0ae75c775bb1a3b5fda00bf2ecd8",
+    "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md": "46f31e76c6f083c6a09e331a1c0d5bb54fd515c1d379e88ef67c2821bc583e78",
+    "MANIFEST.txt": "88722df8b916ae80ee1325a25441145ff9a5310d56bba8469adb30bbac4a1321",
+    "project-chatgpt/CYCLE.md": "0c3c602ff2d716ae339d1c7dfbf5c0977b59cb99d727497c0e35254a9d5ef8d2",
+    "project-chatgpt/NEW_CHAT_START.md": "b7b61567a4a273943433bbcb6e6d701a32d01e759dd1b79d5a72ef8609827e4e",
+    "project-chatgpt/PROJECT_INSTRUCTIONS.md": "db0a051108ea7da6d6b63c75375689805f162dc8f5ae88314301bffb2f130756",
+    "README_START_HERE.md": "6aae507e357d57238639be009debc929b3d7106bd5ff9395b4eac5f95b5ae601"
+  },
+  "environment_after_researcher_setup": {
+    "python": "3.12.12",
+    "executable": "C:\\Users\\alexandre.blain\\dev\\FPA_for_TSFM\\.venv\\Scripts\\python.exe",
+    "versions": {
+      "numpy": "2.4.4",
+      "pandas": "3.0.2",
+      "torch": "2.11.0",
+      "transformers": "5.12.1",
+      "pytest": "9.2.0"
+    }
+  },
+  "user_created_uv_lock": {
+    "path": "uv.lock",
+    "sha256": "bda3b5762172988eca753e446f4bd361cea01689ddf4cf0d8fd289fadadc658e",
+    "tracked": false,
+    "codex_modified": false,
+    "exclude_from_docs_commit": true
+  },
+  "hardware_inventory": {
+    "utc": "2026-11-19T15:05:45Z",
+    "cpu": "Intel Core Ultra 7 265U",
+    "physical_cores": 12,
+    "logical_processors": 14,
+    "visible_memory_kib": 16208592,
+    "free_memory_kib": 1430312,
+    "display": "Intel Graphics",
+    "workspace_disk_free_bytes": 322705330176,
+    "runtime_gpu_verified": false
+  },
+  "offline_tests": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest",
+      "seconds_reported_by_pytest": 80.46,
+      "passed": 223,
+      "failed": 1,
+      "exit_code": 1,
+      "failure": "tests/chronos_fpa/integration/test_pipeline.py::test_paper1_resume_and_continuous_ensembles_match",
+      "exception": "PermissionError: [WinError 5] Access is denied",
+      "location": "code/chronos_fpa/runtime/results_io.py:83, os.replace(temporary, path)",
+      "target": "temporary pytest run / recovered chronos_scan_steps.csv"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/chronos_fpa/integration/test_pipeline.py::test_paper1_resume_and_continuous_ensembles_match",
+      "seconds_reported_by_pytest": 9.6,
+      "passed": 1,
+      "failed": 0,
+      "exit_code": 0,
+      "limitation": "One targeted repeat; full-suite failure remains an unresolved robustness observation."
+    }
+  ],
+  "preservation": {
+    "protected_content_files": 213,
+    "changed_protected_paths": [],
+    "data_result_inventory_files": 797,
+    "data_result_size_mtime_inventory_unchanged": true,
+    "data_result_inventory_sha256": "cf900b4e63a273f8c884f8a2b364ddf56964ad849f8a5219605835651879fbb4",
+    "git_index_sha256_unchanged": true,
+    "git_head_branch_unchanged": true,
+    "source_zip_sha256_unchanged": true,
+    "original_agents_prefix_preserved": true
+  },
+  "literature_check": {
+    "scope": "Primary landing-page titles/authors/abstracts only; no full-paper reproduction.",
+    "urls": [
+      "https://arxiv.org/abs/2412.07961",
+      "https://arxiv.org/abs/2608.19611",
+      "https://arxiv.org/abs/2403.07815",
+      "https://arxiv.org/abs/2511.04527",
+      "https://proceedings.mlr.press/v267/wilinski25a.html",
+      "https://arxiv.org/abs/2603.10071"
+    ],
+    "local_original_paper_pdf_supplied_or_found": false
+  },
+  "scientific_execution": {
+    "new_pretrained_model_inference": false,
+    "new_sampled_model_paths": 0,
+    "historical_statistics_recomputed": false,
+    "codex_dependency_installs": false,
+    "git_writes": false
+  },
+  "final_validation": {
+    "utc": "2026-11-19T15:19:40Z",
+    "recommended_paths": [
+      "AGENTS.md",
+      "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md",
+      "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md",
+      "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md",
+      "codex-prompts/PROMPT_NEXT_ITERATION.md",
+      "docs/research/FPA_DECISIONS.md",
+      "docs/research/FPA_HANDOFF.md",
+      "docs/research/FPA_HYPOTHESES.md",
+      "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+      "docs/research/FPA_INTEGRATION_CONFLICTS.md",
+      "docs/research/FPA_INTEGRATION_EVIDENCE.json",
+      "docs/research/FPA_INTEGRATION_REPORT.md",
+      "docs/research/FPA_NORTH_STAR.md",
+      "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
+      "docs/research/FPA_REFERENCES.md",
+      "docs/research/FPA_STATUS.md",
+      "docs/research/FPA_TECHNICAL_GATES.md",
+      "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+      "docs/research/README_WORKFLOW_V2.md",
+      "project-chatgpt/CYCLE.md",
+      "project-chatgpt/NEW_CHAT_START.md",
+      "project-chatgpt/PROJECT_INSTRUCTIONS.md"
+    ],
+    "canonical_files_exist": 22,
+    "markdown_files_checked": 21,
+    "resolved_internal_links": 90,
+    "link_targets": [
+      {
+        "source": "AGENTS.md",
+        "target": "docs/research/README_WORKFLOW_V2.md"
+      },
+      {
+        "source": "AGENTS.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "AGENTS.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_DECISIONS.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_DECISIONS.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_DECISIONS.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_DECISIONS.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/FPA_HANDOFF.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_HANDOFF.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_HANDOFF.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_HANDOFF.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/FPA_HANDOFF.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_HYPOTHESES.md",
+        "target": "docs/research/FPA_STATUS.md"
+      },
+      {
+        "source": "docs/research/FPA_HYPOTHESES.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/CHRONOS_PHASE1.md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/CHRONOS_PHASE2.md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/CHRONOS_PHASE3_DESIGN.md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "docs/future works/FPA_CHRONOS_RESEARCH_PLAN (1).md"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/core/chronos_decoding.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/core/chronos_io.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/metrics/chronos_distances.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/pipeline/chronos_benchmark_scan.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/runtime/trajectory_export.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "scripts/runs/run_chronos_controlled_pilot.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/runtime/checkpoint_store.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "code/chronos_fpa/runtime/results_io.py"
+      },
+      {
+        "source": "docs/research/FPA_IMPLEMENTATION_AUDIT.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_CONFLICTS.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_CONFLICTS.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_CONFLICTS.md",
+        "target": "docs/research/FPA_HANDOFF.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "docs/research/FPA_REFERENCES.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "docs/research/FPA_HANDOFF.md"
+      },
+      {
+        "source": "docs/research/FPA_INTEGRATION_REPORT.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_NORTH_STAR.md",
+        "target": "docs/research/FPA_STATUS.md"
+      },
+      {
+        "source": "docs/research/FPA_NORTH_STAR.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/CHRONOS_PHASE1.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/CHRONOS_PHASE2.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/CHRONOS_PHASE3_DESIGN.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/future works/FPA_CHRONOS_RESEARCH_PLAN (1).md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/future works/CODEX_PHASE_PROMPTS (1).md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "FPA_CET1_RESEARCH_HANDOFF.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "CHRONOS_FPA_FUTURE_IDEAS.md"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "configs/chronos_controlled_pilot/phase2.json"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "configs/chronos_controlled_pilot/half_execution.json"
+      },
+      {
+        "source": "docs/research/FPA_REFERENCES.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/CHRONOS_PHASE1.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/CHRONOS_PHASE2.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/CHRONOS_PHASE3_DESIGN.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_HANDOFF.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/FPA_STATUS.md",
+        "target": "docs/research/FPA_DECISIONS.md"
+      },
+      {
+        "source": "docs/research/FPA_TECHNICAL_GATES.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/FPA_TECHNICAL_GATES.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+        "target": "docs/research/FPA_STATUS.md"
+      },
+      {
+        "source": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "AGENTS.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_NORTH_STAR.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_STATUS.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_DECISIONS.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_PROTOCOL_EXPLORATORY.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_HYPOTHESES.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_TECHNICAL_GATES.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_REFERENCES.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_INTEGRATION_REPORT.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_IMPLEMENTATION_AUDIT.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_INTEGRATION_CONFLICTS.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_INTEGRATION_EVIDENCE.json"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "docs/research/FPA_HANDOFF.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "codex-prompts/PROMPT_NEXT_ITERATION.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "project-chatgpt/PROJECT_INSTRUCTIONS.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "project-chatgpt/NEW_CHAT_START.md"
+      },
+      {
+        "source": "docs/research/README_WORKFLOW_V2.md",
+        "target": "project-chatgpt/CYCLE.md"
+      }
+    ],
+    "format_issues": [],
+    "json_valid": true,
+    "handoff_words": 577,
+    "status_words": 623,
+    "prior_decision_rows_preserved": 15,
+    "git_diff_check_pass": true,
+    "git_index_empty_unchanged": true,
+    "git_status_short": " M AGENTS.md\n?? codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md\n?? codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md\n?? codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md\n?? codex-prompts/PROMPT_NEXT_ITERATION.md\n?? docs/research/FPA_DECISIONS.md\n?? docs/research/FPA_HANDOFF.md\n?? docs/research/FPA_HYPOTHESES.md\n?? docs/research/FPA_IMPLEMENTATION_AUDIT.md\n?? docs/research/FPA_INTEGRATION_CONFLICTS.md\n?? docs/research/FPA_INTEGRATION_EVIDENCE.json\n?? docs/research/FPA_INTEGRATION_REPORT.md\n?? docs/research/FPA_NORTH_STAR.md\n?? docs/research/FPA_PROTOCOL_EXPLORATORY.md\n?? docs/research/FPA_REFERENCES.md\n?? docs/research/FPA_STATUS.md\n?? docs/research/FPA_TECHNICAL_GATES.md\n?? docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md\n?? docs/research/README_WORKFLOW_V2.md\n?? project-chatgpt/CYCLE.md\n?? project-chatgpt/NEW_CHAT_START.md\n?? project-chatgpt/PROJECT_INSTRUCTIONS.md\n?? uv.lock\n",
+    "tracked_diff_numstat": "62\t0\tAGENTS.md",
+    "final_document_sha256": {
+      "AGENTS.md": "8371791d28c72870b2acfc701888b038fec30a576c7c42a1d7427615fdf3ad67",
+      "codex-prompts/PROMPT_00_BOUNDED_BENCHMARK.md": "27a9ea575df2765bac8e7cacc9827b80819fdf2dcfca1abacdbaddadd2521bd5",
+      "codex-prompts/PROMPT_01_INTEGRATE_AND_AUDIT.md": "cd3da11708314c5ad9ff6a7455299bd7536688f65590ca1b9e81cc7e70cc12dd",
+      "codex-prompts/PROMPT_02_BENCHMARK_AND_PREPARE.md": "633173a09bf466d2456dd1698959a7ab02caa6f8e2195926fb68f40df656ecc3",
+      "codex-prompts/PROMPT_NEXT_ITERATION.md": "798d438caf4513f9a392a8e004e2e1f6a48e44ecf9517279d98af6a5a874655e",
+      "docs/research/FPA_DECISIONS.md": "c4b87305930c8dcc0827877956495b4760bbb5545c69aa077c31581bec163a12",
+      "docs/research/FPA_HANDOFF.md": "b7d64fa2c139432622a853d6665f934f849bedaf84db93b4cb9729c5fd4e8721",
+      "docs/research/FPA_HYPOTHESES.md": "dca48a33d150030192f4aac1dad2522bf19698007644004ba52dbc955dd981ea",
+      "docs/research/FPA_IMPLEMENTATION_AUDIT.md": "4d6caf597bf604aad4724ba2df7867f48d034d8fb992e79ab5f79d7b89974024",
+      "docs/research/FPA_INTEGRATION_CONFLICTS.md": "a04851a16dec7527c8be232fdce819cf55cd87ba3b6642accd23a4b7e02f2ac0",
+      "docs/research/FPA_INTEGRATION_REPORT.md": "d4adc2fc7495af72b24c81de65873ea6b69cb4cfa96f393826088f878775700d",
+      "docs/research/FPA_NORTH_STAR.md": "77c9ec7e03ca6905d84ee1211a36df2e188bba40b51e6a24d3ed738e3e5593a3",
+      "docs/research/FPA_PROTOCOL_EXPLORATORY.md": "14c525d6fe33f2d882c056846c4c649c382f66c1f0a3ebcf136394400827c3b6",
+      "docs/research/FPA_REFERENCES.md": "a1ff3839ef7e5d37585527795862df16d4033e8959caa65202a32d054a0a1350",
+      "docs/research/FPA_STATUS.md": "eafcdda508f6e4052404014576192ea369635e1960dc83392bd63056a1aad0a3",
+      "docs/research/FPA_TECHNICAL_GATES.md": "283a795af8104b94151516a108045b7dde5619658993c0fcbfeefc2ad3c5c70e",
+      "docs/research/NOTE_SYNTHESE_SCIENTIFIQUE_FR.md": "1cd43e338940a1a329a03a4d30e60876fe089ad583615ef1f14d23e47ad52e4b",
+      "docs/research/README_WORKFLOW_V2.md": "fa2f84c882e692eb8c0907fe49f2fb4a145b5b59be7c5801a6754228b36d066a",
+      "project-chatgpt/CYCLE.md": "0c3c602ff2d716ae339d1c7dfbf5c0977b59cb99d727497c0e35254a9d5ef8d2",
+      "project-chatgpt/NEW_CHAT_START.md": "b7b61567a4a273943433bbcb6e6d701a32d01e759dd1b79d5a72ef8609827e4e",
+      "project-chatgpt/PROJECT_INSTRUCTIONS.md": "db0a051108ea7da6d6b63c75375689805f162dc8f5ae88314301bffb2f130756"
+    },
+    "seconds": 0.489,
+    "method": "Python standard library: manifest existence, UTF-8/whitespace/fence checks, relative Markdown-link resolution outside fenced blocks, preserved decision rows, SHA256 comparison, and read-only Git status/diff. No research module imports."
+  }
+}

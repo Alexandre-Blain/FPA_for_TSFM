@@ -22,9 +22,10 @@ scripts/
   runs/                 Main experiment launchers.
   viz/                  Plotting utilities for existing runs.
   presentations/        PowerPoint generation scripts.
-  maintenance/          Read-only research inventory and integrity audit.
+  maintenance/          Research audit and disposable ChatGPT handout refresh.
 
 configs/
+  chronos_microbenchmark/  Dated opt-in single-context Prompt 2 configuration.
   chronos_benchmark_scan/
   chronos_targeted_refinement/
 
@@ -67,6 +68,17 @@ Download Chronos benchmark exports:
 uv run --no-project --with datasets python scripts\data\download_chronos_benchmark_datasets.py `
   --output-dir data\raw\chronos_benchmark
 ```
+
+## Bounded exploratory prototype
+
+Prompt 2 adds `scripts/runs/run_chronos_microbenchmark.py`, with
+`core/chronos_exploratory.py`, `metrics/chronos_outcomes.py`,
+`pipeline/chronos_exploratory_window.py`, `runtime/ensemble_store.py`
+and native `runtime/windows_job.py`. It is separate from historical launchers.
+The [benchmark report](research/BENCHMARK_REPORT.md) records its dated resource
+authorization and measured limits; the configuration is not permanent
+permission to repeat inference. The [current handoff](research/FPA_HANDOFF.md)
+is mirrored into ignored `docs/chatgpt-handout/` at each completed prompt.
 
 ## Import Rule
 

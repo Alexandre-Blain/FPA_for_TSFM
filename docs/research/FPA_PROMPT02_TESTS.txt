@@ -1,0 +1,39 @@
+Prompt 2 complete offline suite; no pretrained model loads.
+Command: .venv/Scripts/python.exe -m pytest
+
+============================= test session starts =============================
+platform win32 -- Python 3.12.12, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\alexandre.blain\dev\FPA_for_TSFM
+configfile: pytest.ini
+testpaths: tests/chronos_fpa
+plugins: anyio-4.16.0
+collected 250 items
+
+tests\chronos_fpa\integration\test_chatgpt_handout.py ....               [  1%]
+tests\chronos_fpa\integration\test_checkpoint_store.py ................  [  8%]
+tests\chronos_fpa\integration\test_ensemble_store.py ...                 [  9%]
+tests\chronos_fpa\integration\test_exploratory_window.py .               [  9%]
+tests\chronos_fpa\integration\test_pipeline.py .............             [ 14%]
+tests\chronos_fpa\integration\test_research_audit.py ...                 [ 16%]
+tests\chronos_fpa\integration\test_windows_job.py .                      [ 16%]
+tests\chronos_fpa\regression\test_scan_visualization.py ......           [ 18%]
+tests\chronos_fpa\regression\test_score_reference.py ...                 [ 20%]
+tests\chronos_fpa\unit\test_analysis_contracts.py ...................... [ 28%]
+..............                                                           [ 34%]
+tests\chronos_fpa\unit\test_analysis_formulas.py ....................... [ 43%]
+.                                                                        [ 44%]
+tests\chronos_fpa\unit\test_controlled_pilot.py .......                  [ 46%]
+tests\chronos_fpa\unit\test_controlled_pilot_analysis.py .....           [ 48%]
+tests\chronos_fpa\unit\test_data_windows.py ....................         [ 56%]
+tests\chronos_fpa\unit\test_decoding.py ........................         [ 66%]
+tests\chronos_fpa\unit\test_distances.py ......................          [ 75%]
+tests\chronos_fpa\unit\test_exploratory.py ........                      [ 78%]
+tests\chronos_fpa\unit\test_local_model_loading.py .                     [ 78%]
+tests\chronos_fpa\unit\test_microbenchmark_supervisor.py ..              [ 79%]
+tests\chronos_fpa\unit\test_outcome_calibration.py .                     [ 80%]
+tests\chronos_fpa\unit\test_phase3_controls.py ..........                [ 84%]
+tests\chronos_fpa\unit\test_probability_thresholds.py .....              [ 86%]
+tests\chronos_fpa\unit\test_results_io.py .....                          [ 88%]
+tests\chronos_fpa\unit\test_scales.py ..............................     [100%]
+
+============================ 250 passed in 41.26s =============================

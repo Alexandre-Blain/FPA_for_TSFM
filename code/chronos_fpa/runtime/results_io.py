@@ -75,13 +75,33 @@ def save_dataframe(path: str | Path, frame: pd.DataFrame):
 def _atomic_write(path: Path, write) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    complete = False
+    published = False
     try:
         with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as stream:
             write(stream)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temporary, path)
+        complete = True
+        for attempt in range(9):
+            try:
+                os.replace(temporary, path)
+                published = True
+                break
+            except PermissionError as error:
+                if getattr(error, "winerror", None) not in {5, 32, 33} or attempt == 8:
+                    raise
+                if attempt == 0:
+                    warnings.warn(
+                        f"Windows denied file replacement; retrying complete temporary file: {path}",
+                        RuntimeWarning,
+                    )
+                time.sleep(min(.125 * 2 ** attempt, 2.0))
+    except BaseException as error:
+        if complete and not published and os.path.exists(temporary):
+            error.add_note(f"Complete temporary file preserved for inspection: {temporary}")
+        raise
     finally:
-        if os.path.exists(temporary):
+        if os.path.exists(temporary) and (not complete or published):
             os.unlink(temporary)
 

@@ -3,6 +3,14 @@
 La FPA mesure comment les continuations changent quand on force un token de
 prevision. Elle ne mesure pas directement la qualite de prediction.
 
+Le [statut scientifique courant](docs/research/FPA_STATUS.md) et le
+[workflow versionne](docs/research/README_WORKFLOW_V2.md) donnent les prochaines
+autorisations et le handoff. Le prototype opt-in de Prompt 2 est distinct des
+launchers historiques : `scripts/runs/run_chronos_microbenchmark.py`, avec
+`configs/chronos_microbenchmark/prompt02.json`. Sa configuration fige une
+autorisation datee et ses plafonds; ne pas la reutiliser comme autorisation
+permanente de nouvelle inference.
+
 ## Points D'Entree
 
 - [Parametres du scan](configs/chronos_benchmark_scan/README.md) : chaque cle JSON.

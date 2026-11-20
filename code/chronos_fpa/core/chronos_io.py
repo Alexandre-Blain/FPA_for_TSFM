@@ -142,6 +142,9 @@ def load_chronos_t5_raw(
     model_id: str = DEFAULT_CHRONOS_MODEL_ID,
     device: str | torch.device | None = None,
     dtype: torch.dtype | str | None = None,
+    revision: str | None = None,
+    local_files_only: bool = False,
+    attn_implementation: str | None = None,
 ):
     """Load original Chronos v1 T5 with raw Hugging Face Transformers.
 
@@ -151,7 +154,10 @@ def load_chronos_t5_raw(
     """
     from transformers import AutoConfig, AutoModelForSeq2SeqLM
 
-    hf_config = AutoConfig.from_pretrained(model_id)
+    access_options = {"local_files_only": local_files_only}
+    if revision is not None:
+        access_options["revision"] = revision
+    hf_config = AutoConfig.from_pretrained(model_id, **access_options)
     chronos_config = ChronosConfigLite.from_transformers_config(hf_config)
     if chronos_config.model_type != "seq2seq":
         raise ValueError("This raw implementation currently targets Chronos-T5 seq2seq checkpoints.")
@@ -162,7 +168,11 @@ def load_chronos_t5_raw(
     model_kwargs = {}
     if dtype is not None:
         model_kwargs["torch_dtype"] = dtype
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_id, **model_kwargs)
+    if attn_implementation is not None:
+        model_kwargs["attn_implementation"] = attn_implementation
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_id, **access_options, **model_kwargs)
+    if revision is not None and getattr(model.config, "_commit_hash", None) != revision:
+        raise ValueError("Loaded model revision differs from the requested pinned revision")
 
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"

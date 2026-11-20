@@ -56,6 +56,14 @@ uniquely timed.
 
 ## API Contracts
 
+Prompt 2 adds offline q50 coverage/residual, full-prefix cache parity/isolation,
+fixed22 and fixed-window outcome tests using a tiny randomly initialized T5.
+No pretrained weights are loaded by pytest. Ensemble/fork publication tests
+cover interruption, checksum rejection, complete-only snapshots and reuse.
+Native Windows Job Object tests exercise resource accounting and termination
+of a redirector/child process tree without Chronos. Handout tests preserve
+canonical documents and refuse unexpected files or path traversal.
+
 Paper 1 adds `unit/test_distances.py` and decoder/pipeline tests: exact empirical
 W1 (including unequal sample sizes), RMS-ground Energy V-statistic, independent
 same-token streams, strict post-fork slicing, last-token/invalid-IQR cases,

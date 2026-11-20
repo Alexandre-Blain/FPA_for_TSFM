@@ -1,0 +1,123 @@
+{
+  "schema": "fpa_proposed_grid_v1",
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_FROZEN",
+  "executable": false,
+  "purpose": "Feasibility panel for design review; no power or prevalence claim",
+  "source_series_target": 6,
+  "windows_per_original_series": 1,
+  "forecast_origins": null,
+  "selection_manifest": null,
+  "datasets_proposed_for_review": [
+    "m4_daily",
+    "ercot",
+    "exchange_rate"
+  ],
+  "strata_per_dataset": {
+    "representative_context_only": 1,
+    "diversity_context_only": 1
+  },
+  "selection_constraints": [
+    "Freeze dataset/series/window IDs, forecast origin, source hash, context hash and scale before inference",
+    "Original series must be distinct across all six cells; retain source-series clusters",
+    "Context length512 and horizon32; reject invalid IQR without a fallback",
+    "Use context-only selection; no future values, forecast error or FPA scores",
+    "Fix deterministic representative sampling and diversity descriptors/seed before selecting IDs; record eligible pool and exclusions",
+    "No stratified panel prevalence or confirmatory claim; two-series quotas reflect feasibility, not statistical power",
+    "Keep already studied engineering context labeled separately; it is not a held-out scientific replicate"
+  ],
+  "candidate_protocol": {
+    "context": 512,
+    "horizon": 32,
+    "dense_positions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "samples_per_conditional_group": 20,
+    "q50_target": 0.9,
+    "selected_token_cap_including_greedy": 8,
+    "residual": "conditional complementary q50, if positive",
+    "independent_null": true,
+    "direct_cpd_positions": [
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "direct_samples": 60,
+    "overlap_direct_positions": [
+      0,
+      9,
+      10
+    ],
+    "fixed_outcomes": [
+      "terminal abs deviation from frozen greedy / context IQR",
+      "last8 mean abs deviation from frozen greedy / context IQR"
+    ],
+    "thresholds": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "distances": [
+      "fixed22 strict post-fork",
+      "full remaining strict post-fork"
+    ]
+  },
+  "throughput_source": "result/prompt02_micro_20261120T153706Z/n20_summary.json",
+  "measured_window_seconds": 78.9224115999823,
+  "measured_all_step_raw_bytes_per_path": 3002752,
+  "cost_scenarios": {
+    "observed_three_selected": {
+      "paths_per_window_including_overlap": 1480,
+      "raw_all_step_decoder_plus_one_encoder_bytes": 4488046065,
+      "estimated_sampling_plus_replay_seconds": 464.68034660085686,
+      "planning_seconds_with_2x_factor": 929.3606932017137,
+      "six_windows_planning_seconds": 5576.164159210282
+    },
+    "cap_eight_with_residual": {
+      "paths_per_window_including_overlap": 2480,
+      "raw_all_step_decoder_plus_one_encoder_bytes": 7490798065,
+      "estimated_sampling_plus_replay_seconds": 776.1037063014478,
+      "planning_seconds_with_2x_factor": 1552.2074126028956,
+      "six_windows_planning_seconds": 9313.244475617374
+    }
+  },
+  "cost_caveats": [
+    "One selected flat-greedy context, CPU float32/eager, one thread; no cross-domain worst-case guarantee",
+    "2x factor is planning headroom, not a probabilistic upper bound",
+    "Raw payload excludes metadata, duplicated baseline capture and filesystem overhead; compression unguaranteed",
+    "All-step replay cost from only eight paths, warm state; linear extrapolation not measured campaign throughput",
+    "Cap8 changes branching and residual fragmentation; scaling is approximate",
+    "Current 30-minute model authorization does not cover this suggested panel",
+    "Current measured peak747.04MiB does not bound retained prefix caches for a panel"
+  ],
+  "before_any_campaign": [
+    "Freeze grid IDs and scientific selection rules after review",
+    "Implement bounded streaming/replay batches and cache eviction; test memory/disk limits with complete manifests",
+    "Resolve estimator covariance/variance at P9/P10/P11; predeclare uncertainty interpretation",
+    "Obtain separate explicit runtime, storage, hardware and inference authorization"
+  ],
+  "single_next_recommendation": {
+    "task": "Data-only selection manifest and QC for six distinct original-series windows",
+    "wall_limit_seconds": 1800,
+    "model_draws": 0,
+    "status": "SUGGESTED_REQUIRES_NEW_APPROVAL",
+    "falsifiers": [
+      "future leakage",
+      "invalid scale",
+      "missing source/context identity/hash",
+      "duplicate original series"
+    ]
+  }
+}
