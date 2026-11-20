@@ -154,3 +154,22 @@ def test_archives_are_excluded_even_when_changed_and_linked(tmp_path, monkeypatc
     assert "Required scientific method" in combined
     assert "repository reference: `docs/archive/old.md`" in combined
     assert handout.audit_links(folder, ["CHATGPT_HANDOUT.md", "README.md"])["broken_links"] == []
+
+
+def test_explicit_scientific_assets_are_hashed_attached_and_refreshable(tmp_path, monkeypatch):
+    setup_sources(tmp_path, monkeypatch)
+    (tmp_path / "result/pilot").mkdir(parents=True)
+    asset = tmp_path / "result/pilot/figures.pdf"
+    asset.write_bytes(b"%PDF-test scientific review")
+    handout.build_handout(tmp_path, [asset])
+    folder = tmp_path / "docs/chatgpt-handout"
+    assert (folder / "review-assets/figures.pdf").read_bytes() == asset.read_bytes()
+    marker = json.loads((folder / handout.MARKER).read_text())
+    assert marker["review_assets"]["review-assets/figures.pdf"]["source"] == "result/pilot/figures.pdf"
+    assert handout.audit_links(folder, ["README.md", "CHATGPT_HANDOUT.md"])["broken_links"] == []
+    with pytest.raises(ValueError, match="under result"):
+        handout.build_handout(tmp_path, [tmp_path / "docs/current.md"])
+    assert (folder / "review-assets/figures.pdf").exists()
+    handout.build_handout(tmp_path)
+    assert not (folder / "review-assets/figures.pdf").exists()
+    assert asset.exists()

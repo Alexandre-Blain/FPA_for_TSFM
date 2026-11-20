@@ -45,7 +45,7 @@ def collect_documents(root: Path) -> list[str]:
     changed = git(root, "diff", "HEAD", "--name-only", "--diff-filter=ACMRT", "-z").split("\0")
     changed += git(root, "ls-files", "--others", "--exclude-standard", "-z").split("\0")
     priority = {name: i for i, name in enumerate((
-        "docs/research/FPA_HANDOFF.md", "docs/reference/BENCHMARK_REPORT.md",
+        "docs/research/FPA_HANDOFF.md", "docs/reference/LOCAL_PILOT_REPORT.md",
         "docs/research/FPA_STATUS.md", "docs/research/FPA_DECISIONS.md",
         "docs/research/FPA_NORTH_STAR.md", "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
     ))}
@@ -234,7 +234,7 @@ def remove_managed(directory: Path, names: list[str]) -> None:
     directory.rmdir()
 
 
-def build_handout(root: Path) -> dict:
+def build_handout(root: Path, review_assets=()) -> dict:
     root = root.resolve()
     docs = root / "docs"
     docs.mkdir(exist_ok=True)
@@ -258,6 +258,21 @@ def build_handout(root: Path) -> dict:
     contents = {"repository/" + name: (
         render_document(data.decode("utf-8"), name, source_names).encode("utf-8")
         if name.endswith(".md") else data) for name, data in source_contents.items()}
+    asset_metadata = {}
+    for requested in review_assets:
+        path = Path(requested)
+        path = path if path.is_absolute() else root / path
+        resolved = path.resolve()
+        if (path.is_symlink() or not resolved.is_relative_to((root / "result").resolve())
+                or resolved.suffix.lower() not in {".pdf", ".png", ".csv"} or not resolved.is_file()):
+            raise ValueError("Review assets must be explicit PDF/PNG/CSV files under result/")
+        name = "review-assets/" + resolved.name
+        if name in contents:
+            raise ValueError("Review asset names must be distinct")
+        data = resolved.read_bytes()
+        contents[name] = data
+        asset_metadata[name] = {"source": resolved.relative_to(root).as_posix(),
+                                "source_sha256": hashlib.sha256(data).hexdigest()}
     utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     branch, head = git(root, "branch", "--show-current").strip(), git(root, "rev-parse", "HEAD").strip()
     intro = (
@@ -269,8 +284,8 @@ def build_handout(root: Path) -> dict:
         "completed prompt; do not edit copies here. Active documents and their "
         "linked references are included. Archives are excluded even when changed "
         "or linked by the documentation index. Archived documents, code, datasets and model "
-        "outputs are not included; their references are shown as plain repository "
-        "paths. Start with FPA_HANDOFF, BENCHMARK_REPORT and FPA_STATUS. "
+        "outputs are not included except explicitly attached review assets; their references are shown as plain repository "
+        "paths. Start with FPA_HANDOFF, the latest pilot report and FPA_STATUS. "
         "Older reports are historical evidence. Document copies live under "
         "repository/; export-only links may differ from canonical sources. "
         "The manifest records canonical source hashes and generated copy hashes "
@@ -278,6 +293,11 @@ def build_handout(root: Path) -> dict:
         "non-Markdown attachments available in the ZIP.\n\n"
     )
     index, combined = [intro], [intro, "## Contents\n\n"]
+    if asset_metadata:
+        links = "## Scientific review attachments\n\n" + "".join(
+            f"- [{Path(name).name}](<{name}>)\n" for name in asset_metadata) + "\n"
+        index.append(links)
+        combined.append(links)
     for group in ("Current research and workflow", "References and supporting files"):
         index.append(f"## {group}\n\n")
         combined.append(f"### {group}\n\n")
@@ -301,6 +321,7 @@ def build_handout(root: Path) -> dict:
     manifest = {"schema": SCHEMA, "created_utc": utc, "branch": branch, "pre_user_commit_head": head,
                 "source_files": {name: hashlib.sha256(source_contents[name]).hexdigest() for name in sources},
                 "generated_files": generated,
+                "review_assets": asset_metadata,
                 "export_link_adjusted_copies": [name for name in sources if contents["repository/" + name] != source_contents[name]],
                 "canonical_link_validation": validation}
     stage = Path(tempfile.mkdtemp(prefix=".chatgpt-handout-pending-", dir=docs))
@@ -342,6 +363,8 @@ def build_handout(root: Path) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check-links", action="store_true", help="Read-only audit of all canonical Markdown file/heading links")
+    parser.add_argument("--review-assets", nargs="*", type=Path, default=[],
+                        help="Explicit current PDF/PNG/CSV artifacts under result/ to attach; no archive scanning")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     if args.check_links:
@@ -349,4 +372,4 @@ if __name__ == "__main__":
         result = audit_links(root, sorted({n for n in names if n.endswith(".md") and (root / n).is_file()}))
         print(json.dumps(result, indent=2))
         raise SystemExit(bool(result["broken_links"]))
-    print(json.dumps(build_handout(root), indent=2))
+    print(json.dumps(build_handout(root, args.review_assets), indent=2))

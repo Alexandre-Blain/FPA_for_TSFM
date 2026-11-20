@@ -1,5 +1,11 @@
 # Technical implementation gates: correctness first, then throughput
 
+**Current evidence:** the [completed six-series pilot](LOCAL_PILOT_REPORT.md)
+extends validation to ten isolated window/seed cells, real cap8/residual cases,
+conditional uncertainty and batched replay. Exact scope, 264 offline tests,
+2924 real parity checks and remaining limitations belong in that report.
+The sections below define technical contracts, not authorization for another run.
+
 **Observed update - 2026-11-20:** bounded Prompt2 exercised gates 0..4 on one
 cached context, including target N20, full-prefix/cache parity, residual
 mixtures, exhaustive replay on named paths, interrupted-ensemble resume and

@@ -1,5 +1,16 @@
 # Prompt 2 benchmark and implementation report
 
+The subsequent authorized multi-series task is now complete; its
+[current report](LOCAL_PILOT_REPORT.md) governs scientific review. Planning
+recommendations below describe the historical Prompt 2 handoff.
+
+**Linked correction, 2026-11-20:** the frozen original evidence is unchanged.
+Its `target_N20` field was overwritten during link parsing in the finalizer;
+the [addendum](FPA_PROMPT02_EVIDENCE_ADDENDUM.json) restores the structured
+information from the intact raw summary and verifies all 25 archived N20
+research-module hashes. The exact intermediate N20 execution driver remains
+unarchived. This correction adds no model draws and changes no trajectories.
+
 **Observed 2026-11-20.** The authorized single-context correctness/performance
 prototype is complete. The complete offline suite passed **250 tests in 41.26 s**.
 Model subprocesses used **205.829 s of the approved 1,800 s**. Implementation/tests

@@ -2,8 +2,8 @@
 
 Ce document est la source des définitions scientifiques. L'autorisation
 d'exécution est distincte : [tâche courante](../../codex-prompts/CURRENT_TASK.md)
-et [décisions](FPA_DECISIONS.md). Le pilote local autorisé est actuellement
-**en pause**; le protocole seul ne déclenche aucune inférence.
+et [décisions](FPA_DECISIONS.md). L'[état d'exécution](FPA_STATUS.md) est distinct
+des définitions; le protocole seul ne déclenche aucune inférence.
 
 ## Modèle et unités
 

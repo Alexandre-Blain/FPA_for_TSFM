@@ -112,3 +112,12 @@ original pre-commit SHA and status.
   handout sans archives automatiques. Aucun changement de décision scientifique.
 
 Le checkpoint de reprise est indiqué dans [FPA_HANDOFF.md](FPA_HANDOFF.md).
+
+## 2026-11-20 - reprise explicite du pilote après maintenance
+
+Le chercheur demande : « maintenant reprend ou tu t'en etait arrete pour ce
+prompt en tenant compte de la nouvelle organisation de doc ». La pièce jointe
+réitère le périmètre de six séries et dix cellules au maximum. La pause est
+levée; les exclusions et le contrôle scientifique final restent en vigueur.
+La sélection est figée avant inférence, les deux premières fenêtres doivent
+passer les contrôles avant les suivantes. Aucun élargissement n'est autorisé.

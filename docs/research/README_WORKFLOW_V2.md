@@ -8,7 +8,8 @@ Il distingue six documents actifs, les références et les archives.
    prévalent sur les résumés narratifs.
 2. **Autorisation.** Le chercheur définit la tâche, les cellules ou ressources
    permises et les critères d'arrêt. La tâche actuelle est
-   [le pilote local](../../codex-prompts/CURRENT_TASK.md), momentanément en pause.
+   [le pilote local](../../codex-prompts/CURRENT_TASK.md); son état d'exécution
+   est tenu dans le [statut](FPA_STATUS.md).
    Aucun ancien prompt archivé ne vaut autorisation.
 3. **Travail.** Codex implémente, teste et exécute seulement le périmètre autorisé.
    Les résultats complets sont publiés atomiquement; les analyses lisent des
@@ -27,6 +28,9 @@ Après chaque étape terminée, régénérer le handout avec
 et références utiles, sans archives. Les copies sont remplacées après contrôle
 des hashes; un fichier inattendu ou modifié manuellement bloque leur suppression.
 Le mode `--check-links` vérifie les liens locaux sans modifier les documents.
+L'option `--review-assets` joint uniquement les PDF/PNG/CSV scientifiques
+explicitement nommés sous `result/`; ces pièces sont hashées et renouvelées
+avec le handout, sans import automatique des anciennes sorties.
 
 Pour ChatGPT, utiliser les [instructions du Projet](../../project-chatgpt/PROJECT_INSTRUCTIONS.md).
 Les hypothèses et rapports utiles sont accessibles depuis l'index; ne pas

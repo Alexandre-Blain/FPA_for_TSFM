@@ -17,7 +17,7 @@ for the active Chronos research workflow.
 From the repository root, using the development environment:
 
 ```powershell
-uv pip install --python .venv/Scripts/python.exe pytest
+uv sync --group dev
 .venv/Scripts/python.exe -m pytest
 .venv/Scripts/python.exe -m pytest tests/chronos_fpa/unit
 .venv/Scripts/python.exe -m pytest tests/chronos_fpa/regression
@@ -55,6 +55,14 @@ scalar shift magnitudes or forking scores; nearly equal but distinct peaks remai
 uniquely timed.
 
 ## API Contracts
+
+The local six-series pilot adds context-only selection/future-invariance,
+invalid-IQR rejection, deterministic representative/diversity strata, ten-cell
+planning, zero-event uncertainty and independently known reuse-covariance tests.
+Integration tests interleave two windows with the same tokens/seed, interrupt
+and resume one, reject foreign objects, exercise cap8/84% residual and validate
+complete-cell estimands/checksums without any pretrained model. Handout tests
+also cover explicit scientific attachments and exclude automatic archives.
 
 Prompt 2 adds offline q50 coverage/residual, full-prefix cache parity/isolation,
 fixed22 and fixed-window outcome tests using a tiny randomly initialized T5.

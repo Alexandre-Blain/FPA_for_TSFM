@@ -1,8 +1,9 @@
-# Tache courante - pilote local (EN PAUSE)
+# Tache courante - pilote local (TERMINE, REVUE ATTENDUE)
 
-Le chercheur a autorise le perimetre ci-dessous, puis demande une pause pour
-simplifier la documentation. Reprendre uniquement sur instruction du chercheur,
-au point indique dans [le handoff](../docs/research/FPA_HANDOFF.md).
+Le pilote repris apres maintenance est termine : six series et dix cellules.
+STOP pour revue scientifique; aucune campagne supplementaire n'est autorisee.
+Le texte ci-dessous conserve l'autorisation de cette iteration terminee.
+Voir [le handoff](../docs/research/FPA_HANDOFF.md).
 Les chemins documentaires du texte sont adaptes a la nouvelle organisation;
 la copie originale est conservee dans le checkpoint local.
 

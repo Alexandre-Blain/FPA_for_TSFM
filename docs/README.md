@@ -15,12 +15,14 @@ courant. Les rapports et archives ne constituent pas des ordres d'exécution.
 | Quelles décisions ont été validées ? | [Journal chronologique](research/FPA_DECISIONS.md) |
 | Comment travailler entre chercheur, Codex et ChatGPT ? | [Workflow](research/README_WORKFLOW_V2.md) |
 
-Le pilote multi-séries est **en pause à la demande du chercheur**.
+Le pilote multi-séries est **terminé; revue scientifique attendue**.
 Son autorisation détaillée est conservée dans
 [la tâche courante](../codex-prompts/CURRENT_TASK.md).
 
 ## Documentation de référence — docs/reference/
 
+- [Rapport courant : pilote multi-séries et calibration](reference/LOCAL_PILOT_REPORT.md),
+  [sélection, tests et preuves](reference/LOCAL_PILOT_EVIDENCE.json).
 - [Hypothèses et explications concurrentes](reference/FPA_HYPOTHESES.md),
   [sources scientifiques](reference/FPA_REFERENCES.md).
 - [Définitions des métriques](reference/CHRONOS_METRICS.md),
@@ -28,6 +30,7 @@ Son autorisation détaillée est conservée dans
   [contrats techniques](reference/FPA_TECHNICAL_GATES.md).
 - [Benchmark Prompt 2](reference/BENCHMARK_REPORT.md),
   [preuves originales](reference/FPA_PROMPT02_EVIDENCE.json),
+  [addendum de sérialisation N20](reference/FPA_PROMPT02_EVIDENCE_ADDENDUM.json),
   [tests de ce benchmark](reference/FPA_PROMPT02_TESTS.txt).
 - Rapports scientifiques : [Phase 1](reference/CHRONOS_PHASE1.md),
   [Phase 2 terminée](reference/CHRONOS_PHASE2.md),

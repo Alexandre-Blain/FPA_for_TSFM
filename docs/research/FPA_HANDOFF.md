@@ -1,59 +1,75 @@
-# Handoff — pilote local en pause
+# Handoff — pilote terminé, revue scientifique attendue
 
-**20 novembre 2026.** Branche `main`, HEAD de départ :
-`b9c6a011e14a93235ed90cf88a11a25cead7264a`. Codex n'a effectué aucune écriture
-Git. La modification personnelle de `.gitignore` est préservée.
+**20 novembre 2026.** Branche `main`; départ `b9c6a011e14a93235ed90cf88a11a25cead7264a`.
+Un commit extérieur `62271b156db9d56ffbbd673d24b4d111ccd75f7e` (`cleaning doc`)
+est intervenu avant le gel : **HEAD de collecte et actuel avant le prochain
+commit du chercheur**. Les manifestes l'enregistrent. Aucune écriture Git par
+Codex. `.gitignore` personnel préservé; index identique à celui du gel.
 
-Le chercheur a autorisé [le pilote local](../../codex-prompts/CURRENT_TASK.md) :
-six séries originales, jusqu'à dix cellules fenêtre-graine au total
-(six primaires + quatre réplications sur deux fenêtres). Il a ensuite demandé
-une **pause pour simplifier la documentation**. Aucune inférence nouvelle n'a
-été lancée; aucune sélection n'est figée. La tâche reste à reprendre.
+Lire le [rapport courant](../reference/LOCAL_PILOT_REPORT.md), ses
+[preuves](../reference/LOCAL_PILOT_EVIDENCE.json), puis le
+[statut](FPA_STATUS.md). Six sources actives dans `docs/research/`, références
+et rapports dans `docs/reference/`, plans remplacés dans `docs/archive/`.
 
-## Point de reprise
+## Exécution et artefacts
 
-Checkpoint local : `result/local_pilot_20261120T184035Z/RESUME.json`.
-Il conserve l'autorisation originale, les hashes des six fichiers scientifiques
-en cours et les étapes restantes.
+Pilote autorisé terminé : **6 séries originales, 10 cellules, 704 ensembles,
+17280 trajets**, dont 10200 primaires et 7080 de calibration; 100 positions b0..9.
+Deux fenêtres préchoisies ont trois graines, sans nouvelles séries induites.
+H32/C512/N20, résidu, null indépendant, P0..15 et overlaps conservés.
+Inputs figés avant modèle; les deux premières fenêtres ont passé le gate avant
+les suivantes. Zéro tentative échouée; reprise des dix cellules sans modèle.
 
-Déjà fait : stockage isolé par fenêtre/graine, contrôle des objets étrangers,
-tests d'exécution entrelacée/interruption/reprise, cas cap8 avec résidu 84 %,
-supervision Windows sans ancien plafond arbitraire. Le module de sélection
-context-only et sa configuration sont rédigés mais non validés/figés.
-**15 tests ciblés passés en 74.49 s**; aucune nouvelle suite complète.
+Dossier : `result/local_pilot_20261120T184035Z/`.
 
-## Prochaine étape à la reprise
+- `frozen.json`, `selection_manifest.json`, `selected_contexts.npz`, `cell_plan.json` :
+  population, rejets, six contextes et dix cellules.
+- `source_at_collection/`, `source_manifest.json`, `environment.json`, `model_cache.json` :
+  32 fichiers de collecte archivés, environnement et poids épinglés/hashés.
+- `first_two_gate.json`, `cells/<id>/complete.json`, `pilot_complete.json` : objets
+  locaux finalisés avec hashes, pas des commits Git.
+- `analysis/summary.json`, CSV et `analysis/PILOT_FIGURES.pdf` : 23 pages de figures.
+- `attempts/` : ressources Windows; `resume_verification.json` et logs pytest.
+  L'ancien `RESUME.json` conserve le point de pause historique, désormais dépassé.
 
-Terminer et tester la sélection/QC, puis figer les six fenêtres **avant modèle**.
-Ne pas refaire l'audit général ni reprendre depuis zéro. Ensuite : addendum
-de provenance N20, driver multi-fenêtres, suite complète, deux cellules validées
-avant les quatre autres et les quatre réplications autorisées, calibration et
-analyse. Les détails opérationnels et formules sont dans le checkpoint.
+**264 tests hors ligne passent en 108.24 s; 2924 contrôles réels de parité passent.**
+Arbres modèle : 1165.002 s (19 min 25 s), pic engagé 1.259 Gio; RAM système libre
+minimale 584.8 Mo. Aucun téléchargement, installation, second modèle ou Stage A.
+48 chemins choisis avant leurs issues capturent toutes couches/têtes/32 queries;
+tous les autres tokens/valeurs et prérequis de replay sont conservés.
 
-Le champ `target_N20` des preuves historiques a été écrasé par une variable
-de parsing de liens lors de leur rédaction; le résumé N20 brut est intact.
-L'original figé est conservé et le driver intermédiaire N20 n'a pas été
-archivé indépendamment : ces limites restent à documenter explicitement.
+## Conclusions utiles et limites
 
-## Documents et Git
+Isolation/persistance/mesures validées sur ce panel. 60/186 distances W1 sont
+≤ leur null indépendant. T000049 a un IQR pathologique face au changement de
+niveau; grand W1/IQR et grand null se suivent. Les rangs N20 ne sont pas stables
+sur les graines calibrées. Écarts d'issues jusqu'à 0.35, compatibles avec les
+bornes conservatrices calculées; aucune preuve d'égalité ou absence de biais.
+Covariance P9/P10 et variance P10/P11 explicitement analysées.
 
-L'[index unique](../README.md) donne les six sources actives, références et
-archives. Les définitions restent dans le protocole; les résultats historiques
-dans leurs rapports. Le handout exclut les archives par défaut.
+Séries distinctes mais domaines dépendants; deux séries par dataset, diversité
+sélectionnée, chevauchement d'entraînement possible. Information au-delà de
+J/p/entropie, motif et causalité interne restent non vérifiés.
+Le [correctif historique](../reference/FPA_PROMPT02_EVIDENCE_ADDENDUM.json)
+préserve l'original; le lanceur N20 intermédiaire exact reste non archivé.
 
-Pour le chercheur uniquement : examiner `git status --short` et `git diff`,
-puis sélectionner les déplacements documentaires et le générateur/tests.
-Ne pas stage les fichiers scientifiques du pilote en pause sans leur revue.
-Commandes documentaires suggérées, jamais exécutées par Codex :
+## Remise et arrêt
 
-```powershell
-git add -- README.md AGENTS.md docs codex-prompts project-chatgpt
-git add -u -- README_CHRONOS.md CHRONOS_FPA_FUTURE_IDEAS.md FPA_CET1_RESEARCH_HANDOFF.md
-git add -- scripts/maintenance/prepare_chatgpt_handout.py tests/chronos_fpa/integration/test_chatgpt_handout.py
-git add -- configs/chronos_benchmark_scan/README.md configs/chronos_controlled_pilot/README.md configs/chronos_targeted_refinement/README.md
-git diff --cached
-```
+Changements restants unstaged; maintenance et préparation partiellement
+intégrées par le commit extérieur.
+`git status --short` exact et tous chemins/reasons/hashes sont dans les preuves;
+commandes `git add` sélectives proposées dans le rapport, pour le chercheur seul.
+Ne pas stage données, résultats, checkpoints, `.venv`, source ZIP ou handout.
+`.gitignore` n'a aucun nouveau diff. Message proposé :
+`feat: validate six-series FPA pilot and Monte Carlo estimators`.
+Le SHA d'un prochain commit reste inconnu tant que le chercheur ne l'a pas créé.
 
-Message proposé : `docs: simplify active research documentation and archive provenance`.
-Le SHA d'un prochain commit n'existe pas encore. Les données, résultats,
-checkpoints, source ZIP et handouts générés restent hors staging.
+Handout régénéré avec PDF/CSV nommés par `--review-assets`; archives exclues.
+ZIP courant : `docs/chatgpt-handout.zip`; entrée lisible :
+`docs/chatgpt-handout/CHATGPT_HANDOUT.md`.
+
+**Une prochaine recommandation : revue scientifique 45–60 min, zéro modèle.**
+Rejeter un lancement si cible de précision absente, conclusion seulement portée
+par l'IQR de T000049, ou prétention de rang stable contredite par les graines.
+Le plan proposé de 24 nouvelles séries/32 cellules (~2 h 04 avec marge) exige
+une autorisation séparée. Aucun calcul supplémentaire ne suit ce handoff.

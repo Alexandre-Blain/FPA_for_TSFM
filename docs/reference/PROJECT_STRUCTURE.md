@@ -25,6 +25,7 @@ scripts/
   maintenance/          Research audit and disposable ChatGPT handout refresh.
 
 configs/
+  chronos_local_pilot/     Frozen six-series / ten-cell pilot configuration.
   chronos_microbenchmark/  Dated opt-in single-context Prompt 2 configuration.
   chronos_benchmark_scan/
   chronos_targeted_refinement/
@@ -81,6 +82,15 @@ permission to repeat inference. The [current handoff](../research/FPA_HANDOFF.md
 is mirrored into ignored `docs/chatgpt-handout/` at each completed prompt.
 
 ## Import Rule
+
+The local multi-series pilot uses `scripts/runs/run_chronos_local_pilot.py`:
+`data/chronos_pilot_selection.py` freezes context-only selection,
+`pipeline/chronos_pilot_validation.py` checks immutable complete cells, and
+`metrics/chronos_pilot_uncertainty.py` calculates conditional Monte Carlo
+bounds and reuse covariance. Analysis is separate in
+`scripts/viz/analyze_chronos_local_pilot.py`; it loads no forecasting model.
+The current authorization and completion state are in the
+[handoff](../research/FPA_HANDOFF.md), not inferred from launcher availability.
 
 Chronos scripts add `code/chronos_fpa` then import `bootstrap`, which configures
 the functional module folders. No `__init__.py`, editable install or research

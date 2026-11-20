@@ -156,3 +156,34 @@ def test_full_collection_with_cap_eight_and_large_residual(tmp_path):
     for manifest, arrays in residuals:
         b = manifest["identity"]["position"]
         assert set(arrays["tokens"][:, b]).issubset(set(report["forks"][b]["residual_ids"]))
+
+
+def test_pilot_complete_reader_validates_estimands_and_rejects_tampering(tmp_path):
+    import hashlib
+    import json
+    from chronos_pilot_validation import read_complete_cell, validate_cell
+    from run_chronos_microbenchmark import jsonable, write_json
+    context = np.arange(512, dtype=np.float32)
+    scope = {"dataset_id": "fake", "series_id": "A", "forecast_origin": 512,
+             "context_sha256": hashlib.sha256(context.tobytes()).hexdigest(), "model_revision": "fake",
+             "grid_revision": "fake", "policy": "q50_mass90_cap8_greedy_first_v1", "sampling_seed": 99}
+    store = isolated_window_store(tmp_path, scope)
+    directory = store.directory.parent
+    result = collect_window(FixedLawEngine(), NumericTokenizer(), torch.tensor([1.]), context, store, scope, seed=99)
+    write_json(directory / "results.json", result)
+    validation = validate_cell(directory, scope, jsonable(result))
+    assert validation["ensembles"] == 48 and validation["paths"] == 1280
+    marker = {"status": "complete", "scope": scope,
+              "files": {"results.json": hashlib.sha256((directory / "results.json").read_bytes()).hexdigest()},
+              "validation": {k: v for k, v in validation.items() if k not in {"records", "lookup", "groups_by_position"}}}
+    write_json(directory / "complete.json", marker)
+    before = {p: (p.stat().st_size, p.stat().st_mtime_ns) for p in directory.rglob("*") if p.is_file()}
+    read_complete_cell(directory, scope)
+    assert before == {p: (p.stat().st_size, p.stat().st_mtime_ns) for p in before}
+    bad = jsonable(result)
+    bad["outcome_distributions"]["0"]["event_probability"][0][0] += .1
+    with pytest.raises(AssertionError):
+        validate_cell(directory, scope, bad)
+    (directory / "results.json").write_text(json.dumps(bad), encoding="utf-8")
+    with pytest.raises(ValueError, match="checksum"):
+        read_complete_cell(directory, scope)

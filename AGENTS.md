@@ -41,7 +41,7 @@ Start with the single [documentation index](docs/README.md) and the
 docs/research/; methods and useful reports in docs/reference/; completed prompts,
 superseded plans and old audits in docs/archive/. Archives are provenance,
 never current execution instructions. The [current task](codex-prompts/CURRENT_TASK.md)
-records the authorized pilot, presently paused by the researcher for maintenance.
+records the bounded pilot and its scientific-review stopping gate.
 
 ## Before work
 

@@ -16,7 +16,7 @@ from ensemble_store import publish_fork_manifest, task_id
 
 def collect_window(engine, tokenizer, scale, context, store, provenance, *,
                    samples_per_group=20, direct_samples=60, seed=20261120,
-                   batch_size=8, overlap_positions=(0, 9, 10)):
+                   batch_size=8, overlap_positions=(0, 9, 10), progress=None):
     """Frozen C512/H32 dense positions; caller explicitly labels micro sample N."""
     context = np.asarray(context, dtype=np.float32).reshape(-1)
     if len(context) != 512 or not np.isfinite(context).all():
@@ -37,6 +37,9 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
     timings, fork_rows, distances, outcomes, p10 = [], [], [], {}, None
 
     def ensemble(role, prefix, count, *, position, token=None, q=None, candidates=None):
+        if progress is not None:
+            progress({"state": "before_ensemble", "role": role, "position": position, "token": token,
+                      **accounting})
         identity = {**shared, "role": role, "position": position, "token": token,
                     "prefix": list(prefix), "sample_count": count}
         previous = store.get(identity)
@@ -67,6 +70,9 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
         store.put(identity, arrays, metadata)
         accounting["new_ensembles"] += 1
         accounting["new_paths"] += count
+        if progress is not None:
+            progress({"state": "ensemble_finalized", "role": role, "position": position, "token": token,
+                      **accounting})
         timings.append({"role": role, "position": position, "token": token,
                         "reused": False, "generation_seconds": elapsed, "paths": count})
         return arrays
@@ -132,4 +138,4 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
             "timings": timings, "greedy_tokens": greedy_tokens.numpy(), "greedy_values": greedy_values,
             "context_iqr": scale_iqr, "samples_per_group": samples_per_group,
             "direct_samples": direct_samples, "sampling_policy": POLICY_VERSION,
-            "interpretation": "micro validation only; conditional MC errors are not population CIs or formal CPD"}
+            "interpretation": "exploratory conditional MC errors are not population CIs or formal CPD"}
