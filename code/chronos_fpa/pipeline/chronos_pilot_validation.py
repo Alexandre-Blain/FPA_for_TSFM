@@ -11,7 +11,7 @@ from chronos_outcomes import compare_fixed22_and_full, weighted_events, window_o
 from ensemble_store import read_fork_snapshot, read_snapshot
 
 
-def validate_cell(directory, scope, results):
+def validate_cell(directory, scope, results, *, direct_samples=60):
     directory = Path(directory)
     snapshot = read_snapshot(directory / "ensembles", expected_scope=scope)
     parents = read_fork_snapshot(directory / "forks", expected_scope=scope)
@@ -29,7 +29,7 @@ def validate_cell(directory, scope, results):
     groups_by_position = {}
     for manifest, arrays in records:
         identity = manifest["identity"]
-        count = 60 if identity["role"] in {"direct_cpd", "overlap_direct"} else 20
+        count = direct_samples if identity["role"] in {"direct_cpd", "overlap_direct"} else 20
         if arrays["tokens"].shape != (count, 32) or identity["sample_count"] != count:
             raise ValueError("H32/N20/N60 shape mismatch")
         context = arrays["context"]
@@ -109,7 +109,7 @@ def validate_cell(directory, scope, results):
             "records": records, "lookup": lookup, "groups_by_position": groups_by_position}
 
 
-def read_complete_cell(directory, scope):
+def read_complete_cell(directory, scope, *, direct_samples=60):
     directory = Path(directory)
     marker = json.loads((directory / "complete.json").read_text(encoding="utf-8"))
     if marker["scope"] != scope or marker["status"] != "complete":
@@ -119,7 +119,7 @@ def read_complete_cell(directory, scope):
         if not path.is_relative_to(directory.resolve()) or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
             raise ValueError("Completed cell file checksum mismatch")
     results = json.loads((directory / "results.json").read_text(encoding="utf-8"))
-    validation = validate_cell(directory, scope, results)
+    validation = validate_cell(directory, scope, results, direct_samples=direct_samples)
     for key in ("snapshot_id", "fork_snapshot_id", "manifest_sha256", "fork_manifest_sha256", "ensembles", "paths"):
         if marker["validation"][key] != validation[key]:
             raise ValueError(f"Complete cell changed: {key}")

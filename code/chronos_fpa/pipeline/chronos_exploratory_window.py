@@ -16,7 +16,8 @@ from ensemble_store import publish_fork_manifest, task_id
 
 def collect_window(engine, tokenizer, scale, context, store, provenance, *,
                    samples_per_group=20, direct_samples=60, seed=20261120,
-                   batch_size=8, overlap_positions=(0, 9, 10), progress=None):
+                   batch_size=8, overlap_positions=(0, 9, 10), progress=None,
+                   direct_block_mode=False, rng_namespace=None):
     """Frozen C512/H32 dense positions; caller explicitly labels micro sample N."""
     context = np.asarray(context, dtype=np.float32).reshape(-1)
     if len(context) != 512 or not np.isfinite(context).all():
@@ -24,7 +25,8 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
     scale_iqr, valid, _ = context_iqr_scale(context)
     if not valid:
         raise ValueError("Invalid context IQR; no implicit fallback")
-    if samples_per_group <= 0 or direct_samples != 60 or batch_size <= 0:
+    expected_direct = 20 if direct_block_mode else 60
+    if samples_per_group <= 0 or direct_samples != expected_direct or batch_size <= 0:
         raise ValueError("Invalid group size, direct N60 or batch size")
     greedy_tokens = engine.greedy(32)
     greedy_values = decode_token_samples_to_values(tokenizer, greedy_tokens[None], scale)[0].numpy()
@@ -36,7 +38,7 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
     accounting = {"new_ensembles": 0, "reused_ensembles": 0, "new_paths": 0, "reused_paths": 0}
     timings, fork_rows, distances, outcomes, p10 = [], [], [], {}, None
 
-    def ensemble(role, prefix, count, *, position, token=None, q=None, candidates=None):
+    def ensemble(role, prefix, count, *, position, token=None, q=None, candidates=None, stream_label=None):
         if progress is not None:
             progress({"state": "before_ensemble", "role": role, "position": position, "token": token,
                       **accounting})
@@ -50,7 +52,9 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
             timings.append({"role": role, "position": position, "token": token,
                             "reused": True, "generation_seconds": 0., "paths": count})
             return arrays
-        generator, rng = _ensemble_generator(engine.model, seed, task_id(shared), task_id(identity))
+        generator, rng = _ensemble_generator(engine.model, seed,
+            rng_namespace if rng_namespace is not None else task_id(shared),
+            stream_label if rng_namespace is not None else task_id(identity))
         started = time.perf_counter()
         if role == "residual":
             tokens = engine.sample_residual(prefix, q, candidates, 32, count, generator)
@@ -85,17 +89,19 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
         greedy = int(greedy_tokens[b])
         selected = select_candidates(q, greedy)
         groups = {}
-        for token in selected.token_ids:
+        for slot, token in enumerate(selected.token_ids):
             groups[token] = ensemble("reference" if token == greedy else "alternative",
-                                     prefix + [token], samples_per_group, position=b, token=token)
+                                     prefix + [token], samples_per_group, position=b, token=token,
+                                     stream_label=f"dense_b{b:02d}_slot{slot}")
         reference = groups[greedy]
-        null = ensemble("null", prefix + [greedy], samples_per_group, position=b, token=greedy)
+        null = ensemble("null", prefix + [greedy], samples_per_group, position=b, token=greedy,
+                        stream_label=f"dense_b{b:02d}_null")
         event_ensembles = [window_outcomes(groups[t]["values"], greedy_values, scale_iqr)["events"]
                            for t in selected.token_ids]
         weights = list(selected.weights)
         if selected.residual_mass > 0:
             residual = ensemble("residual", prefix, samples_per_group, position=b,
-                                q=q, candidates=selected)
+                                q=q, candidates=selected, stream_label=f"dense_b{b:02d}_residual")
             event_ensembles.append(window_outcomes(residual["values"], greedy_values, scale_iqr)["events"])
             weights.append(selected.residual_mass)
         outcomes[str(b)] = {**weighted_events(event_ensembles, weights), "method": "q50_weighted_conditional_mixture"}
@@ -125,12 +131,14 @@ def collect_window(engine, tokenizer, scale, context, store, provenance, *,
             p10 = window_outcomes(reference["values"], greedy_values, scale_iqr)["events"]
     outcomes["10"] = {**weighted_events([p10], [1.]), "method": "reuse_b9_forced_greedy"}
     for t in range(11, 16):
-        values = ensemble("direct_cpd", greedy_tokens[:t].tolist(), direct_samples, position=t)["values"]
+        values = ensemble("direct_cpd", greedy_tokens[:t].tolist(), direct_samples, position=t,
+                          stream_label=f"direct_t{t:02d}")["values"]
         events = window_outcomes(values, greedy_values, scale_iqr)["events"]
-        outcomes[str(t)] = {**weighted_events([events], [1.]), "method": "direct_N60"}
+        outcomes[str(t)] = {**weighted_events([events], [1.]), "method": "direct_N20_block" if direct_block_mode else "direct_N60"}
     overlap = {}
     for t in overlap_positions:
-        values = ensemble("overlap_direct", greedy_tokens[:t].tolist(), direct_samples, position=t)["values"]
+        values = ensemble("overlap_direct", greedy_tokens[:t].tolist(), direct_samples, position=t,
+                          stream_label=f"overlap_t{t:02d}")["values"]
         estimate = weighted_events([window_outcomes(values, greedy_values, scale_iqr)["events"]], [1.])
         overlap[str(t)] = {**estimate, "difference_from_primary": estimate["event_probability"] - outcomes[str(t)]["event_probability"]}
     return {"accounting": accounting, "forks": fork_rows, "distances": distances,

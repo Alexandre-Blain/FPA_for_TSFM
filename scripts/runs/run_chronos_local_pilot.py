@@ -198,7 +198,7 @@ def capture_paths(output, directory, cell, engine, tokenizer, scale, results, va
                "all_other_paths": "full tokens/values and replay metadata; hidden/attention/logit arrays omitted"})
 
 
-def worker(output, index):
+def worker(output, index, *, extended_block=False):
     import numpy as np
     import torch
     from chronos_decoding import decode_token_samples_to_values
@@ -210,10 +210,11 @@ def worker(output, index):
     panel = verify_freeze(output)
     config = panel["config"]
     cell = load(output / "cell_plan.json")[index]
+    direct_n = 20 if extended_block else 60
     store = isolated_window_store(output, cell["scope"])
     directory = store.directory.parent
     if (directory / "complete.json").exists():
-        read_complete_cell(directory, cell["scope"])
+        read_complete_cell(directory, cell["scope"], direct_samples=direct_n)
         print("Completed cell reused without loading a model", flush=True)
         return
     with np.load(output / "selected_contexts.npz", allow_pickle=False) as archive:
@@ -260,20 +261,24 @@ def worker(output, index):
             direct = model(input_ids=ids.to(device), attention_mask=mask.to(device),
                            decoder_input_ids=torch.tensor([[engine.start_id] + prefix], device=device), use_cache=False).logits[:, -1]
             parity.append(compare_policy(engine.prefix_state(prefix).logits, direct, model_config, f"independent_encoder_alternative_b{b}"))
-    print(f"Cell {index + 1}/10 {cell['scope']['dataset_id']}/{cell['scope']['series_id']} seed={cell['scope']['sampling_seed']}; parity passed; collecting", flush=True)
+    print(f"Cell {index + 1}/{len(load(output / 'cell_plan.json'))} {cell['scope']['dataset_id']}/{cell['scope']['series_id']} seed={cell['scope']['sampling_seed']}; parity passed; collecting", flush=True)
     provenance = {**cell["scope"], "window_id": cell["window_id"], "experiment": output.name,
                   "model_id": config["model_id"], "source_digest": load(output / "source_manifest.json")["source_digest"],
                   "environment_sha256": digest(output / "environment.json"),
                   "git_head": load(output / "environment.json")["git_head"], "device": device,
                   "dtype": "float32", "attention_backend": "eager", "cpu_threads": threads,
                   "tokenizer_scale": float(scale.reshape(-1)[0])}
+    if extended_block:
+        provenance["rng_namespace"] = cell["rng_namespace"]
     def progress(row):
         write_json(output / "progress.json", {"utc": utc(), "cell_index": index, "cell_id": cell["cell_id"], **row})
         if (output / "STOP_REQUESTED").exists():
             raise InterruptedError("Researcher STOP_REQUESTED: durable ensembles preserved")
     begin = time.perf_counter()
     results = collect_window(engine, tokenizer, scale, context, store, provenance, seed=cell["scope"]["sampling_seed"],
-                             samples_per_group=20, direct_samples=60, batch_size=8, progress=progress)
+                             samples_per_group=20, direct_samples=direct_n, batch_size=8, progress=progress,
+                             direct_block_mode=extended_block,
+                             rng_namespace=cell["rng_namespace"] if extended_block else None)
     collection_seconds = time.perf_counter() - begin
     write_json(directory / "results.json", results)
     # Exact raw local logits preserve p_sel and q50 reconstruction at every fork.
@@ -282,7 +287,7 @@ def worker(output, index):
         np.savez_compressed(stream, logits=fork_logits)
         stream.flush()
         os.fsync(stream.fileno())
-    validation = validate_cell(directory, cell["scope"], jsonable(results))
+    validation = validate_cell(directory, cell["scope"], jsonable(results), direct_samples=direct_n)
     for manifest, arrays in validation["records"]:
         decoded = decode_token_samples_to_values(tokenizer, torch.from_numpy(arrays["tokens"]), scale).numpy()
         np.testing.assert_array_equal(arrays["values"], decoded)
@@ -312,11 +317,11 @@ def worker(output, index):
     for path in (directory / "captures").rglob("*") if (directory / "captures").exists() else []:
         if path.is_file():
             files.append(path.relative_to(directory).as_posix())
-    marker = {"schema": "chronos_pilot_complete_cell_v1", "status": "complete", "completed_utc": utc(),
+    marker = {"schema": "chronos_extended_block_complete_v1" if extended_block else "chronos_pilot_complete_cell_v1", "status": "complete", "completed_utc": utc(),
               "scope": cell["scope"], "primary": cell["primary"], "files": {n: digest(directory / n) for n in files},
               "validation": {k: v for k, v in validation.items() if k not in {"records", "lookup", "groups_by_position"}}}
     write_json(directory / "complete.json", marker)
-    read_complete_cell(directory, cell["scope"])
+    read_complete_cell(directory, cell["scope"], direct_samples=direct_n)
     print(f"Cell {index + 1} validated: {validation['ensembles']} ensembles / {validation['paths']} paths", flush=True)
 
 

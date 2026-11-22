@@ -45,7 +45,7 @@ def collect_documents(root: Path) -> list[str]:
     changed = git(root, "diff", "HEAD", "--name-only", "--diff-filter=ACMRT", "-z").split("\0")
     changed += git(root, "ls-files", "--others", "--exclude-standard", "-z").split("\0")
     priority = {name: i for i, name in enumerate((
-        "docs/research/FPA_HANDOFF.md", "docs/reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md",
+        "docs/research/FPA_HANDOFF.md", "docs/reference/FPA_EXTENDED_BATCH_REPORT.md",
         "docs/research/FPA_STATUS.md", "docs/research/FPA_DECISIONS.md",
         "docs/research/FPA_NORTH_STAR.md", "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
     ))}

@@ -132,9 +132,32 @@ sortie historique ou opération Git d'écriture; aucune campagne élargie.**
 Les anciens plafonds Prompt 2 ne sont pas hérités. Arrêt après analyse et
 recommandation pour revue ChatGPT–chercheur.
 
-La [tâche courante](../../codex-prompts/CURRENT_TASK.md) conserve cette demande;
-la demande du pilote terminé reste dans Git et dans son `AUTHORIZED_REQUEST.txt`
-local immuable. La stratégie à deux niveaux du
+La demande originale d'analyse reste dans Git et dans
+`result/local_pilot_20261120T184035Z/offline_analysis_20261122/AUTHORIZED_REQUEST.txt`;
+la demande du pilote terminé reste dans son `AUTHORIZED_REQUEST.txt` local immuable.
+La stratégie à deux niveaux du
 [nouveau rapport](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) est une
 **recommandation Codex, pas une décision approuvée**. Aucune modification de
 l'échantillonnage N20 approuvé n'est enregistrée ici.
+
+## 2026-11-22 - premier lot étendu explicitement autorisé
+
+Le chercheur fournit «Direct Baseline Validation and First Extended Campaign
+Batch». Après validation offline directe des baselines et passage du gate de
+justesse, il autorise **au plus huit nouvelles séries originales :4 M4,2 ERCOT,
+2 devises**, une fenêtre prospective par série, exclusions historiques élargies.
+Pour ce lot seulement : **N60 dense sous forme de trois blocs N20 indépendants**;
+les directs P11..15 et overlaps sont eux aussi trois blocs N20, total N60.
+Le protocole et les métadonnées du pilote N20 historique restent inchangés.
+
+Sélection sur le premier bloc uniquement, au plus deux alternatives/fenêtre;
+un contraste aléatoire distinct sur le holdout N40. Les deux alternatives
+sélectionnées peuvent recevoir chacune un **nouveau N60 indépendant**, avec
+référence/null partagés explicitement si même position. Aucun ajustement de N
+après résultat défavorable. Gate après les deux premières fenêtres complètes;
+préservation des trajectoires, captures bornées et reprise durable obligatoires.
+
+Autorisation et limites détaillées : [tâche courante](../../codex-prompts/CURRENT_TASK.md),
+copie originale dans `result/extended_batch_20261122T115422Z/AUTHORIZED_REQUEST.txt`.
+**STOP après ce lot, ses validations et son analyse.** Aucune seconde campagne,
+installation, téléchargement, modification historique ou opération Git d'écriture.

@@ -1,62 +1,49 @@
 # État du projet — 22 novembre 2026
 
-Branche `main`; HEAD de cette analyse, avant tout nouveau commit du chercheur :
-`ad64422b973aa77a33e99827ced9bdae903b15cb`. Arbre propre au départ; modifications
-courantes non stagées. Aucun Git d'écriture par Codex. Index et `.gitignore`
-préservés. Le HEAD de **collecte** du pilote reste `62271b156db9d56ffbbd673d24b4d111ccd75f7e`.
+**Premier lot étendu terminé; STOP pour revue ChatGPT–chercheur.**
+Lire le **[rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md)** pour
+les conclusions, incertitudes, coûts et preuves; le [handoff](FPA_HANDOFF.md)
+pour reprendre la revue. Aucune seconde collecte autorisée.
 
-## Travail réellement exécuté
+Branche `main`, HEAD pré-commit et de collecte
+`ea3d78a10280e83e65a2bd7474af3eaf8ee1a905`; arbre propre au départ.
+Modifications finales non stagées/non commitées; aucun Git d'écriture par Codex.
+Les sources modifiées exécutées sont archivées et hashées avant collecte.
 
-| Étape | Faits observés | Source |
+## Expériences réellement terminées
+
+| Étape | Périmètre exécuté | Preuve scientifique |
 | --- | --- | --- |
-| Phase 2 historique | 7 groupes, 1400 trajets, 3 séries, C512/H64/N50 | [Phase 2](../reference/CHRONOS_PHASE2.md) |
-| Phase 3 Deliverable A | Contrôles offline; Stage A non exécutée | [Phase 3](../reference/CHRONOS_PHASE3_DESIGN.md) |
-| Prompt 2 | Un contexte M4/T000001, N2/N20, 2060 trajets +78 emplacements de timing à graines réutilisées | [Benchmark](../reference/BENCHMARK_REPORT.md) |
-| Pilote multi-séries terminé | 6 séries, 10 cellules, 704 ensembles, 17 280 trajets; 48 chemins capturés | [Collecte et preuves](../reference/LOCAL_PILOT_REPORT.md) |
-| Analyse scientifique hors modèle terminée | Reconstruction brute, N20/30/40/60, propagation, supports W1/ED, CPD continue/compensation et variance corrigée | **[Rapport courant](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md)** |
+| Phase 2 historique | 3 séries, 7 groupes, 1 400 trajectoires | [Rapport original](../reference/CHRONOS_PHASE2.md) |
+| Phase 3 Deliverable A | Contrôles offline; Stage A modèle non exécutée | [Rapport original](../reference/CHRONOS_PHASE3_DESIGN.md) |
+| Prompt 2 | M4/T000001, 2 060 trajectoires et timing distinct | [Benchmark](../reference/BENCHMARK_REPORT.md) |
+| Pilote multi-séries | 6 séries, 10 cellules, 704 ensembles, 17 280 trajectoires | [Collecte](../reference/LOCAL_PILOT_REPORT.md) |
+| Analyse précédente | N20/30/40/60, supports, propagation et CPD; zéro nouveau tirage | [Analyse offline](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) |
+| Stage A courant | Comparaisons directes des deux baselines sur données du pilote; gate passé | [Rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md) |
+| Premier lot étendu | 8 nouvelles identités, 24 blocs denses N20, 44 ensembles frais N60; 34 980 trajectoires au total | [Rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md) |
 
-Analyse autorisée du 22 novembre : **zéro inférence, téléchargement ou installation**.
-Toutes les identités et empreintes des cellules complètes sont vérifiées avant pooling;
-704 flux RNG et graines dérivées distincts. Les sorties nouvelles sont dans
-`result/local_pilot_20261120T184035Z/offline_analysis_20261122/`;
-la collecte et son ancien dossier `analysis/` restent inchangés.
+## État vérifié
 
-**272 tests offline passent en107.67 s**, un avertissement de retry Windows.
-Huit nouveaux tests mathématiques; contrôles documentaires/handout ciblés au
-handoff. Les figures et CSV courants sont joints explicitement au handout.
-Le dossier d'analyse contient plans, code hashé, contrôles de conservation et tests.
+Collecte complète dans `result/extended_batch_20261122T115422Z/`, terminée
+le22 novembre à12:57:43 UTC; analyse terminée à13:07:46 UTC. Les gates de
+justesse, des deux premières fenêtres et de reconstruction des pools passent.
+Les1 661 ensembles ont chacun une identité RNG et une graine dérivée distinctes.
+Reprise complète testée : zéro nouveau tirage et zéro lancement modèle.
 
-## Résultats actuels et limites
+**281 tests finaux passent en144.39 s**, six avertissements de retries Windows
+réussis;9 tests handout passent en4.10 s. Liens, copies de revue et conservation
+des preuves sont contrôlés dans `final_checks.json` et `preservation_after.json`.
+Les données, anciens résultats, rapports scientifiques, index Git, `.gitignore`
+et poids locaux sont préservés.
 
-- **Observé :** distances historiques reproduites à l'arrondi; 60/186 alternatives
-  ont W1 complet ≤ null. Early8/late8 :160/186 W1 alternatives croissent,
-  58/60 nulls et61/186 excès descriptifs. Les nombres préliminaires157/59/59
-  ne sont pas reproduits sous les trois coupures explicites testées.
-- **Observé :** N40/N60 réduisent le bruit; les deux N30 disjoints ont des
-  corrélations W1 de.064 T000063 et.495 SOUTHERN. Aucune réplication N60/N60
-  indépendante. N20 ne permet pas de classement fin fiable.
-- **Observé :** quatre branches sélectionnées sur graine0 passent les tests W1/ED
-  sur N40 indépendant, Holm sur12 branches. Une différence ne démontre pas une
-  importance pratique ni une information au-delà de J/p/entropie.
-- **Suggéré :** SOUTHERN b0/2229 garde une différence de forme après centrage;
-  pente et variance restent des explications. Aucun cas robuste isolant la seule
-  loi jointe à moyennes similaires sur les trois graines.
-- **Observé :** compensation ≥50 % dans92/441 contrastes binaires non nuls,
-  sans preuve de compensation systématique; biais between important,120/480
-  estimates finales corrigées négatives. Dérive CPD souvent comparable au bruit
-  entre estimateurs; aucune rupture structurelle établie.
-- **Observé :** T000049 reste pathologique sous IQR (.065); sensibilités std/range
-  explicitement séparées, sans modification du protocole. Six séries ne sont pas
-  une grande population indépendante; ERCOT/devises peuvent dépendre entre elles.
+Le rapport distingue les rejets directs de baselines, les différences brutes,
+la précision, le classement et la généralisation. La précision pratique et le
+gain incrémental au-delà de probabilité/J restent ouverts; huit identités ne
+sont pas huit sources indépendantes. Les analyses, CSV et figures courants
+sont dans `analysis/`;39 assets explicites sont joints au handout renouvelé.
 
-Les preuves originales et le [correctif historique N20](../reference/FPA_PROMPT02_EVIDENCE_ADDENDUM.json)
-restent des références distinctes; elles ne décrivent pas une nouvelle exécution.
-
-## Prochaine étape unique
-
-**STOP pour revue ChatGPT–chercheur,45–60 min, zéro modèle.** Recommandation
-non approuvée : nouvelles séries prospectives N20 dense, validation indépendante
-N60 de contrastes gelés et de témoins aléatoires. Définir importance pratique,
-précision cible, sélection et multiplicité avant toute nouvelle collecte.
-Aucune campagne, modification de N ou Stage A autorisée par ce résultat.
-Le [handoff](FPA_HANDOFF.md) fournit les pièces et la remise Git sélective.
+**Prochaine étape unique : revue scientifique45–60 min, zéro modèle.**
+Décider seuils pratiques W1/ED, hypothèses confirmatoires, diversité des sources
+et budget restant. Cette recommandation n'autorise aucune nouvelle expérience.
+Les détails et critères de réfutation restent dans le rapport, source unique
+des résultats de cette itération.

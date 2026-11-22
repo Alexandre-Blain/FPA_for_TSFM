@@ -94,6 +94,17 @@ The subsequent offline scientific review uses
 `analysis/chronos_offline_precision.py`. It reads saved complete paths only and
 writes into its own named pilot subdirectory; see the
 [current analysis report](LOCAL_PILOT_OFFLINE_ANALYSIS.md).
+
+The first authorized extended batch uses
+`scripts/runs/run_chronos_extended_batch.py` and
+`configs/chronos_extended_batch/batch_v1.json`: up to eight new source identities,
+three independent N20 blocks per law, and bounded fresh N60 validation.
+It reuses the pilot worker through an explicit block mode; legacy defaults stay
+unchanged. `data/chronos_extended_selection.py` extends prior-series exclusions
+and freezes named RNG streams. Direct-baseline and batch review scripts are
+`scripts/viz/analyze_chronos_direct_baselines.py` and
+`scripts/viz/analyze_chronos_extended_batch.py`. See the
+[batch report](FPA_EXTENDED_BATCH_REPORT.md) and current task for authorization.
 The current authorization and completion state are in the
 [handoff](../research/FPA_HANDOFF.md), not inferred from launcher availability.
 

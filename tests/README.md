@@ -56,6 +56,13 @@ uniquely timed.
 
 ## API Contracts
 
+The first extended batch adds direct distributional-baseline tests (including
+late-support AR1 indexing and equally distant but different distributions),
+future-invariant cohort selection with legacy exclusions, predeclared independent
+RNG blocks, explicit N20-direct mode and complete-block reuse. Analysis pooling
+tests distinguish pooling empirical laws from averaging distances. No pretrained
+model is used by these tests; the historical N60-direct default remains covered.
+
 The offline scientific review adds `unit/test_offline_precision.py`: fast ED-V
 parity with the protocol, separate negative ED-U, whole-path bootstrap, exact
 q50/residual-weighted scalar W1, disjoint N30 draw identities, pooling guards,
