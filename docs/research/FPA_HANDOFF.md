@@ -1,75 +1,79 @@
-# Handoff — pilote terminé, revue scientifique attendue
+# Handoff — analyse offline terminée, revue de campagne attendue
 
-**20 novembre 2026.** Branche `main`; départ `b9c6a011e14a93235ed90cf88a11a25cead7264a`.
-Un commit extérieur `62271b156db9d56ffbbd673d24b4d111ccd75f7e` (`cleaning doc`)
-est intervenu avant le gel : **HEAD de collecte et actuel avant le prochain
-commit du chercheur**. Les manifestes l'enregistrent. Aucune écriture Git par
-Codex. `.gitignore` personnel préservé; index identique à celui du gel.
+**22 novembre 2026.** Lire le **[rapport courant](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md)**,
+puis le [statut](FPA_STATUS.md). Le [rapport de collecte original](../reference/LOCAL_PILOT_REPORT.md)
+et ses [preuves](../reference/LOCAL_PILOT_EVIDENCE.json) sont conservés.
 
-Lire le [rapport courant](../reference/LOCAL_PILOT_REPORT.md), ses
-[preuves](../reference/LOCAL_PILOT_EVIDENCE.json), puis le
-[statut](FPA_STATUS.md). Six sources actives dans `docs/research/`, références
-et rapports dans `docs/reference/`, plans remplacés dans `docs/archive/`.
+Branche `main`; HEAD pré-commit de l'analyse :
+`ad64422b973aa77a33e99827ced9bdae903b15cb`, arbre initial propre.
+HEAD historique de collecte : `62271b156db9d56ffbbd673d24b4d111ccd75f7e`.
+Modifications actuelles non stagées; aucun Git d'écriture par Codex.
+Le prochain SHA dépend du commit du chercheur. Index et `.gitignore` préservés.
 
-## Exécution et artefacts
+## Exécution et pièces
 
-Pilote autorisé terminé : **6 séries originales, 10 cellules, 704 ensembles,
-17280 trajets**, dont 10200 primaires et 7080 de calibration; 100 positions b0..9.
-Deux fenêtres préchoisies ont trois graines, sans nouvelles séries induites.
-H32/C512/N20, résidu, null indépendant, P0..15 et overlaps conservés.
-Inputs figés avant modèle; les deux premières fenêtres ont passé le gate avant
-les suivantes. Zéro tentative échouée; reprise des dix cellules sans modèle.
+Analyse autorisée des ensembles complets : **zéro nouveau tirage**, zéro
+inférence/replay, téléchargement, installation ou modification du protocole.
+Les six séries/dix cellules/704 ensembles/17 280 trajets historiques sont intacts.
+Identités conditionnelles, candidats/poids, préfixes et empreintes contrôlés;
+704 flux RNG et graines dérivées distincts. Deux fenêtres ont trois N20 chacune.
+399 bootstrap par trajectoire et3999 permutations par comparaison; aucun
+rééchantillonnage ne crée une nouvelle réplication de série ou de modèle.
 
-Dossier : `result/local_pilot_20261120T184035Z/`.
+Nouveau dossier : `result/local_pilot_20261120T184035Z/offline_analysis_20261122/`.
 
-- `frozen.json`, `selection_manifest.json`, `selected_contexts.npz`, `cell_plan.json` :
-  population, rejets, six contextes et dix cellules.
-- `source_at_collection/`, `source_manifest.json`, `environment.json`, `model_cache.json` :
-  32 fichiers de collecte archivés, environnement et poids épinglés/hashés.
-- `first_two_gate.json`, `cells/<id>/complete.json`, `pilot_complete.json` : objets
-  locaux finalisés avec hashes, pas des commits Git.
-- `analysis/summary.json`, CSV et `analysis/PILOT_FIGURES.pdf` : 23 pages de figures.
-- `attempts/` : ressources Windows; `resume_verification.json` et logs pytest.
-  L'ancien `RESUME.json` conserve le point de pause historique, désormais dépassé.
+- `AUTHORIZED_REQUEST.txt`, `analysis_plan.json`, `provenance.json` et snapshots
+  de code : autorisation, définitions, pools et hashes.
+- CSV précision, supports, propagation, lois continues, compensation et variance;
+  `OFFLINE_REVIEW_FIGURES.pdf` : trois pages de diagnostic.
+- `preservation_before.json`/`preservation_after.json` : SHA/taille/mtime des
+  2 898 fichiers data/result préexistants; `final_checks.json` : remise exacte.
+- `offline_tests.txt` : **272 tests passés en107.67 s**, un avertissement de retry
+  de publication Windows. Huit nouveaux tests mathématiques; tests handout/liens
+  complétés à la remise. Les analyses ne chargent aucun modèle de prévision.
 
-**264 tests hors ligne passent en 108.24 s; 2924 contrôles réels de parité passent.**
-Arbres modèle : 1165.002 s (19 min 25 s), pic engagé 1.259 Gio; RAM système libre
-minimale 584.8 Mo. Aucun téléchargement, installation, second modèle ou Stage A.
-48 chemins choisis avant leurs issues capturent toutes couches/têtes/32 queries;
-tous les autres tokens/valeurs et prérequis de replay sont conservés.
+## Conclusions à relire
 
-## Conclusions utiles et limites
+**Observé :** distances historiques reproduites. Early8/late8 :160/186 W1
+alternatives croissants,58/60 nulls,61/186 excès descriptifs. Les nombres
+préliminaires dépendent d'une coupure non précisée; trois définitions documentées.
+Le null croît avec la dispersion; sa soustraction n'est pas un effet sans biais.
 
-Isolation/persistance/mesures validées sur ce panel. 60/186 distances W1 sont
-≤ leur null indépendant. T000049 a un IQR pathologique face au changement de
-niveau; grand W1/IQR et grand null se suivent. Les rangs N20 ne sont pas stables
-sur les graines calibrées. Écarts d'issues jusqu'à 0.35, compatibles avec les
-bornes conservatrices calculées; aucune preuve d'égalité ou absence de biais.
-Covariance P9/P10 et variance P10/P11 explicitement analysées.
+**Observé :** précision améliorée à N40/N60, rangs encore instables. Deux N30
+indépendants : rho W1=.064 T000063,.495 SOUTHERN. N60 n'a pas de réplication
+indépendante. Quatre branches sélectionnées par graine0 passent Holm sur12
+branches avec N40 laissé de côté; d'autres grands N20 s'effondrent au classement.
+N20 sert à explorer, pas à confirmer un classement fin.
 
-Séries distinctes mais domaines dépendants; deux séries par dataset, diversité
-sélectionnée, chevauchement d'entraînement possible. Information au-delà de
-J/p/entropie, motif et causalité interne restent non vérifiés.
-Le [correctif historique](../reference/FPA_PROMPT02_EVIDENCE_ADDENDUM.json)
-préserve l'original; le lanceur N20 intermédiaire exact reste non archivé.
+**Suggéré :** SOUTHERN b0/2229 garde une différence après centrage/différenciation;
+aucune preuve isolant la dépendance jointe. Compensation forte dans92/441
+contrastes non nuls, sans loi systématique établie. Between corrigé souvent
+faible/négatif; dérive continue du même ordre que des écarts de calibration.
+Aucune rupture CPD établie. T000049 est très sensible à son petit IQR; les
+sensibilités explicites ne changent pas le protocole. Dépendance des séries,
+probabilités/J/bins et sélection empêchent une conclusion générale.
 
 ## Remise et arrêt
 
-Changements restants unstaged; maintenance et préparation partiellement
-intégrées par le commit extérieur.
-`git status --short` exact et tous chemins/reasons/hashes sont dans les preuves;
-commandes `git add` sélectives proposées dans le rapport, pour le chercheur seul.
-Ne pas stage données, résultats, checkpoints, `.venv`, source ZIP ou handout.
-`.gitignore` n'a aucun nouveau diff. Message proposé :
-`feat: validate six-series FPA pilot and Monte Carlo estimators`.
-Le SHA d'un prochain commit reste inconnu tant que le chercheur ne l'a pas créé.
+Nouveaux fichiers : module `analysis/chronos_offline_precision.py`, script
+`analyze_chronos_pilot_offline.py`, test `test_offline_precision.py`, rapport courant.
+Modifiés : index, statut/handoff/décisions, tâche, workflow, guides pratique,
+structure/tests et priorité du générateur handout. La liste exacte et les
+commandes `git add` sélectives pour le chercheur sont dans le rapport et
+`final_checks.json`. Message proposé :
+`analysis: assess pilot Monte Carlo precision and campaign sampling`.
+Garder hors staging data/result, checkpoints, `.venv`, ZIP et handout.
 
-Handout régénéré avec PDF/CSV nommés par `--review-assets`; archives exclues.
-ZIP courant : `docs/chatgpt-handout.zip`; entrée lisible :
-`docs/chatgpt-handout/CHATGPT_HANDOUT.md`.
+Handout renouvelé avec le nouveau rapport et pièces PDF/CSV actuelles choisies;
+archives exclues. ZIP : `docs/chatgpt-handout.zip`;
+entrée : `docs/chatgpt-handout/CHATGPT_HANDOUT.md`.
 
-**Une prochaine recommandation : revue scientifique 45–60 min, zéro modèle.**
-Rejeter un lancement si cible de précision absente, conclusion seulement portée
-par l'IQR de T000049, ou prétention de rang stable contredite par les graines.
-Le plan proposé de 24 nouvelles séries/32 cellules (~2 h 04 avec marge) exige
-une autorisation séparée. Aucun calcul supplémentaire ne suit ce handoff.
+**Une prochaine étape : revue scientifique ChatGPT–chercheur,45–60 min, zéro modèle.**
+Recommandation soumise à approbation : davantage de séries prospectives N20 dense,
+puis N60 indépendant pour au plus deux contrastes gelés par fenêtre et témoins
+aléatoires. Scénario24 cellules N20 avec marge×2≈1 h33; deux contrastes validés
+par fenêtre ajoutent≈16 min20 de génération avec marge, hors chargement/contrôles.
+Capture bornée24 primaires≈1.52 Gio bruts. Ce sont des extrapolations, pas un budget
+accordé ni une taille suffisante démontrée. Rejeter/adapter le plan si importance
+pratique, précision et sélection indépendante ne sont pas fixées. **STOP : aucun
+nouveau trajet ou campagne avant décision explicite.**

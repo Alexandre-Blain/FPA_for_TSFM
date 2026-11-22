@@ -1,289 +1,349 @@
-# Tache courante - pilote local (TERMINE, REVUE ATTENDUE)
+# Current task - offline pilot analysis (COMPLETE, SCIENTIFIC REVIEW GATE)
 
-Le pilote repris apres maintenance est termine : six series et dix cellules.
-STOP pour revue scientifique; aucune campagne supplementaire n'est autorisee.
-Le texte ci-dessous conserve l'autorisation de cette iteration terminee.
-Voir [le handoff](../docs/research/FPA_HANDOFF.md).
-Les chemins documentaires du texte sont adaptes a la nouvelle organisation;
-la copie originale est conservee dans le checkpoint local.
+Authorized 22 November 2026. Saved complete trajectories only; no model inference,
+downloads, dependency changes or Git writes. The completed pilot request remains
+in Git history and the immutable pilot AUTHORIZED_REQUEST.txt.
+See [handoff](../docs/research/FPA_HANDOFF.md).
+
+Completed: all five offline analyses, precision recommendation and review bundle.
+No additional model draws. Read the
+[main scientific report](../docs/reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md).
+STOP: campaign sampling changes require a separate researcher decision.
 
 ---
 
-# NEXT CODEX ITERATION - Local multi-series FPA pilot and estimator validation
+# FPA - Next Codex Iteration: Offline Scientific Analysis and Campaign Readiness
 
 You are working in the existing `FPA_for_TSFM` repository.
 
-**This is the next iteration of our current ChatGPT-Codex-researcher workflow, NOT the historical Prompt 3 stored under `docs/archive/`.**
+This is the next task in our ChatGPT-Codex-researcher workflow, following the completed six-series local pilot.
 
-The objective is to move from the successful single-context Chronos prototype to a scientifically informative, reproducible local multi-series pilot, while resolving only the technical issues necessary for reliable collection.
+**Your objective is to extract the most scientifically informative results from the existing trajectories, evaluate Monte Carlo reliability, and determine what sampling strategy should be used for the full exploratory campaign.**
 
-## 1. Read the authoritative project state
+This is an analysis task, not a new experimental campaign.
 
-Before making changes, read:
+## 1. Scope and authorization
 
-- `AGENTS.md`
-- `docs/research/README_WORKFLOW_V2.md`
-- `docs/research/FPA_NORTH_STAR.md`
-- `docs/research/FPA_STATUS.md`
-- `docs/research/FPA_DECISIONS.md`
-- `docs/research/FPA_PROTOCOL_EXPLORATORY.md`
-- `docs/reference/FPA_HYPOTHESES.md`
-- `docs/reference/FPA_TECHNICAL_GATES.md`
-- `docs/research/FPA_HANDOFF.md`
-- `docs/reference/BENCHMARK_REPORT.md`
-- `docs/archive/FPA_PROPOSED_GRID.json`
-- `docs/archive/PROMPT_NEXT_ITERATION.md`
-
-Inspect the relevant code, tests, configuration and actual local Prompt 2 artifacts. Avoid repeating the completed broad repository audit.
-
-Verify the current branch, exact HEAD, working tree and locally available results.
-
-The last remote HEAD verified by ChatGPT was:
-
-`main: b9c6a011e14a93235ed90cf88a11a25cead7264a`
-
-The researcher has independently updated `.gitignore`. Preserve that local modification, whether committed or not.
-
-The historical research plan and numbered prompts under `docs/archive/` are provenance, not the governing execution plan.
-
-## 2. Exact authorization and scope
-
-**By sending this prompt, the researcher authorizes:**
-
-- Necessary implementation fixes and automated tests.
-- Offline dataset inspection, selection and quality control.
-- A local pilot on **up to six distinct original-series windows**, following the current H32/N20 exploratory protocol.
-- Monte Carlo calibration using independent seeds on at most two of those windows, with up to three total seeds per selected window.
-- Local profiling, checkpoint validation, bounded white-box replay and scientific analysis of the completed pilot.
-
-This authorizes at most **ten complete window-seed experimental cells**: six primary cells and up to four additional independent-seed replications.
-
-The limit defines the scientific scope of this iteration, not an assumed hardware limitation.
-
-No artificial CPU-only, memory or short wall-time restrictions should be inherited from Prompt 2. Use the locally available hardware appropriately. Monitor performance, memory, disk usage and progress, and implement safe interruption and recovery.
+**Authorized:**
+- Read all completed pilot data and frozen manifests.
+- Implement offline analysis scripts and focused tests.
+- Recompute metrics directly from saved individual trajectories.
+- Perform statistical analyses, resampling, permutation tests and comparisons requiring no new model inference.
+- Produce one comprehensive scientific report and an updated ChatGPT handoff.
 
 **Not authorized:**
-
-- The large exploratory campaign beyond this pilot.
-- Remote-server or cloud execution.
-- A second forecasting model.
-- Stage A H64/N50 replication.
-- Training, fine-tuning or adversarial experiments.
-- A methodological redesign or unapproved change in estimands.
+- New Chronos sampling or model inference.
+- New datasets or model downloads.
+- Changes to the existing scientific protocol.
+- Changes to historical experimental results.
+- Server deployment or infrastructure redesign.
+- Launching the larger exploratory campaign.
 - Git staging, commits, pushes, pulls or branch changes.
 
-The researcher retains control of all Git-writing operations.
+Use existing local computational resources as needed. Do not inherit arbitrary runtime or RAM limits from Prompt 2.
 
-## 3. Scientific objective
+Prioritize rigorous analysis over producing additional plots or documentation.
 
-The principal question remains:
+## 2. Read and verify the current project
 
-**What do plausible autoregressive output-token interventions reveal about subsequent numerical forecast distributions beyond local token probability, entropy and immediate numerical displacement?**
+First read:
 
-This iteration is exploratory. Its purpose is not to claim a confirmed effect or prove the paper's contributions.
+- `AGENTS.md`
+- `docs/README.md`
+- `docs/research/FPA_NORTH_STAR.md`
+- `docs/research/FPA_PROTOCOL_EXPLORATORY.md`
+- `docs/research/FPA_STATUS.md`
+- `docs/research/FPA_DECISIONS.md`
+- `docs/research/FPA_HANDOFF.md`
+- `docs/reference/LOCAL_PILOT_REPORT.md`
+- `docs/reference/LOCAL_PILOT_EVIDENCE.json`
+- `docs/reference/FPA_HYPOTHESES.md`
+- `docs/reference/CHRONOS_METRICS.md`
 
-Prioritize these comparisons:
+Inspect the relevant metric implementations and existing analysis scripts.
 
-1. Alternative versus independently sampled greedy-reference conditional distributions.
-2. Downstream W1/ED versus immediate signed and absolute token displacement.
-3. Downstream effects versus `q50`, `p_sel` and local entropy.
-4. Downstream effects versus the independent same-token sampling-noise floor.
-5. Between-series heterogeneity and examples contradicting simple explanations.
-6. Reliability of weighted outcome-mixture estimators versus direct sampling.
+The latest GitHub HEAD verified by ChatGPT is:
 
-The primary independent observational unit for cross-series scientific conclusions is the original series, not the individual generated trajectory or token branch.
+`ad64422b973aa77a33e99827ced9bdae903b15cb`
 
-## 4. Technical correctness gate
+Verify the actual local branch, HEAD and working tree.
 
-Before starting the six-window pilot, implement and verify the following.
+The primary dataset is:
 
-### A. Multi-window persistence isolation
+`result/local_pilot_20261120T184035Z/`
 
-Inspect `ensemble_store.py`, `publish_fork_manifest()`, `collect_window()` and the relevant run drivers.
+Use the individual complete trajectory ensembles and their manifests as the authoritative data. The CSV summaries are references and consistency checks, not substitutes for raw paths.
 
-Ensure distinct windows cannot interfere with one another, even when they have:
+The pilot contains six original series and ten window-seed cells. Two windows have three independent seeds each.
 
-- The same fork position.
-- The same reference token.
-- The same candidate token IDs.
-- The same sampling seed.
-- The same parent campaign output directory.
+Verify identities, conditioning, model revision, policy parameters, complete checkpoint hashes and sampling independence before pooling any trajectories.
 
-Each run/window must have stable identities covering dataset, original series, forecast origin, context hash, model revision, grid revision, policy and seed.
+Reproduce the existing important statistics before extending the analysis. Report any discrepancy rather than silently correcting historical outputs.
 
-Use unambiguous per-window storage isolation and verify it through automated integration tests.
+## 3. Analysis A - Monte Carlo convergence and precision
 
-Test interleaved execution, interrupted writes, restart and recovery, immutable snapshot reading, and attempts to load artifacts from another window.
+**This is the highest-priority task.**
 
-Never silently reuse an ensemble associated with a different context.
+We need to decide whether N20 is sufficient for broad exploration and whether larger N meaningfully improves the scientific conclusions.
 
-### B. Sampling and measurement invariants
+Use the two independently replicated windows:
 
-Preserve the approved protocol:
+- M4 Daily, T000063.
+- ERCOT, SOUTHERN.
 
-- Chronos-T5-mini with pinned model revision.
-- Context length 512, forecast horizon 32.
-- Dense positions b=0..9.
-- N20 independent conditional continuations per selected token.
-- Effective q50 sampling with temperature 1, top-k 50 and top-p 1.
-- Greedy token included in the selected set.
-- Target cumulative q50 coverage >=90%, capped at eight selected tokens.
-- Conditional residual group representing all unselected positive q50 mass.
-- Independent greedy-reference and same-token null ensembles.
-- Full token IDs and numerical paths saved.
-- Strict downstream indexing, excluding the forced coordinate.
-- Signed and absolute direct jump, full and fixed22 W1/ED.
-- P0..P9 conditional mixtures, P10 reference reuse and P11..P15 direct N60.
-- Fixed per-window terminal and last-eight outcomes and existing threshold grid.
+Each has three independently sampled N20 conditional ensembles.
 
-Do not silently change the greedy-first tie convention, q50 support behavior or probability definitions.
+After verifying identical conditioning and candidate policies across seeds, construct estimates using N20, N30, N40 and N60 where valid.
 
-Test scenarios requiring the eight-token cap, including coverage below 90% and a substantial residual. The previous real context selected only three tokens and is not sufficient validation of these edge cases.
+For N30, use properly identified independent additional draws from another seed. For N40, examine the available two-seed combinations. For N60, pool all three independent seeds.
 
-### C. Evidence provenance
+Preserve separate reference and alternative ensembles. Never duplicate samples and call them independent.
 
-Inspect the `target_N20` field in `FPA_PROMPT02_EVIDENCE.json`, currently reported as a path string rather than the expected structured information.
+For **both W1 and ED**, evaluate:
 
-Determine whether it is an export/serialization defect or an intentional field.
+1. Distance-estimate stability as N increases.
+2. Branch-ranking stability and rank correlations.
+3. Top-k branch overlap across independent estimates.
+4. Variability of matched-jump alternative contrasts.
+5. Independent same-token null distributions.
+6. Uncertainty around alternative-versus-reference differences.
+7. Stability of conclusions about consequential versus near-null forks.
 
-Preserve the frozen original evidence. Publish a clearly linked correction or addendum if necessary, rather than silently rewriting historical experimental records.
+Use independent-seed comparisons where available, whole-trajectory resampling and appropriate permutation diagnostics.
 
-Verify the locally archived N20 source revision and report any remaining provenance uncertainty.
+Treat shared reference ensembles, nested sample sizes and repeated branches as dependent observations.
 
-## 5. Construct a scientifically defensible six-window pilot
+Do not interpret a positive finite-sample W1 or ED as a significance test.
 
-Use the datasets already under review:
+For ED, retain the protocol's V-statistic and optionally compute the U-statistic as a separate bias diagnostic. The U-statistic may be negative.
 
-- M4 Daily.
-- ERCOT.
-- Exchange Rate.
+**Required decision:** recommend a justified sampling strategy for the larger campaign, comparing options such as uniform N20, uniform N40/N60, and broad N20 with higher-precision validation of selected contrasts.
 
-Select two windows per dataset, preferably from **two distinct original series**, giving six different original series overall.
+Do not invent a universal optimal N. State which scientific decisions each option can and cannot support.
 
-For each dataset, use:
+## 4. Analysis B - Downstream propagation versus stochastic noise
 
-- One representative selection from a documented eligible sampling population.
-- One diversity-oriented selection based on pre-FPA context characteristics.
+A preliminary reanalysis suggests:
 
-Define selection rules before looking at new FPA outcomes.
+- 157/186 primary alternatives show increasing W1 from early to late horizons.
+- 59/60 independent null controls show the same pattern.
+- Only 59/186 alternative-minus-null W1 profiles show an increase.
 
-Use only information available up to the forecast origin. Do not select windows using future observations, forecast errors or favorable historical FPA scores.
+First reproduce or correct these numbers from the raw saved trajectories and explain the precise definitions.
 
-Record:
+Then investigate whether apparent downstream amplification is attributable to increasing variability of the conditional forecast distributions.
 
-- Dataset and source files.
-- Original series identifier.
-- Forecast origin and context indices.
-- Source and context SHA-256.
-- Eligibility rules, rejected candidates and reasons.
-- Selection seeds and representative/diversity stratum.
-- Context IQR and descriptive time-series characteristics.
-- Any suspected relationship to Chronos training data.
+For each branch position and forecast horizon, analyze:
 
-Exclude invalid scale or unusable context windows rather than silently modifying normalization.
+- Alternative-versus-reference W1.
+- Independent greedy-versus-greedy null W1.
+- Reference ensemble dispersion.
+- Signed conditional mean difference.
+- Difference in conditional forecast variance.
+- Persistence, attenuation, amplification and sign reversal.
 
-Do not treat the previously studied M4/T000001 context as an independent new scientific replicate.
+Define the signed response:
 
-The six-window panel is a **pilot**, not a final sample-size decision or an estimate of population prevalence.
+\[
+\Delta\mu_{b,w}(h)
+=
+E[Y_h\mid w]-E[Y_h\mid g_b].
+\]
 
-Freeze the selected pilot manifest before starting model inference.
+For sufficiently large nonzero numerical jumps, investigate:
 
-## 6. Execute the local pilot
+\[
+G_{b,w}(h)=\frac{\Delta\mu_{b,w}(h)}{J_{b,w}}.
+\]
 
-First execute and validate two windows from different original series. If their outputs satisfy the correctness and persistence checks, proceed automatically to the other four windows within this approved pilot.
+Avoid unstable ratios for tiny J.
 
-For each window, collect the complete H32/N20 experiment specified above, including q50 candidates, residual, null controls, P0..P15 outcomes and overlap calibration.
+Compare observed propagation with the existing persistent-shift and simple autoregressive propagation baselines where their definitions are valid.
 
-Preserve individual numeric trajectories, token sequences, conditional-ensemble identifiers, probabilities, scales, hashes and run metadata.
+**Important:** subtracting empirical null W1 from alternative W1 is only a descriptive diagnostic. It is not automatically an unbiased effect estimate or a formal test. Account for shared-reference dependence and differing conditional variances.
 
-Keep the full white-box research objective. Use replay and batched or streaming capture where appropriate to avoid unnecessary memory duplication. Do not silently discard essential trajectory or token information.
+The objective is to distinguish real changes in conditional generation from ordinary numerical propagation and horizon-dependent sampling noise.
 
-If full activation capture on every path is disproportionately expensive, preserve replayability and measure the cost using selected paths. Clearly distinguish fields captured immediately from those reconstructable later.
+## 5. Analysis C - W1, ED and temporal morphology
 
-Use existing local data and cached model weights. Do not download new datasets, model weights or install unapproved dependencies.
+We have complete trajectories. Do not unnecessarily restrict the analysis to fixed22.
 
-Stop and report the precise blocker if a correctness gate fails. Do not continue producing scientifically questionable data.
+Compute **both W1 and ED** on:
 
-## 7. Monte Carlo calibration
+1. Full strictly post-fork suffix: coordinates b+1 through 31.
+2. Relative fixed22: the first 22 strictly post-fork coordinates.
+3. Common absolute 22-step support: forecast coordinates 10 through 31.
+4. Final-eight-step support: coordinates 24 through 31.
 
-The previous N20 validation showed mixture-versus-direct differences of approximately:
+Also retain complete W1-by-horizon profiles.
 
-- P0: 0.236.
-- P9: 0.142.
-- P10: 0.100.
+Make the exact coordinate convention explicit for every metric.
 
-These are observed finite-sample discrepancies, not established implementation errors.
+Do not compare ED values calculated in different dimensions as though they estimate the same distributional quantity.
 
-On at most two selected pilot windows, perform the authorized additional independent-seed replications.
+For each support, investigate:
 
-Investigate:
+- Branch-ranking agreement between W1 and ED.
+- Ranking changes across supports.
+- Early divergence versus persistent divergence.
+- Cases where W1 and ED disagree.
+- Cases where the conditional means are similar but trajectory distributions differ.
 
-1. Variation of weighted-mixture event-probability estimates across independent seeds.
-2. Variation of direct estimates across independent seeds.
-3. Difference between methods at P0, P9 and P10.
-4. Changes in estimator variance at the P10/P11 boundary.
-5. Covariance induced by reusing the forced-greedy ensemble for P10 and the conditional mixture.
-6. Event rarity, degenerate estimated probabilities and misleading zero plug-in standard errors.
+Perform secondary analyses on centered and differenced trajectories to investigate level changes versus temporal shape changes.
 
-Distinguish Monte Carlo uncertainty from between-series variation.
+Specify the transformations before interpreting the results. Centering and differencing do not automatically isolate temporal dependence.
 
-Do not treat bootstrap resamples as additional independent model draws.
+Include same-token null diagnostics for these transformed comparisons.
 
-Provide quantitative diagnostics, confidence or uncertainty calculations with clearly stated assumptions, and evidence of whether the discrepancy is compatible with finite-sample noise.
+Prioritize robust counterexamples and scientifically informative disagreements, not attractive plots.
 
-Do not implement formal BEAST/PELT change-point inference unless the existing data and validation provide a clear scientific justification. The primary objective of this iteration is reliable distribution estimation.
+## 6. Analysis D - Continuous CPD and local fork contributions
 
-## 8. Scientific analysis of the pilot
+The existing protocol estimates P0 through P15 for fixed outcome definitions.
 
-Perform the initial analysis using only committed, complete experimental objects.
+Analyze the CPD curves using both:
 
-At minimum, provide:
+- Existing binary threshold events.
+- Continuous outcomes reconstructed from the saved trajectories.
 
-- Per-window and per-dataset W1/ED distributions.
-- Raw and context-IQR-normalized results.
-- Independent same-token null comparisons.
-- Effects versus signed J, absolute J, q50, p_sel and entropy.
-- Fixed22 and full-suffix comparison.
-- Per-horizon W1 profiles.
-- P0..P15 fixed-outcome probability curves and their estimation uncertainty.
-- Negative, near-null and contradictory examples.
-- Preliminary morphology inspection using **both conditional ensembles**, not cherry-picked individual paths.
-- Selected mass, residual mass and achieved coverage at every fork position.
+For continuous analysis, examine terminal value, signed terminal displacement, absolute terminal displacement and final-eight-step summaries.
 
-Interpret across-series results descriptively. Six original series are insufficient for broad population claims.
+Use correctly weighted empirical distributions for q50 conditional mixtures, including residual mass. Do not treat every selected branch as equally probable.
 
-Explicitly test alternative explanations:
+Compute:
 
-- Ordinary numeric perturbation propagation.
-- Candidate probability and quantization-bin geometry.
-- Historical scale and normalization.
-- Selection bias between representative and diversity strata.
-- Sampling noise and correlated estimators.
-- Decoder or replay implementation differences.
+- Cumulative distributional drift from P0 to Pt.
+- Adjacent distributional drift from Pt to P(t+1).
+- Continuous W1 between relevant outcome distributions.
+- Monte Carlo uncertainty and estimator-boundary diagnostics.
+- Comparison with independent direct estimates where available.
 
-Do not create a new composite FPA score.
+For binary event probabilities, analyze the exact conditional-mixture identity:
 
-## 9. Deliverables and stopping condition
+\[
+P_t(E)-P_{t+1}(E)
+=
+\sum_{w\ne g_t}q_t(w)
+[P_{t,w}(E)-P_{t,g_t}(E)].
+\]
 
-Produce a detailed report with:
+Measure signed contributions, cancellation, concentration among selected tokens and the contribution of the residual mixture.
 
-1. Exact Git branch, starting HEAD and working-tree changes.
-2. Implemented fixes and full test results.
-3. Frozen six-window selection manifest and rejection log.
-4. Complete accounting of executed windows, positions, ensembles, trajectories and independent seeds.
-5. Integrity/recovery tests and checkpoint metadata.
-6. Runtime, memory, storage and capture/replay measurements.
-7. Monte Carlo estimator calibration, including uncertainty and covariance limitations.
-8. Prioritized scientific findings, distinguishing **observed**, **suggested**, **unverified** and **refuted**.
-9. The most serious alternative explanation for each scientifically interesting result.
-10. A proposed larger local campaign design, with original-series counts and justification derived from pilot variability, domain coverage and expected scientific precision.
+Use the same greedy-reference estimate on both sides when evaluating the empirical identity. Separately test whether independently constructed estimates of theoretically identical laws agree within sampling uncertainty.
 
-Update the canonical `FPA_STATUS.md`, `FPA_HANDOFF.md` and relevant technical documents. Append to `FPA_DECISIONS.md` only decisions actually authorized by the researcher.
+**Do not claim that verifying this identity is a novel scientific discovery.**
 
-Refresh `docs/chatgpt-handout/` and `docs/chatgpt-handout.zip` using the established script, including the full new report and supporting evidence.
+The potentially interesting empirical question is whether consequential local alternatives systematically cancel in the aggregate outcome distribution.
 
-Leave all Git modifications unstaged. Provide the precise changed-file list and suggested selective commit instructions.
+Do not apply this linear decomposition directly to W1 or ED.
 
-**STOP after the six-window pilot and calibration. Do not automatically expand to the full campaign.**
+Do not interpret cumulative distributional drift as a statistically established change point.
 
-The next step is a scientific review by ChatGPT and the researcher, followed by a separately authorized large-scale local collection.
+Formal BEAST/PELT fitting is not required for this iteration.
+
+## 7. Analysis E - Next-token uncertainty versus future variability
+
+Using the conditional continuation ensembles, estimate the decomposition:
+
+\[
+\operatorname{Var}(Y_h\mid G_t)
+=
+E_W[\operatorname{Var}(Y_h\mid G_t,W)]
++
+\operatorname{Var}_W(E[Y_h\mid G_t,W]).
+\]
+
+Study how much future variability is associated with the choice of the next generated token versus subsequent stochastic continuation.
+
+Use q50 weights and account for the residual group.
+
+Treat the selected-token-plus-residual partition as a coarsening of full token identity. Its between-group variance is not necessarily the full between-token variance.
+
+Correct or explicitly quantify finite-sample upward bias in estimated between-group variance. A bias-corrected estimate can be negative.
+
+Investigate relationships with:
+
+- q50 entropy.
+- p_sel entropy.
+- Token probabilities.
+- Numerical jump magnitude and direction.
+- Forecast horizon.
+- Dataset and context regime.
+
+Keep original-series dependence explicit.
+
+This is a secondary exploratory analysis. Do not let it delay the primary precision decision.
+
+## 8. Scientific standards
+
+For every major finding, distinguish:
+
+- **Observed:** directly established by the available data.
+- **Suggested:** a plausible interpretation.
+- **Unverified:** a hypothesis requiring independent validation.
+- **Refuted within scope:** a specific claim contradicted by the available evidence.
+
+Actively test alternative explanations involving sampling noise, normalization, tokenization, probability, numerical jump, source-series dependence, and selection bias.
+
+Investigate the pathological IQR behavior of M4/T000049 explicitly. Retain raw and protocol-normalized metrics, and perform labeled normalization sensitivity analyses without silently changing the main estimand.
+
+Do not treat six original series as a large independent population.
+
+Do not use the same noisy ranking simultaneously to select interesting forks and claim independent validation of those selections.
+
+Avoid proposing new metrics solely because they are mathematically possible. Every analysis must serve a concrete scientific question.
+
+## 9. Outputs
+
+Keep the documentation simple.
+
+Create one main report:
+
+`docs/reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md`
+
+Store detailed CSVs, figures and analysis artifacts in a new, clearly identified subdirectory under the existing ignored pilot result directory. Do not overwrite the original pilot outputs.
+
+Add reusable analysis code and focused tests only as necessary.
+
+The main report must include:
+
+1. Exact data and Git provenance.
+2. Reproduced baseline statistics and any discrepancies.
+3. N20/N30/N40/N60 precision and ranking results.
+4. W1/ED analyses across temporal supports.
+5. Noise-adjusted interpretation of temporal propagation.
+6. Continuous CPD and cancellation findings.
+7. Token-choice variance decomposition, if supported.
+8. Three to five ranked scientific findings, including negative results.
+9. Alternative explanations and the most informative falsification test for each.
+10. A concrete recommendation for the full exploratory campaign's sampling design.
+
+For the campaign recommendation, specify:
+
+- Whether uniform N20 is defensible.
+- Whether N40/N60 materially improves the desired estimates.
+- Whether a two-tier exploration/validation strategy is preferable.
+- How independent series should be prioritized.
+- Which analyses should be prespecified before collection.
+- What cannot be resolved using the current six-series pilot.
+- Estimated computation and storage trade-offs based on measured costs.
+
+Update `FPA_STATUS.md`, `FPA_HANDOFF.md`, and the current task status.
+
+Append to `FPA_DECISIONS.md` only actual researcher-approved decisions. Do not present your recommended sampling strategy as already approved.
+
+Regenerate the ChatGPT handout with the new report, relevant figures and CSVs, without reintroducing obsolete archives.
+
+Leave Git operations to the researcher. Report the exact changed files and tests executed.
+
+## 10. Stopping condition
+
+**STOP after the offline analysis and campaign recommendation.**
+
+Do not automatically run the full campaign or generate additional Chronos trajectories.
+
+The next step is scientific review by ChatGPT and the researcher, followed by an explicit decision on the large local exploratory campaign.
+
+The goal is not to manufacture positive findings.
+
+**The goal is to determine what the existing results establish, what they fail to establish, and how to collect the next dataset so that the most important scientific questions can actually be answered.**

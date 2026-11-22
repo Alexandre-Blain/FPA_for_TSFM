@@ -56,6 +56,12 @@ uniquely timed.
 
 ## API Contracts
 
+The offline scientific review adds `unit/test_offline_precision.py`: fast ED-V
+parity with the protocol, separate negative ED-U, whole-path bootstrap, exact
+q50/residual-weighted scalar W1, disjoint N30 draw identities, pooling guards,
+shared-reference event algebra, known-law between-variance bias, and plus-one
+permutation/Holm checks. These use synthetic arrays only.
+
 The local six-series pilot adds context-only selection/future-invariance,
 invalid-IQR rejection, deterministic representative/diversity strata, ten-cell
 planning, zero-event uncertainty and independently known reuse-covariance tests.

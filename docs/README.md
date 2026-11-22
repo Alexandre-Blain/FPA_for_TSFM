@@ -15,13 +15,14 @@ courant. Les rapports et archives ne constituent pas des ordres d'exécution.
 | Quelles décisions ont été validées ? | [Journal chronologique](research/FPA_DECISIONS.md) |
 | Comment travailler entre chercheur, Codex et ChatGPT ? | [Workflow](research/README_WORKFLOW_V2.md) |
 
-Le pilote multi-séries est **terminé; revue scientifique attendue**.
-Son autorisation détaillée est conservée dans
+Le pilote et son **analyse hors modèle sont terminés; revue du plan de campagne attendue**.
+L'autorisation de l'analyse et sa limite d'arrêt sont conservées dans
 [la tâche courante](../codex-prompts/CURRENT_TASK.md).
 
 ## Documentation de référence — docs/reference/
 
-- [Rapport courant : pilote multi-séries et calibration](reference/LOCAL_PILOT_REPORT.md),
+- **[Rapport courant : précision MC et recommandation de campagne](reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md)**.
+- [Rapport original : pilote multi-séries et calibration](reference/LOCAL_PILOT_REPORT.md),
   [sélection, tests et preuves](reference/LOCAL_PILOT_EVIDENCE.json).
 - [Hypothèses et explications concurrentes](reference/FPA_HYPOTHESES.md),
   [sources scientifiques](reference/FPA_REFERENCES.md).

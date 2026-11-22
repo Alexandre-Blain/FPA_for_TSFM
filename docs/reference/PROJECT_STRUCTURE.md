@@ -89,6 +89,11 @@ The local multi-series pilot uses `scripts/runs/run_chronos_local_pilot.py`:
 `metrics/chronos_pilot_uncertainty.py` calculates conditional Monte Carlo
 bounds and reuse covariance. Analysis is separate in
 `scripts/viz/analyze_chronos_local_pilot.py`; it loads no forecasting model.
+The subsequent offline scientific review uses
+`scripts/viz/analyze_chronos_pilot_offline.py` and
+`analysis/chronos_offline_precision.py`. It reads saved complete paths only and
+writes into its own named pilot subdirectory; see the
+[current analysis report](LOCAL_PILOT_OFFLINE_ANALYSIS.md).
 The current authorization and completion state are in the
 [handoff](../research/FPA_HANDOFF.md), not inferred from launcher availability.
 

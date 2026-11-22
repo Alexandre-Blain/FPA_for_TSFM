@@ -121,3 +121,20 @@ réitère le périmètre de six séries et dix cellules au maximum. La pause est
 levée; les exclusions et le contrôle scientifique final restent en vigueur.
 La sélection est figée avant inférence, les deux premières fenêtres doivent
 passer les contrôles avant les suivantes. Aucun élargissement n'est autorisé.
+
+## 2026-11-22 - analyse scientifique hors modèle explicitement autorisée
+
+Le chercheur fournit «Offline Scientific Analysis and Campaign Readiness» :
+lecture des ensembles complets du pilote, analyses réutilisables, tests ciblés,
+bootstrap/permutations sur chemins sauvegardés, un rapport principal et handoff.
+**Aucune nouvelle inférence, donnée, installation, modification du protocole,
+sortie historique ou opération Git d'écriture; aucune campagne élargie.**
+Les anciens plafonds Prompt 2 ne sont pas hérités. Arrêt après analyse et
+recommandation pour revue ChatGPT–chercheur.
+
+La [tâche courante](../../codex-prompts/CURRENT_TASK.md) conserve cette demande;
+la demande du pilote terminé reste dans Git et dans son `AUTHORIZED_REQUEST.txt`
+local immuable. La stratégie à deux niveaux du
+[nouveau rapport](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) est une
+**recommandation Codex, pas une décision approuvée**. Aucune modification de
+l'échantillonnage N20 approuvé n'est enregistrée ici.

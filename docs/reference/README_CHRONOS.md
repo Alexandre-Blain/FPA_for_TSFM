@@ -1,11 +1,16 @@
 # Chronos FPA - Guide Pratique
 
-Le pilote H32 multi-series est termine : voir le
-[rapport courant](LOCAL_PILOT_REPORT.md) et le [handoff](../research/FPA_HANDOFF.md).
+Le pilote H32 multi-series et son analyse hors modele sont termines : voir
+[precision et recommandation de campagne](LOCAL_PILOT_OFFLINE_ANALYSIS.md),
+le [rapport original de collecte](LOCAL_PILOT_REPORT.md) et le
+[handoff](../research/FPA_HANDOFF.md).
 Son lanceur `scripts/runs/run_chronos_local_pilot.py` et sa configuration
 `configs/chronos_local_pilot/pilot_v1.json` ne constituent pas une autorisation
 permanente de nouveaux tirages. L'analyse des cellules completes est separee
 dans `scripts/viz/analyze_chronos_local_pilot.py` et ne charge aucun modele.
+L'analyse scientifique suivante utilise `scripts/viz/analyze_chronos_pilot_offline.py`
+et `analysis/chronos_offline_precision.py`; elle ecrit dans un nouveau sous-dossier
+du pilote et preserve les sorties de l'analyse originale.
 
 La FPA mesure comment les continuations changent quand on force un token de
 prevision. Elle ne mesure pas directement la qualite de prediction.
