@@ -161,3 +161,48 @@ Autorisation et limites détaillées : [tâche courante](../../codex-prompts/CUR
 copie originale dans `result/extended_batch_20261122T115422Z/AUTHORIZED_REQUEST.txt`.
 **STOP après ce lot, ses validations et son analyse.** Aucune seconde campagne,
 installation, téléchargement, modification historique ou opération Git d'écriture.
+
+## 2026-11-24 - exploration scientifique et benchmarks explicitement autorisés
+
+Le chercheur fournit «Exploratory FPA: Scientific Discovery, Benchmarking,
+Sampling, Training Exposure, CPD H64 and White-Box». Il élargit la question de
+Paper1 à l'utilité pour trajectoires, décisions et incertitude, face aux méthodes
+conventionnelles à coût comparable. Cette itération est exploratoire, pas une
+campagne confirmatoire; les observations non reproduites restent des hypothèses.
+
+Après exploration offline et vérification de provenance : deux nouvelles
+identités de datasets, trois séries distinctes chacune, **six fenêtres H32
+C512, b0..9, trois N20 par loi**, q50/résidu/référence/null inchangés. Les
+téléchargements sont limités à la paire retenue et documentée. Au plus **huit
+contrastes N120 frais**, dont au plus six scientifiques et au moins deux
+contrôles aléatoires si éligibles, maximum deux/fenêtre; référence/null partagés
+seulement si même fork. Un **N120 naturel indépendant par nouvelle fenêtre**
+est réservé à l'évaluation de couverture, sans sélection des candidats dessus.
+
+CPD : **au plus trois fenêtres H64,31 préfixes directs P0..P30, trois N20 par
+préfixe**; aucun dense30 implicite. Validation au plus deux transitions
+scientifiques et un contrôle aléatoire/fenêtre, jusqu'à six lois de préfixe N120
+frais/fenêtre. Outcomes absolus fixes, sélection puis gel avant tirages frais.
+Replay ciblé des vérifications manquantes et petite analyse white-box permis;
+aucun nouveau modèle, entraînement, dépendance ou infrastructure cloud.
+
+Source exacte : [tâche courante](../../codex-prompts/CURRENT_TASK.md) et copie
+immuable `result/exploratory_benchmark_20261124T095906Z/AUTHORIZED_REQUEST.txt`.
+Les plafonds de l'invocation précédente ne gouvernent pas cette autorisation.
+**STOP après cette itération bornée; aucune augmentation adaptative de N ni
+campagne supplémentaire.** Le chercheur conserve toutes les écritures Git.
+
+## 2026-11-26 - complément scientifique du superviseur et audit final
+
+Le chercheur précise que le complément ne remplace pas les prompts originaux.
+Priorité à la valeur ajoutée FPA face aux méthodes établies, sur une tâche
+mesurable et à coût comparable. Distinguer fiabilité, découverte de scénarios,
+précision prédictive et qualité des décisions. Renforcer la revue de SGA,
+Forking Paths/Forking Fast, Thought Anchors/Branches et incertitude sémantique.
+
+Étudier la faisabilité UCR et Kronos dans le rapport courant, sans nouvelle
+donnée, inférence, dépendance, classifieur ou implémentation d'application.
+Préserver la collecte déjà autorisée et ses gels. Le chercheur demande aussi
+un audit final du code, de la logique mathématique et des risques de biais.
+Copie exacte : `result/exploratory_benchmark_20261124T095906Z/SUPERVISOR_ADDENDUM.txt`.
+Le prochain choix d'application appartient à la revue chercheur–superviseur.

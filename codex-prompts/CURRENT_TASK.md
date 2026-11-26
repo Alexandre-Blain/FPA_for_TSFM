@@ -1,372 +1,679 @@
-# Current task - extended batch (COMPLETE; STOP FOR SCIENTIFIC REVIEW)
+# Current task - exploratory discovery (COMPLETE; STOP FOR SCIENTIFIC REVIEW)
 
-Completed 2026-11-22: Stage A, eight new series, 24 dense N20 blocks,
-16 selected contrasts with fresh N60, holdout random controls, scientific
-analysis and review handout. Total 34,980 trajectories; 281 final offline tests pass.
-No second batch, downloads, dependency changes or Git writes.
-
-Evidence: result/extended_batch_20261122T115422Z/.
-Read the [report](../docs/reference/FPA_EXTENDED_BATCH_REPORT.md) and
-[handoff](../docs/research/FPA_HANDOFF.md). Completed resume was verified with
-zero model launches and zero new draws. Further collection requires a new task.
-The original authorization below is preserved; it is not a request to rerun it.
+Started 2026-11-24 on clean main at 302b98782cd5ed5a25754c44501526d85b2226cb.
+Evidence: result/exploratory_benchmark_20261124T095906Z/.
+All bounded collection, independent validation and replay phases are complete.
+The supervisor addendum received 2026-11-26 changes interpretation/literature
+priorities only; no UCR, Kronos or extra inference was executed.
+The requested final code/mathematical audit is complete; 299 offline tests pass.
+Read the [final report](../docs/reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)
+and [handoff](../docs/research/FPA_HANDOFF.md). Original ceilings remain below.
+No Git writes, dependency changes, additional model or broader campaign.
 
 ---
 
-# NEXT CODEX ITERATION - FPA: Direct Baseline Validation and First Extended Campaign Batch
+# NEXT CODEX ITERATION
+## Exploratory FPA: Scientific Discovery, Benchmarking, Sampling, Training Exposure, CPD H64 and White-Box
 
-You are working in the existing `FPA_for_TSFM` repository.
+### Overall scientific objective
 
-This is the next authorized iteration in the ChatGPT-Codex-researcher workflow.
+We are moving from implementation validation toward scientific discovery.
 
-**Objective: resolve the remaining targeted methodological question, freeze a prospective experimental design, and execute the first extended local collection batch.**
+**Central Paper 1 question:**
 
-Do not start another general audit, documentation cleanup or open-ended preparation cycle.
+Does intervention-based exploration of autoregressive TSFM generation reveal useful information about future trajectories, consequential decisions or predictive uncertainty that conventional methods do not recover as effectively at comparable computational cost?
 
-## 1. Verify project state
+The goal is to discover and characterize interesting phenomena, investigate their reproducibility, and identify the strongest potential contribution for Paper 1.
+
+**This is an exploratory research iteration, not a definitive confirmatory campaign.**
+
+Prioritize scientific insights over exhaustive statistical analysis.
+
+Do not turn this task into another general audit of Monte Carlo estimators.
+
+However, do not promote sampling fluctuations into scientific findings.
+
+### 1. Verify project state
 
 Read the authoritative project documentation:
 
 - `AGENTS.md`
 - `docs/README.md`
 - `docs/research/FPA_NORTH_STAR.md`
+- `docs/research/FPA_HYPOTHESES.md`, or its actual current reference path
 - `docs/research/FPA_PROTOCOL_EXPLORATORY.md`
 - `docs/research/FPA_STATUS.md`
-- `docs/research/FPA_DECISIONS.md`
 - `docs/research/FPA_HANDOFF.md`
-- `docs/research/README_WORKFLOW_V2.md`
-- `docs/reference/LOCAL_PILOT_REPORT.md`
+- `docs/research/FPA_DECISIONS.md`
+- `docs/reference/FPA_EXTENDED_BATCH_REPORT.md`
 - `docs/reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md`
-- `docs/reference/CHRONOS_METRICS.md`
+- Relevant historical Chronos and TimesFM findings.
 
-Inspect the existing pilot collection, analysis code, configurations and checkpointing mechanisms before making changes.
+Verify the actual local branch, HEAD, working tree, model revision and available experimental artifacts.
 
-GitHub `main` was last verified at:
+Last GitHub `main` HEAD verified:
 
-`ea3d78a10280e83e65a2bd7474af3eaf8ee1a905`
+`302b98782cd5ed5a25754c44501526d85b2226cb`
 
-Verify the actual local branch, HEAD, working-tree changes and applicable source versions. Do not overwrite unrelated local modifications.
+The actual local source state takes precedence. Clearly distinguish committed sources from local modifications.
 
-Historical experimental manifests and reports remain immutable.
+Preserve all previous data, experiments, reports and manifests.
 
-**Codex must not perform Git staging, commits, pushes, pulls or branch changes.**
+No Git staging, commits, pushes, pulls or branch changes by Codex.
 
-## 2. Stage A - Directly test numerical propagation baselines
+### 2. General research philosophy
 
-This is the one unresolved targeted offline analysis required before extending collection.
+We need to distinguish three stages.
 
-The existing analysis compares alternative W1/ED magnitudes with distances produced by persistent-shift and AR(1)-style numerical propagation.
+**Discovery**
 
-That comparison is insufficient: two distributions can be equally distant from a reference while being very different from each other.
+Explore freely. Look for patterns, unexpected behaviours, temporal structures, modes, rare events and counterexamples.
 
-We need to test the actual distributional predictions of these baselines.
+Use visualizations and descriptive statistics.
 
-For each forced alternative token \(w\) at position \(b\), let:
+Do not require a corrected statistical significance test before investigating a potentially interesting observation.
 
-- \(P_{b,w}\): distribution of conditional continuations after forcing \(w\).
-- \(P_{b,g}\): distribution after forcing the greedy token.
-- \(J_{b,w}\): signed numerical value difference between the forced and greedy tokens.
+**Reproducibility**
 
-Define two candidate transformations over strictly post-fork horizons \(k=1,\ldots,31-b\):
+Before presenting an observation as a supported finding, verify it on independent Monte Carlo streams.
 
-**Persistent numerical shift**
+For new H32 experiments:
 
-\[
-T_{\mathrm{persist}}(Y)_{b+k}=Y_{b+k}+J_{b,w}
-\]
+- Use N60 conditional continuations.
+- Collect three independent N20 blocks.
+- Use block 0 for exploratory selection.
+- Keep blocks 1 and 2 independent for holdout evaluation.
 
-**AR(1)-style attenuation**
+**Targeted validation**
 
-\[
-T_{\mathrm{AR1}}(Y)_{b+k}
-=Y_{b+k}+J_{b,w}\phi^k
-\]
+For a bounded number of promising observations, collect fresh independent ensembles.
 
-where \(\phi\) is the previously defined lag-1 context statistic. Treat it as a heuristic baseline, not a mechanistic model of Chronos.
+Do not validate every exploratory pattern.
 
-Directly compute:
+Do not increase sample size automatically when a result is unfavourable.
 
-\[
-D(P_{b,w},T_{\mathrm{persist}}\#P_{b,g})
-\]
+A non-reproduced observation remains a useful exploratory hypothesis or negative finding, not a confirmed effect.
 
-and
+### 3. Main objective A: benchmark FPA against conventional methods
 
-\[
-D(P_{b,w},T_{\mathrm{AR1}}\#P_{b,g})
-\]
+Start with the existing saved trajectories.
 
-using **both W1 and ED**.
+Compare FPA against the following approaches whenever they can be evaluated faithfully:
 
-Use independently sampled reference/null continuations where appropriate, preserve the shared-sample dependence in comparisons, and avoid leakage from the alternative samples when specifying transformations.
+1. Natural autoregressive trajectory sampling.
+2. Token probability, local entropy and probability margin.
+3. Numerical jump magnitude and direction.
+4. Forecast variance and quantile interval width.
+5. Trajectory-diversity measures.
+6. Dense FPA.
+7. Sparse FPA.
+8. Numerical-diversity and stratified token selection.
+9. Trajectory grouping or clustering.
+10. SGA, when a faithful implementation is feasible.
 
-Compare these residual distributional differences with the untransformed reference comparison and same-law Monte Carlo controls.
+Investigate the paper:
 
-Evaluate the declared temporal supports:
+*SGA: Uncertainty Quantification for Multi-Step Forecasting in Time Series Foundation Models*
+arXiv:2609.28582.
 
-- Full strictly post-fork suffix.
-- Relative fixed22.
-- Common absolute coordinates 10–31.
-- Final eight forecast coordinates.
+Identify its exact inputs, algorithm, assumptions, public implementation availability and evaluation protocol.
 
-Report raw distances and protocol-normalized distances separately.
+Do not substitute generic clustering for SGA while retaining the SGA name.
 
-Where statistically appropriate, test the hypothesis that alternative and transformed-reference samples come from the same distribution. Use whole-trajectory permutations, explicit multiplicity correction and independent-seed validation.
+If full SGA is not feasible in this iteration, explicitly document what prevents a faithful comparison and implement only separately labelled, justified baselines.
 
-Do not interpret failure to reject as proof that the baseline explains the intervention.
+#### Benchmark A1: forecasting uncertainty
 
-For matched opposite-sign interventions, investigate whether either propagation model explains their apparent asymmetry.
+Evaluate how well different methods identify forecasts associated with higher actual forecasting errors.
 
-**Required output:** determine whether there are credible, independently supported examples where simple numerical propagation is inadequate.
+Use the same windows, horizons and ground-truth targets.
 
-A negative result is scientifically valuable.
+Ground truth must never enter the uncertainty indicator itself.
 
-### Stage A gate
+Investigate the evaluation metrics used by SGA, including ranking-based uncertainty evaluation, where applicable.
 
-Before proceeding to new model sampling, verify that:
+Existing windows may support initial exploration, but do not claim reliable dataset-level generalization from only a few independent series.
 
-1. Historical W1/ED values are reproduced.
-2. Direct transformed-distribution comparisons are implemented and unit-tested.
-3. Sample independence and transformation indexing are correct.
-4. No serious inconsistency undermines the existing collection protocol.
+#### Benchmark A2: discovery of consequential futures
 
-If a correctness problem invalidates the data or sampling law, stop and report it.
+This is potentially the more distinctive FPA benchmark.
 
-Otherwise, proceed directly to Stage B. Do not require positive scientific findings to continue.
+Evaluate how efficiently each exploration method discovers:
 
-## 3. Stage B - Freeze a prospective first-batch design
+- Large excursions.
+- Direction changes.
+- Threshold crossings.
+- Persistent trajectory differences.
+- Rare but plausible future behaviours.
+- Different trajectory modes.
+- Alternative future scenarios.
 
-This invocation authorizes a **bounded first extended batch**, not the entire future campaign.
+For each method, measure:
 
-Select up to **8 new original-series windows**:
+- Number and diversity of behaviours discovered.
+- Coverage of relevant outcomes.
+- Missed consequential branches.
+- Stability across independent samples.
+- Actual inference cost.
 
-- 4 M4 Daily.
-- 2 ERCOT.
-- 2 Exchange Rate.
+At matched computational budgets, distinguish:
 
-Use the existing eligible local datasets and established selection machinery.
+1. What ordinary sampling discovers.
+2. What FPA discovers by imposing alternatives.
+3. What both discover.
+4. What cannot be resolved because the evaluation reference is incomplete.
 
-Exclude all original series already used in the current pilot or earlier FPA experiments when their identities are known.
+Do not infer that a future behaviour is impossible under natural sampling merely because it was absent from N60 or N120 ordinary trajectories.
 
-Within each dataset, include representative and diversity-oriented selections using deterministic, context-only criteria.
+When possible, use token probabilities and conditional event probabilities to estimate the natural probability mass of consequences exposed by forced branching.
 
-Selection must not use the future target values, FPA outcomes, favorable fork scores or validation results.
+Do not count artificial frequency increases caused by deliberately forcing rare tokens as naturally occurring probability mass.
 
-Freeze before model inference:
+### 4. Main objective B: dense versus sparse and sampling efficiency
 
-- Series IDs and dataset origins.
-- Window origins and complete input contexts.
-- Representative/diversity stratum labels.
-- Eligibility and exclusion rules.
-- Sampling seeds and RNG stream identities.
-- Model revision and sampling policy.
-- Selected metrics and temporal supports.
-- Validation and multiplicity procedures.
-- Dataset/source hashes and environment metadata.
+Use previously collected dense ensembles as exploratory references.
 
-Record correlations or shared underlying processes among source series. In particular, do not treat contemporaneous ERCOT regions or exchange-rate series as automatically independent.
+Investigate:
 
-Use exactly one primary context per selected original series in this batch.
+- All available b0..9 positions.
+- Early-only positions.
+- Regularly spaced positions.
+- Random position selection.
+- Adaptive position selection based on information available before branching.
+- Probability-ranked token selection.
+- Numerical-diversity and stratified token selection.
+- Different sample allocations per branch.
+- Grouped conditional outcomes.
 
-If fewer than eight eligible independent source-series identities are available, document the limitation and reduce the batch rather than silently replacing them with nearby windows from the same series.
+Measure the trade-off between computational budget and scientific information retained.
 
-## 4. Stage C - N60 dense collection using independent N20 blocks
+Explore whether the most consequential forks concentrate in certain positions or regimes.
 
-**For this first batch, use N60 total continuations per conditional ensemble, implemented as three independent N20 blocks.**
+Identify examples where sparse exploration succeeds and examples where it misses important alternatives.
 
-This is a prospective sampling-policy revision for the new batch only.
+**Critical methodological constraint:**
 
-Do not rewrite the original pilot's N20 protocol or historical metadata. Record the revised batch protocol separately and make its status explicit in the decision log.
+Our current dense reference covers only the available positions and explicitly selected tokens. It is not a complete oracle over all possible forks.
 
-Keep the existing scientific invariants:
+Do not evaluate unobserved token-selection policies as though their alternatives had been collected.
 
-- Chronos-T5-mini, pinned revision.
-- Context length 512.
-- Forecast horizon 32.
-- Dense intervention positions b0..9.
-- Original q50 policy, temperature, top-k/top-p handling and valid-token mask.
-- 90% selected-mass target, maximum eight selected tokens including greedy.
-- Explicit residual conditional ensemble.
-- Independent greedy-reference and same-token null samples.
-- Exact autoregressive conditioning on every preceding generated token.
-- Complete sampled token IDs and numerical trajectories.
-- P0..P15 outcome distributions and continuous outcomes.
-- Full and fixed22 W1/ED, plus offline supports.
-- White-box capture and replay metadata without multiplying activation storage unnecessarily.
+Use exact offline subset comparisons where valid.
 
-For each window and conditional ensemble, produce:
+Where an alternative selection policy requires unsaved conditional trajectories, mark that comparison as requiring new inference rather than manufacturing results.
 
-\[
-N=20+20+20=60
-\]
+Use separate data for choosing a policy and evaluating its performance wherever feasible.
 
-using three independently seeded sampling blocks.
+Sampling efficiency should initially be treated as an experimental tool. It becomes a potential paper contribution only if a meaningful and reproducible cost-information advantage emerges.
 
-Preserve block identity so that N20, N40 and N60 analyses remain possible.
+### 5. Main objective C: training exposure and possible memorization
 
-The original first block must remain independently usable for exploratory selection. Never label pooled N60 samples as independent replications of N60.
+Continue with Chronos-T5-mini.
 
-For P0..P15, account for the greater number of conditional samples and preserve the distinction between q50-weighted mixture estimates and directly sampled prefix distributions.
+Do not use Chronos-2 or develop a new forking mechanism.
 
-Avoid unnecessary recomputation of the same direct conditional law if it can be safely reused with explicit covariance accounting.
+Investigate whether the behaviour of FPA differs between series or temporal regions potentially exposed during Chronos-T5 pretraining and genuine zero-shot evaluation data.
 
-**Execution ceiling:** eight original-series windows, three N20 dense blocks per window, plus only the targeted validation described below.
+Use the original Chronos publication and documented dataset provenance.
 
-No automatic expansion to the remaining campaign.
+**Exposure is not synonymous with memorization.**
 
-## 5. Stage D - Independent validation of predefined contrasts
+#### Existing datasets
 
-For each new window:
+Begin with:
 
-1. Use **only the first N20 block** to rank candidate alternative forks.
-2. Select at most two scientifically informative contrasts using a frozen rule.
-3. Include at least one randomly selected eligible control contrast, distinct from the selected positive candidates where possible.
-4. Keep the second and third N20 blocks completely separate from candidate selection.
+- M4 Daily.
+- ERCOT.
+- Exchange Rate.
 
-Evaluate selected contrasts on the independent N40 holdout.
+Verify the published pretraining and evaluation classifications.
 
-Then, for at most two selected contrasts per window, generate **an additional independent N60 validation set**, using fresh RNG streams and the necessary reference, alternative and null ensembles.
+For M4 Daily, investigate the training/test temporal boundary.
 
-Share a reference across contrasts at the same fork position only when its reuse is explicitly represented in the statistical analysis.
+The current H32 experiment may include both potentially training-exposed and held-out future observations.
 
-For opposite-sign paired alternatives, include both alternatives in the same validation design. Do not treat their shared reference as independent evidence.
+Verify this against the exact dataset exports before drawing conclusions.
 
-Predeclare how selection works when W1 and ED disagree. Do not silently select whichever metric gives the more favorable result.
+#### Additional datasets
+
+Prioritize a comparison within a similar forecasting domain.
+
+Candidate pairs:
+
+**Hourly electricity**
+
+- Electricity Hourly, in-domain.
+- ERCOT Load, zero-shot.
+
+**Half-hourly electricity**
+
+- London Smart Meters, in-domain.
+- Australian Electricity, zero-shot.
+
+Select one in-domain dataset and one zero-shot dataset for the new H32 collection.
+
+Prefer the pair offering the best combination of documented provenance, matching frequency, comparable original-series characteristics and data availability.
+
+Do not assume that equal frequency and domain imply equivalent data-generating processes.
+
+Document differences in aggregation, seasonality, number of original series and scale.
+
+#### Exposure experiments
+
+Record for each experimental window:
+
+- Dataset and original-series identifier.
+- Documented pretraining status.
+- Source split and version.
+- Temporal training/test boundary where available.
+- Forecast origin and horizon.
+- Context characteristics.
+- Forecast error.
+- Token uncertainty.
+- FPA sensitivity.
+- Consequential future outcomes.
+- Trajectory diversity.
+
+Where possible, compare potentially exposed and held-out targets **at equal forecast lead times**.
+
+Do not mistake the difference between early and late prediction horizons for a memorization effect.
+
+Preserve uncertainty about whether a particular training segment was actually sampled during pretraining.
+
+Look for patterns suggesting exposure-related changes in:
+
+- Branching sensitivity.
+- Predictability.
+- Forecast quality.
+- Future-mode diversity.
+- Persistence or reconvergence.
+
+Clearly distinguish:
+
+1. Exposure association.
+2. Evidence compatible with memorization.
+3. Evidence specifically supporting memorization.
+
+Do not claim level 3 from dataset membership alone.
+
+This study should be lightweight and integrated into the rest of the experiments.
+
+### 6. New H32 collection: N60 with independent blocks
+
+Only after the offline exploration and dataset-provenance checks, execute the following bounded collection.
+
+**Maximum collection:**
+
+- Two newly added dataset identities.
+- Three original-series windows per dataset.
+- Six new H32 windows in total.
+- Context length C512.
+- Horizon H32.
+- Fork positions b0..9.
+- Original q50/token policy.
+- Maximum eight explicitly selected tokens including greedy.
+- Residual conditional ensemble preserved.
+- Independent greedy-reference and same-token controls.
+- N60 per conditional ensemble, implemented as 3 independent N20 blocks.
+
+Keep the pinned Chronos-T5-mini revision and decoder invariants.
+
+Preserve the entire token sequence and numerical trajectory for every sample.
+
+Keep the existing bounded white-box capture and replay metadata.
+
+Freeze dataset selection, source hashes, window origins and RNG streams before inference.
+
+Select windows using context-only criteria.
+
+Do not select new experimental windows from FPA outcomes.
+
+#### Block usage
+
+**Block 0, N20**
+
+Exploration and candidate selection.
+
+**Blocks 1 and 2, independent N40**
+
+Evaluate whether the selected candidates survive independent sampling.
+
+**Pooled N60**
+
+Produce more precise descriptive estimates, while explicitly acknowledging that the pooled data contain the selection block.
+
+Do not treat pooled N60 as an independent replication.
+
+### 7. Fresh independent validation: N120, strictly bounded
+
+Allocate a separate validation budget only for the most informative candidates.
+
+**Maximum: eight distinct contrasts in total.**
+
+- At most six scientifically selected contrasts.
+- At least two randomly selected eligible control contrasts, where the available cohort permits.
+- No more than two validation contrasts per window.
+
+Select these contrasts using the exploratory results, then freeze their identities, hypotheses and validation outcomes before generating fresh trajectories.
+
+For each validated contrast, collect:
+
+- N120 fresh alternative trajectories.
+- N120 fresh greedy-reference trajectories.
+- N120 fresh same-token null trajectories.
+
+Reference/null ensembles may be shared across contrasts at the same fork only with correct covariance accounting.
+
+Use independently seeded streams unrelated to the dense blocks.
+
+The fresh validation allocation is at most eight contrast evaluations; avoid generating duplicated reference ensembles unnecessarily.
+
+Prioritize candidates representing different scientific mechanisms, not merely the largest W1.
+
+Examples:
+
+- A fork changing the probability of a particular future mode.
+- A strong persistent effect.
+- A transient effect or reconvergence.
+- A candidate missed by sparse exploration.
+- A difference between exposure categories.
+
+The random controls are necessary to assess selection enrichment.
+
+Do not select all validation targets from the same dataset or type of effect if diverse candidates exist.
+
+**Scientific goal:** determine which exploratory findings survive fresh sampling and whether their effects are large enough to matter.
+
+N120 is a fixed validation budget, not a guarantee of adequate power.
+
+If the effect remains unresolved, report that limitation. Do not automatically increase N.
+
+### 8. New natural-sampling evaluation reference
+
+For each of the six new H32 windows, collect an additional **independent N120 natural-sampling ensemble**.
+
+These trajectories are reserved for evaluating coverage and consequence discovery.
+
+They must not be used for selecting candidate forks or choosing which methods to benchmark.
+
+Distinguish the natural-sampling evaluation reference from a ground-truth oracle.
+
+A behaviour absent from this finite sample remains unobserved, not impossible.
+
+Measure actual sampling and inference costs.
+
+Where possible, compare methods both at equal trajectory budgets and at equal measured runtime budgets.
+
+### 9. CPD H64: exploration followed by targeted validation
+
+Implement a small extension to:
+
+- Forecast horizon H64.
+- Greedy-prefix positions P0..P30.
+- Up to three original-series windows.
+
+Use consistent absolute future outcomes across all positions.
+
+#### CPD Stage 1: exploratory collection
+
+For each prefix P0..P30:
+
+- N60 direct trajectories.
+- Three independent N20 blocks.
+- Independent RNG streams.
+- Identical outcome definitions across the curve.
+
+Do not automatically perform full dense FPA over all 30 token positions.
+
+Focus on outcome-distribution evolution along the greedy path.
+
+Examine:
+
+- Smooth evolution.
+- Apparent transitions.
+- Reconvergence.
+- Sudden shifts.
+- Stability periods.
+- Outcome-probability changes.
+
+Use plots, trajectory examples and uncertainty bands to locate interesting patterns.
+
+Do not interpret isolated changes between neighbouring estimates as actual change points.
+
+#### CPD Stage 2: targeted validation
+
+Freeze at most:
+
+- Two candidate transitions per window.
+- One randomly selected control transition per window.
+
+A transition is a comparison between two explicitly identified prefix positions.
+
+Collect fresh independent N120 direct trajectories for each required prefix distribution, reusing a prefix ensemble across comparisons when appropriate.
+
+Maximum: three transition comparisons per window, involving at most six fresh prefix ensembles per window.
+
+Do not increase the number of candidates after inspecting validation results.
 
 Distinguish:
 
-- Detecting unequal conditional distributions.
-- Establishing a practically meaningful effect size.
-- Showing failure of a simple numerical-propagation baseline.
-- Establishing stable rankings.
-- Generalization across original series.
+- Changes reproduced across seeds.
+- Changes explained by ordinary Monte Carlo variation.
+- Changes possibly caused by increasing greedy conditioning.
+- Outcomes that remain unresolved.
 
-These are different claims requiring different evidence.
+Do not fit elaborate change-point models unless a meaningful reproducible pattern emerges.
 
-Use permutation tests, appropriate uncertainty intervals and explicit multiple-testing correction. State the hypothesis family used.
+A negative CPD outcome is acceptable.
 
-The random controls are essential to assess how strongly the candidate-selection rule enriches for reproducible effects.
+### 10. White-box: verify replay and begin scientific analysis
 
-Do not increase validation sample sizes adaptively after seeing unfavorable results without a new authorization.
+Before using internal activations, identify which of the following tests already exist and which remain unverified:
 
-## 6. Stage E - Scientific analyses of the new batch
+1. Exact token-path replay.
+2. Numerical forecast equivalence.
+3. Logit equivalence.
+4. Hidden-state equivalence.
+5. Self-attention and cross-attention equivalence.
+6. Reproducibility after model reload in a fresh process.
 
-Perform the established analyses on all completed windows:
+Do not repeat thousands of validated tests.
 
-**Distributional effects**
-- W1 and ED on full, relative22, absolute22 and final8 supports.
-- Raw and IQR-normalized results.
-- Independent same-token noise controls.
-- N20/N40/N60 precision and rank stability.
-- Distributional fit of persistent-shift and AR(1)-style baselines.
+Perform only the missing targeted checks.
 
-**Temporal behavior**
-- Signed conditional mean-response profiles.
-- Variance changes.
-- Persistence, attenuation, amplification and sign reversals.
-- Centered and differenced trajectory diagnostics.
-- Matched-jump and opposite-sign comparisons.
+If the original execution did not preserve the tensors needed for a retrospective equivalence comparison, explicitly state what cannot be verified.
 
-**CPD**
-- Binary and continuous P0..P15 outcomes.
-- Cumulative and adjacent drift.
-- Estimator-boundary uncertainty.
-- Local signed contributions and cancellation.
-- Independent direct-sampling comparisons where available.
+Distinguish teacher-forced deterministic replay from resampling the stochastic continuation.
 
-**Explanatory variables**
-- Signed and absolute J.
-- q50 and p_sel.
-- Entropy.
-- Token-bin geometry.
-- Context-regime characteristics.
-- Dataset and source-series identity.
+Then perform a small exploratory white-box analysis on:
 
-Use source-series-level aggregation for cross-series summaries. Do not treat branches, generated trajectories or horizons as independent population observations.
+- A validated consequential fork.
+- A weak or near-null fork.
+- A same-token control.
 
-Do not claim formal change points, internal causality or universal TSFM behavior unless the necessary evidence is actually present.
+Examine:
 
-## 7. Computational and data-integrity requirements
+- Layer-wise representation differences.
+- Temporal evolution after intervention.
+- Attention patterns.
+- Relationship between internal divergence and output divergence.
 
-Run locally using the existing environment and available model weights.
+Use descriptive visualizations first.
 
-No server deployment, second model, retraining, dataset downloads or dependency upgrades.
+Do not infer causal mechanisms from attention maps or representation distances alone.
 
-Reuse the validated ensemble storage, window isolation, frozen manifests and atomic publication mechanisms.
+No large probing model, SAE training or new interpretability framework in this iteration.
 
-The batch must be restartable after interruption without changing RNG identity or recomputing completed ensembles unnecessarily.
+### 11. Analysis principles
 
-Before advancing from the first two different-series windows to the remaining six, verify:
+For each scientific observation, answer:
 
-- Conditioning and decoder parity.
-- q50/residual probability mass.
-- Complete branch coverage.
-- Independent RNG streams.
-- Exact trajectory and token preservation.
-- W1/ED reconstruction.
-- Checkpoint consistency.
-- Memory and runtime measurements.
+**What happened?**
 
-Stop on any failed scientific-integrity gate.
+Describe the observed phenomenon using actual trajectories, quantitative results and examples.
 
-Do not impose arbitrary low runtime limits inherited from Prompt 2. Record measured costs and protect the machine from uncontrolled memory or disk usage.
+**Why might it happen?**
 
-Preserve all previous pilot results and offline analyses unchanged.
+Investigate a small number of plausible competing explanations.
 
-## 8. Required scientific deliverables
+**Does it reproduce?**
 
-Produce one principal report:
+Check independent N20 blocks, independent N40 holdout and targeted fresh N120 where authorized.
 
-`docs/reference/FPA_EXTENDED_BATCH_REPORT.md`
+**Why is it scientifically interesting?**
 
-Include:
+Explain how it changes our understanding of generative decisions or the utility of FPA.
 
-1. Exact Git/source/model provenance.
-2. Frozen cohort and selection criteria.
-3. Completed cells, ensembles, trajectories and independent RNG streams.
-4. Direct numerical-baseline results from Stage A.
-5. Precision and holdout-validation results.
-6. W1/ED findings across supports and datasets.
-7. Temporal propagation, morphology and CPD findings.
-8. Alternative explanations and negative results.
-9. Three to five ranked scientific conclusions with explicit evidence levels.
-10. Implications for the remaining campaign.
+**What would falsify the interpretation?**
 
-For each important finding, specify:
+Identify the next experiment that would distinguish competing explanations.
 
-- What is directly observed.
-- What is suggested.
-- What remains unverified.
-- What could falsify the interpretation.
-- Whether it provides evidence beyond local token probability, numerical jump and ordinary sampling variability.
+Use W1 and ED as measurement tools, not as the sole scientific outcomes.
 
-Store full experimental objects, manifests, CSVs and figures in new ignored result directories. Do not overwrite historical evidence.
+Do not run large families of permutation tests by default.
 
-Update the existing active project status, handoff and minimal navigation links. Append only genuinely authorized decisions to `FPA_DECISIONS.md`.
+Use appropriate uncertainty estimates and formal tests when they directly inform an important decision.
 
-Regenerate the ChatGPT handout with the new report and selected scientific supporting assets.
+Do not aggregate dependent branches, horizons or repeated windows as independent population observations.
 
-Avoid duplicate scientific summaries scattered across documents.
+Preserve negative findings and counterexamples.
 
-Report exact tests, changed files, measured execution costs and any unresolved issues.
+Prefer three strong scientific hypotheses over twenty weak statistical observations.
 
-Leave all Git changes unstaged and uncommitted.
+### 12. Required deliverable
 
-## 9. Mandatory stopping condition
+Create one primary report:
 
-**STOP after this eight-series batch, its targeted independent validation and scientific analysis.**
+`docs/reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md`
 
-Do not launch a second batch or the full campaign automatically.
+Structure it as follows.
 
-The next ChatGPT-researcher review must decide:
+#### I. Cold scientific assessment
 
-- Whether N60 provides adequate practical precision.
-- Whether independent validation needs more sampling for selected effects.
-- Whether the current source datasets are diverse enough.
-- Whether the observed effects contain information beyond simple numerical propagation.
-- How large the remaining campaign should be.
-- Which scientific hypotheses deserve confirmatory evaluation.
+- What we knew before this iteration.
+- What this iteration adds.
+- Which earlier hypotheses became more or less plausible.
+- Which research directions remain unsupported.
 
-The intended result of this iteration is not merely more trajectories. It is **a prospectively collected, independently validated basis for choosing the final campaign design**.
+#### II. Ranked scientific findings
 
-Proceed with the authorized first batch when the Stage A correctness gate passes. Do not stop merely because Stage A produces negative scientific findings.
+Identify three to five major findings or hypothesis candidates.
+
+For each, report:
+
+- Scientific question.
+- Observed evidence.
+- Representative examples.
+- Counterexamples.
+- Reproducibility status.
+- Alternative explanations.
+- Novelty relative to FPA, Forking Fast and SGA.
+- Most informative falsification experiment.
+
+Do not invent five findings if only two are interesting.
+
+#### III. Conventional-method and SGA benchmark
+
+Explain:
+
+- What was compared.
+- Which comparisons are scientifically fair.
+- Actual inference and computational costs.
+- What ordinary sampling discovers or misses.
+- What FPA discovers or misses.
+- Where FPA has an advantage, if any.
+- Where FPA is unnecessary or too expensive.
+- Exact status of SGA reproduction.
+
+#### IV. Sampling-efficiency study
+
+Present dense/sparse comparisons, candidate selection methods, coverage, missed effects and runtime.
+
+Separate offline simulations from methods actually executed prospectively.
+
+#### V. Training-exposure study
+
+Document dataset provenance, exposure status, matched comparisons and observed associations.
+
+Explicitly state whether there is any actual evidence supporting memorization.
+
+#### VI. CPD and white-box
+
+Present the H64 findings, validation results, replay evidence and initial representation analyses.
+
+#### VII. Paper 1 implications
+
+Recommend:
+
+1. The strongest defensible primary contribution.
+2. The best alternative contribution.
+3. The biggest unresolved scientific objection.
+4. The most informative confirmatory experiment.
+5. The conditions under which the current direction would need to change.
+
+### 13. Execution constraints
+
+Run offline analysis before new inference.
+
+New inference is limited to:
+
+**H32**
+- At most six new windows.
+- N60 dense conditional ensembles in three N20 blocks.
+- At most eight fresh N120 contrast evaluations.
+- One additional independent N120 natural-sampling evaluation ensemble per new window.
+
+**H64**
+- At most three new windows.
+- At most 31 direct CPD prefix distributions per window.
+- N60 exploratory trajectories per prefix.
+- At most three targeted transition comparisons per window, using fresh N120 per required prefix distribution.
+
+No unrestricted expansion, second model, training, fine-tuning or cloud infrastructure.
+
+Dataset downloads are restricted to the two explicitly selected, provenance-verified datasets needed for this iteration. No unrelated downloads, model-weight changes or dependency upgrades without separate authorization.
+
+Use the existing checkpointing, deterministic RNG identities, manifest verification and atomic publication mechanisms.
+
+Run scientific-integrity checks before advancing to full collection.
+
+If a correctness gate fails, stop the affected collection and document the issue.
+
+Preserve historical outputs and local modifications.
+
+Track measured runtime, RAM, disk usage and completed ensembles.
+
+Do not silently replace failed or incomplete work with additional series.
+
+### 14. Handoff and final stop
+
+Update the active scientific status and handoff concisely.
+
+Record the new researcher-approved experimental scope without rewriting historical decisions.
+
+Regenerate the ChatGPT handout with:
+
+- The primary scientific report.
+- Key figures.
+- Relevant analysis CSVs.
+- Validation summaries.
+- Dataset provenance.
+- White-box reproducibility evidence.
+- Execution and integrity checks.
+
+Keep historical artifacts unchanged and avoid unnecessary documentation proliferation.
+
+No Git staging, commits, pushes, pulls or branch changes.
+
+**STOP after this bounded exploratory iteration.**
+
+Do not launch a broader campaign, additional validation, more datasets or another model automatically.
+
+The next ChatGPT-researcher review will decide which findings deserve the definitive Paper 1 campaign.
+
+### Final scientific priority
+
+**The purpose of this iteration is to discover scientifically interesting properties of autoregressive forecasting generation and determine what FPA contributes beyond conventional sampling.**
+
+Statistical controls exist to protect findings, not to replace scientific exploration.
+
+The desired output is a small number of insightful, reproducible phenomena with clear scientific implications, not another exhaustive catalogue of distance estimates.

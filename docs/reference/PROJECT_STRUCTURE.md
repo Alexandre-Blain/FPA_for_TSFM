@@ -83,6 +83,16 @@ is mirrored into ignored `docs/chatgpt-handout/` at each completed prompt.
 
 ## Import Rule
 
+L'itération exploratoire bornée utilise `configs/chronos_discovery/`,
+`scripts/data/prepare_chronos_discovery_data.py` et
+`scripts/runs/run_chronos_discovery.py`. `replay_chronos_discovery.py` ne tire
+aucune nouvelle trajectoire. Les analyses sont `analyze_chronos_discovery.py`,
+`review_chronos_discovery.py`, `finalize_chronos_discovery.py` et
+`plot_chronos_discovery.py`; les descripteurs sont dans
+`analysis/chronos_discovery.py`. Sources figées et preuves restent dans le run.
+Le [rapport courant](FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md) sépare les
+observations des applications UCR/Kronos proposées, sans les implémenter.
+
 The local multi-series pilot uses `scripts/runs/run_chronos_local_pilot.py`:
 `data/chronos_pilot_selection.py` freezes context-only selection,
 `pipeline/chronos_pilot_validation.py` checks immutable complete cells, and

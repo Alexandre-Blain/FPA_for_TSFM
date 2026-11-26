@@ -1,5 +1,12 @@
 # Chronos FPA - Guide Pratique
 
+L'itération exploratoire du 24–26 novembre 2026 est terminée :
+[rapport courant](FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md).
+Ses scripts `run_chronos_discovery.py` et `replay_chronos_discovery.py` ne
+constituent pas une autorisation de répéter la collecte. L'analyse offline
+utilise `review_chronos_discovery.py`, puis `finalize_chronos_discovery.py`
+et `plot_chronos_discovery.py`; les commandes sont dans le rapport.
+
 Le pilote H32 multi-series et son analyse hors modele sont termines : voir
 [precision et recommandation de campagne](LOCAL_PILOT_OFFLINE_ANALYSIS.md),
 le [rapport original de collecte](LOCAL_PILOT_REPORT.md) et le

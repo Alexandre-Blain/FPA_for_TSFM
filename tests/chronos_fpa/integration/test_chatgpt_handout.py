@@ -6,6 +6,34 @@ import pytest
 import prepare_chatgpt_handout as handout
 
 
+@pytest.mark.parametrize('permanent', [False, True])
+def test_directory_publication_retries_locks_and_preserves_pending_on_failure(tmp_path, monkeypatch, permanent):
+    source = tmp_path / 'pending'; source.mkdir()
+    (source / 'evidence.txt').write_text('preserve')
+    destination = tmp_path / 'published'
+    original = Path.rename
+    attempts = []
+
+    def locked(path, target):
+        attempts.append(path)
+        if permanent or len(attempts) < 3:
+            raise PermissionError('transient scanner lock')
+        return original(path, target)
+
+    monkeypatch.setattr(Path, 'rename', locked)
+    monkeypatch.setattr(handout.time, 'sleep', lambda _: None)
+    if permanent:
+        with pytest.raises(PermissionError):
+            handout.rename_directory(source, destination)
+        assert len(attempts) == 8
+        assert (source / 'evidence.txt').read_text() == 'preserve'
+        assert not destination.exists()
+    else:
+        handout.rename_directory(source, destination)
+        assert len(attempts) == 3
+        assert (destination / 'evidence.txt').read_text() == 'preserve'
+
+
 def setup_sources(root, monkeypatch):
     (root / "docs").mkdir()
     source = root / "docs/current.md"

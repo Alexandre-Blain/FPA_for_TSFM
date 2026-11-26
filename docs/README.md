@@ -15,14 +15,16 @@ courant. Les rapports et archives ne constituent pas des ordres d'exécution.
 | Quelles décisions ont été validées ? | [Journal chronologique](research/FPA_DECISIONS.md) |
 | Comment travailler entre chercheur, Codex et ChatGPT ? | [Workflow](research/README_WORKFLOW_V2.md) |
 
-Le **premier lot étendu, ses validations et son analyse sont terminés**.
-Arrêt pour revue ChatGPT–chercheur; aucune seconde collecte autorisée.
-Son autorisation et sa limite d'arrêt sont conservées dans
+L'**itération exploratoire est terminée; STOP pour revue scientifique**.
+Collecte du 24 novembre, synthèse et complément du superviseur du 26 novembre
+2026 : six fenêtres H32, validations N120, CPD H64 et replay ciblé. Son
+autorisation et sa limite d'arrêt sont conservées dans
 [la tâche courante](../codex-prompts/CURRENT_TASK.md).
 
 ## Documentation de référence — docs/reference/
 
-- **[Rapport courant : premier lot étendu et baselines directes](reference/FPA_EXTENDED_BATCH_REPORT.md)**.
+- **[Rapport courant : benchmarks et découvertes exploratoires](reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)**.
+- [Lot précédent terminé : baselines directes et N60](reference/FPA_EXTENDED_BATCH_REPORT.md).
 - [Analyse précédente : précision MC du pilote](reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md).
 - [Rapport original : pilote multi-séries et calibration](reference/LOCAL_PILOT_REPORT.md),
   [sélection, tests et preuves](reference/LOCAL_PILOT_EVIDENCE.json).

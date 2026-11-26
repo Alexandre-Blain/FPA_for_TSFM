@@ -1,9 +1,21 @@
 # Objectif scientifique
 
-**Question de Paper 1 :** qu'apprend-on sur les distributions de trajectoires
-numériques futures en imposant un token de sortie plausible à un TSFM
-autorégressif, au-delà de sa probabilité locale, de l'entropie et du saut
-numérique immédiat ?
+**Question de Paper 1, cadrage exploratoire du24 novembre2026 :** l'exploration
+par interventions d'un TSFM autorégressif révèle-t-elle des informations utiles
+sur les trajectoires, les décisions conséquentes ou l'incertitude prédictive
+que les méthodes conventionnelles retrouvent moins efficacement à coût comparable ?
+
+Le complément du superviseur, reçu le 26 novembre 2026, donne priorité à une
+**valeur ajoutée mesurable sur une tâche commune, à coût comparable**.
+Fiabilité, découverte de scénarios, précision des prévisions et qualité des
+décisions sont quatre affirmations distinctes. Aucune amélioration n'est acquise.
+UCR et Kronos sont des applications candidates à étudier, sans autorisation
+d'implémentation dans l'itération terminée.
+
+La question mécanistique reste : qu'apprend-on en imposant un token de sortie
+plausible, au-delà de sa probabilité locale, de l'entropie et du saut numérique
+immédiat ? Les benchmarks doivent permettre une réponse négative : FPA peut
+être inutile ou trop coûteuse pour certaines tâches.
 
 Le modèle actuel est Chronos-T5-mini. L'intervention porte sur un **token
 généré**, conditionnellement à un préfixe greedy fixe. Les continuations sont

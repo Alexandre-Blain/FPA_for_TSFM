@@ -1,73 +1,81 @@
-# Handoff — premier lot étendu terminé
+# Handoff — 26 novembre 2026
 
-**22 novembre 2026. STOP pour revue scientifique, aucune deuxième collecte.**
-Lire le **[rapport principal](../reference/FPA_EXTENDED_BATCH_REPORT.md)** puis
-ses CSV/PDF joints au handout. Il contient les résultats classés par niveau de
-preuve, les limites, la liste des fichiers changés, l'état Git et les commandes
-sélectives proposées au chercheur. [Autorisation terminée](../../codex-prompts/CURRENT_TASK.md).
+**TERMINÉ; STOP pour revue scientifique.** Commencer par le
+[rapport courant](../reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md),
+qui contient résultats, littérature, audit, limites et commandes offline.
+Le [lot précédent](../reference/FPA_EXTENDED_BATCH_REPORT.md) était déjà terminé
+le22 novembre; ses preuves sont préservées. Le complément du superviseur
+n'a ajouté aucune expérience UCR/Kronos.
 
-## Provenance et achèvement
+## État et preuves
 
-Branche `main`, HEAD pré-commit et de collecte
-`ea3d78a10280e83e65a2bd7474af3eaf8ee1a905`; arbre initial propre.
-Les22 chemins source/doc/test nouveaux ou modifiés restent non stagés et non
-commités. Aucun staging/commit/push/pull/changement de branche par Codex;
-le SHA du prochain commit chercheur est inconnu.
+Branche `main`; HEAD initial et pré-commit
+`302b98782cd5ed5a25754c44501526d85b2226cb`; arbre initial propre.
+Aucun stage/commit/push/pull/changement de branche par Codex.
+Un nouveau SHA est inconnu jusqu'au commit du chercheur.
 
-Checkpoint complet : `result/extended_batch_20261122T115422Z/`.
-Stage A terminé, puis gel avant inférence à12:09:22.897 UTC; collecte complète
-à12:57:43.087 UTC, analyse complète à13:07:46.223 UTC. Original Chronos-T5-mini,
-révision `bd6a4fde8403b8469acd0abd52852b29dbe61c7b`, C512/H32, b0..9,
-q50 inchangé. La révision N60 concerne ce lot seulement; le pilote historique
-reste inchangé.
+Run : `result/exploratory_benchmark_20261124T095906Z/`.
+Collecte le24 novembre, terminée à11:23:23 UTC; synthèse finale le26 novembre.
+Chronos-T5-mini original CPU float32, quatre threads, batch8, révision
+`bd6a4fde8403b8469acd0abd52852b29dbe61c7b`.
 
-Huit nouvelles identités : M4 T000029/T000008/T000092/T000028;
-ERCOT SOUTH_C/WEST; devises currency_8/currency_6. Exclusions élargies aux scans
-historiques; une fenêtre/source. Les séries ERCOT/devises restent dépendantes.
-24 blocs denses N20, sélection sur bloc0 exclusivement, holdout N40;
-16 alternatives et8 contrôles aléatoires. Les16 alternatives reçoivent un N60
-frais, avec références/nulls partagés explicitement si même position.
+Deux datasets nouveaux, Londres/Australie : six séries originales C512/H32,
+b0..9,3N20 par loi;8 contrastes frais N120 (6 scientifiques,2 contrôles);
+6 références naturelles N120 réservées. H64 :3 contextes réutilisés,31 préfixes
+×3N20 et9 transitions,17 lois fraîches N120. Total1 916 ensembles et43 020
+trajectoires;1 916 flux et graines dérivées distincts.44 processus modèle,
+62,70 min cumulées, zéro échec; pic Job1,26 Gio. Aucun entraînement ni expansion.
 
-Total **1 661 ensembles, 34 980 trajectoires**,1 661 flux RNG et graines
-distincts;32 tentatives modèle, zéro échec,64 chemins white-box capturés.
-Coût modèle cumulé47 min17.954 s, pic Job1.311 Gio; Stage A144.460 s et
-analyse434.896 s hors modèle. Cellules474.36 Mo, validations0.78 Mo,
-analyse16.82 Mo, hors journaux et ZIP. Reprise complète exécutée avec lancement
-modèle interdit : zéro lancement/tirage,3 844 fichiers expérimentaux inchangés.
+Gels : `frozen.json`, `source_at_collection/`, `validation_plan.json`,
+`benchmark_plan.json`, `source_at_validation/`; provenance, RNG et captures
+dans le run. `remaining_execution.json` confirme la fin de toutes les phases.
+Replays : `whitebox/pass1.json`, `pass2.json`, exacts sur deux processus.
+Les tenseurs du sampling online initial n'existent pas : pas de preuve
+d'équivalence rétroactive online. Rapports historiques intacts.
 
-## À transmettre et à conserver
+## Ce que nous avons appris
 
-`frozen.json` lie sélection/contextes, plans des cellules/RNG, environnement,
-cache modèle et gate A. `source_manifest.json` et `source_at_collection/`
-conservent exactement les sources exécutées non commitées. `batch_complete.json`
-lie les marqueurs denses et frais; `first_two_gate.json` et `stage_a_gate.json`
-documentent les contrôles avant progression.
+**Observé :** T000004 b1/2204, écart de direction_reversal +0,55, reproduit
+holdout et N120, Holm8=0,0016. Cet événement existe déjà dans31/120 chemins
+naturels; ce n'est pas un gain de découverte ou de décision démontré.
+La plupart des autres contrastes sélectionnés s'atténuent; CPD0/9 validé.
 
-Dans `analysis/`, lire d'abord `scientific_summary.json`,
-`independent_validation.csv`, `precision_summary.csv`, `rank_stability.csv` et
-`EXTENDED_BATCH_FIGURES.pdf`; le rapport indique les autres preuves thématiques.
-Les tables distinguent unités brutes et IQR, supports, blocs et familles Holm.
-Un rejet de baseline n'établit pas une importance pratique; un non-rejet ne
-prouve pas l'équivalence. Le classement global N60/N60 n'a pas été mesuré.
+**Non établi :** supériorité FPA de fiabilité, précision ou utilité aval.
+SGA adapté H32 classe mieux les erreurs ici (NEAURC0,103 vs FPA W1 0,961),
+sur seulement six sources dépendantes et deux datasets. Pas de mémorisation
+démontrée, ni d'explication causale par les cartes d'attention.
 
-**281 tests offline finaux passent/144.39 s**, six avertissements de retries
-Windows réussis; tests analyse2/6.19 s, handout9/4.10 s. `final_checks.json`
-contient liens, tests, Git, hashes des copies/assets/ZIP; `preservation_after.json`
-vérifie les2 956 fichiers data/result antérieurs, index, `.gitignore` et cache.
-Les anciens rapports et le protocole scientifique d'origine restent préservés.
+**Hypothèse :** localiser des décisions plausibles changeant une conséquence
+utile, puis démontrer un gain de risque ou de décision face à SGA à coût égal.
+UCR et Kronos sont des pistes de faisabilité dans le rapport, pas des acquis.
 
-Upload facile : `docs/chatgpt-handout.zip` ou
-`docs/chatgpt-handout/CHATGPT_HANDOUT.md`, accompagnés des39 assets scientifiques
-explicites. Les archives ne sont pas exportées automatiquement. Ces copies,
-les sorties `result/`, données, caches et `.venv/` restent ignorés par Git.
+## Vérifications et fichiers
+
+299 tests offline passent en97,69 s;11 tests handout en3,27 s.
+11 contrôles d'audit réels passent; partition q50, indices, plafonds, sélection
+bloc0, préfixes, RNG, W1 et replay vérifiés. Les6 998 fichiers préexistants
+data/result, poids, `.gitignore` et index Git sont inchangés.
+Preuves : `analysis/postcollection_audit.json`, `tests_final.txt`,
+`preservation_after.json`, `resume_verification.json`, `final_checks.json`.
+
+`git status --short` exact : `RUN/git_status_final.txt` (RUN=chemin ci-dessus).
+Nouveaux : descripteurs discovery, configuration datée, préparateur, collecteur,
+replay, quatre analyses/figures, quatre tests et rapport. Modifiés : navigation,
+documents actifs, tâche, générateur/tests handout. Aucun fichier supprimé.
+Les chemins complets et commandes `git add --` sélectives proposées sont dans
+le rapport; ne pas utiliser `git add -A`. Message proposé :
+`Add bounded FPA discovery benchmarks and critical application review`.
+Le chercheur relit et exécute lui-même ces commandes.
+
+Handout jetable : `docs/chatgpt-handout/CHATGPT_HANDOUT.md` et
+`docs/chatgpt-handout.zip`, avec PDF7 pages et CSV scientifiques explicites.
+Garder data/result, poids, venv et handout hors Git.
 
 ## Prochain gate unique
 
-**Recommandation non approuvée : revue ChatGPT–chercheur45–60 min, zéro tirage.**
-Fixer les seuils pratiques W1/ED, les hypothèses confirmatoires, la précision
-nécessaire et la diversité/taille restante. L'intérêt d'étendre la grille serait
-réfuté si le gain attendu reste sous le bruit ou si les sources supplémentaires
-ne fournissent pas les unités indépendantes requises. Le stock local restant
-est48 M4, zéro ERCOT, une devise; ne pas substituer des fenêtres voisines à de
-nouvelles séries. Toute collecte supplémentaire demande une nouvelle tâche
-explicitement autorisée. Aucun superviseur ni nouvelle campagne à reprendre.
+Revue chercheur–superviseur avant toute nouvelle inférence. Recommandation
+proposée : benchmark prospectif commun FPA/SGA/sampling,24 séries nouvelles
+sur au moins4 datasets éligibles, politiques figées et coût total mesuré.
+Préparation4–8 h, plafond proposé1 h CPU modèle après timing.
+Falsificateur : aucun gain incrémental reproductible au-delà des baselines
+et de son coût. Aucun choix d'application ni ce budget n'est encore autorisé.

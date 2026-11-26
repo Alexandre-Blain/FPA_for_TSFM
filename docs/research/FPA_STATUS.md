@@ -1,49 +1,47 @@
-# État du projet — 22 novembre 2026
+# État du projet — 26 novembre 2026
 
-**Premier lot étendu terminé; STOP pour revue ChatGPT–chercheur.**
-Lire le **[rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md)** pour
-les conclusions, incertitudes, coûts et preuves; le [handoff](FPA_HANDOFF.md)
-pour reprendre la revue. Aucune seconde collecte autorisée.
+**Itération exploratoire terminée; STOP pour revue chercheur–superviseur.**
+Lire le [rapport scientifique courant](../reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)
+puis le [handoff](FPA_HANDOFF.md). Le complément du superviseur est intégré;
+aucune application UCR/Kronos implémentée ou exécutée.
 
-Branche `main`, HEAD pré-commit et de collecte
-`ea3d78a10280e83e65a2bd7474af3eaf8ee1a905`; arbre propre au départ.
-Modifications finales non stagées/non commitées; aucun Git d'écriture par Codex.
-Les sources modifiées exécutées sont archivées et hashées avant collecte.
+Branche `main`, HEAD de collecte et pré-commit
+`302b98782cd5ed5a25754c44501526d85b2226cb`, arbre propre au départ.
+Modifications locales non stagées; seul le chercheur réalise les écritures Git.
 
-## Expériences réellement terminées
+| Exécution réelle | État / source de vérité |
+| --- | --- |
+| Pilote multi-séries et revue offline | [Collecte](../reference/LOCAL_PILOT_REPORT.md), [analyse](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) |
+| Baselines directes et premier lot étendu du22 novembre | [Rapport original](../reference/FPA_EXTENDED_BATCH_REPORT.md), conservé |
+| Exploration et benchmarks du24 novembre | 6 nouvelles fenêtres H32;18 blocs denses;8 contrastes N120;6 références naturelles N120 |
+| CPD H64 | 3 fenêtres;31 préfixes ×3N20;9 transitions;17 lois fraîches N120 |
+| SGA et white-box | Entropies sur chemins existants;2 passes de reload, zéro nouveau tirage |
 
-| Étape | Périmètre exécuté | Preuve scientifique |
-| --- | --- | --- |
-| Phase 2 historique | 3 séries, 7 groupes, 1 400 trajectoires | [Rapport original](../reference/CHRONOS_PHASE2.md) |
-| Phase 3 Deliverable A | Contrôles offline; Stage A modèle non exécutée | [Rapport original](../reference/CHRONOS_PHASE3_DESIGN.md) |
-| Prompt 2 | M4/T000001, 2 060 trajectoires et timing distinct | [Benchmark](../reference/BENCHMARK_REPORT.md) |
-| Pilote multi-séries | 6 séries, 10 cellules, 704 ensembles, 17 280 trajectoires | [Collecte](../reference/LOCAL_PILOT_REPORT.md) |
-| Analyse précédente | N20/30/40/60, supports, propagation et CPD; zéro nouveau tirage | [Analyse offline](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) |
-| Stage A courant | Comparaisons directes des deux baselines sur données du pilote; gate passé | [Rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md) |
-| Premier lot étendu | 8 nouvelles identités, 24 blocs denses N20, 44 ensembles frais N60; 34 980 trajectoires au total | [Rapport courant](../reference/FPA_EXTENDED_BATCH_REPORT.md) |
+Run courant : `result/exploratory_benchmark_20261124T095906Z/`.
+**1 916 ensembles,43 020 trajectoires,1 314 720 tokens stochastiques**;
+1 916 flux et graines dérivées uniques. 44 processus modèle,62,70 min cumulées,
+zéro échec. Collecte terminée le24 novembre à11:23:23 UTC.
 
-## État vérifié
+**Observé :** Australie T000004 b1/2204 conserve un écart d'événement d'environ
++0,55 sur holdout et N120 frais, Holm8=0,0016. Cet événement est déjà découvert
+par le sampling naturel. Un seul des six contrastes scientifiques valide ce
+seuil; les contrôles et contre-exemples sont conservés.
 
-Collecte complète dans `result/extended_batch_20261122T115422Z/`, terminée
-le22 novembre à12:57:43 UTC; analyse terminée à13:07:46 UTC. Les gates de
-justesse, des deux premières fenêtres et de reconstruction des pools passent.
-Les1 661 ensembles ont chacun une identité RNG et une graine dérivée distinctes.
-Reprise complète testée : zéro nouveau tirage et zéro lancement modèle.
+**Non établi :** gain FPA de fiabilité, précision ou décision aval à coût égal.
+Sur les six nouvelles fenêtres, SGA adapté H32 donne NEAURC0,103 contre0,961
+pour FPA W1; aucune généralisation avec ce petit panel. Le gain de couverture
+des groupes dépasse le gain de masse couverte. CPD :0/9 transition validée.
+Aucune preuve de mémorisation ni mécanisme causal par attention.
 
-**281 tests finaux passent en144.39 s**, six avertissements de retries Windows
-réussis;9 tests handout passent en4.10 s. Liens, copies de revue et conservation
-des preuves sont contrôlés dans `final_checks.json` et `preservation_after.json`.
-Les données, anciens résultats, rapports scientifiques, index Git, `.gitignore`
-et poids locaux sont préservés.
+**Vérifié :**299 tests offline en97,69 s;11 tests handout en3,27 s;
+11 contrôles sur objets réels. Les6 998 fichiers data/result préexistants,
+poids, index Git et `.gitignore` sont inchangés. Les gels et sources archivées
+restent valides. L'audit distingue indices absolus, q50/p_sel, préfixes,
+covariance de réutilisation et biais de sélection. Détails et reçus dans le rapport.
 
-Le rapport distingue les rejets directs de baselines, les différences brutes,
-la précision, le classement et la généralisation. La précision pratique et le
-gain incrémental au-delà de probabilité/J restent ouverts; huit identités ne
-sont pas huit sources indépendantes. Les analyses, CSV et figures courants
-sont dans `analysis/`;39 assets explicites sont joints au handout renouvelé.
-
-**Prochaine étape unique : revue scientifique45–60 min, zéro modèle.**
-Décider seuils pratiques W1/ED, hypothèses confirmatoires, diversité des sources
-et budget restant. Cette recommandation n'autorise aucune nouvelle expérience.
-Les détails et critères de réfutation restent dans le rapport, source unique
-des résultats de cette itération.
+**Proposition unique, non autorisée :** benchmark prospectif de fiabilité
+FPA vs SGA/sampling sur24 nouvelles séries et au moins4 datasets disponibles,
+avec politiques et pertes figées, coût total comparable. Préparation4–8 h;
+plafond proposé1 h CPU modèle après gate de timing. Falsificateur : aucun gain
+incrémental reproductible une fois le coût payé. La revue doit choisir et
+autoriser la suite; ne relancer aucun collecteur depuis une ancienne configuration.

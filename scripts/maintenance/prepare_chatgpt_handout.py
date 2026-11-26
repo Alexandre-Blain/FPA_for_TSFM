@@ -10,6 +10,7 @@ import posixpath
 import re
 import subprocess
 import tempfile
+import time
 from urllib.parse import unquote
 import zipfile
 
@@ -45,7 +46,7 @@ def collect_documents(root: Path) -> list[str]:
     changed = git(root, "diff", "HEAD", "--name-only", "--diff-filter=ACMRT", "-z").split("\0")
     changed += git(root, "ls-files", "--others", "--exclude-standard", "-z").split("\0")
     priority = {name: i for i, name in enumerate((
-        "docs/research/FPA_HANDOFF.md", "docs/reference/FPA_EXTENDED_BATCH_REPORT.md",
+        "docs/research/FPA_HANDOFF.md", "docs/reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md",
         "docs/research/FPA_STATUS.md", "docs/research/FPA_DECISIONS.md",
         "docs/research/FPA_NORTH_STAR.md", "docs/research/FPA_PROTOCOL_EXPLORATORY.md",
     ))}
@@ -234,6 +235,18 @@ def remove_managed(directory: Path, names: list[str]) -> None:
     directory.rmdir()
 
 
+def rename_directory(source: Path, destination: Path) -> None:
+    """Tolerate brief Windows scanner locks; preserve data on lasting failure."""
+    for attempt in range(8):
+        try:
+            source.rename(destination)
+            return
+        except PermissionError:
+            if attempt == 7:
+                raise
+            time.sleep(min(.025 * 2**attempt, .2))
+
+
 def build_handout(root: Path, review_assets=()) -> dict:
     root = root.resolve()
     docs = root / "docs"
@@ -285,7 +298,7 @@ def build_handout(root: Path, review_assets=()) -> dict:
         "linked references are included. Archives are excluded even when changed "
         "or linked by the documentation index. Archived documents, code, datasets and model "
         "outputs are not included except explicitly attached review assets; their references are shown as plain repository "
-        "paths. Start with FPA_HANDOFF, the latest pilot report and FPA_STATUS. "
+        "paths. Start with FPA_HANDOFF, the current scientific report and FPA_STATUS. "
         "Older reports are historical evidence. Document copies live under "
         "repository/; export-only links may differ from canonical sources. "
         "The manifest records canonical source hashes and generated copy hashes "
@@ -341,12 +354,12 @@ def build_handout(root: Path, review_assets=()) -> dict:
         backup = stage.with_name(stage.name.replace("pending", "previous"))
         if backup.resolve().parent != docs.resolve() or backup.exists():
             raise ValueError("Unsafe handout backup location")
-        destination.rename(backup)
+        rename_directory(destination, backup)
     try:
-        stage.rename(destination)
+        rename_directory(stage, destination)
     except OSError:
         if backup is not None:
-            backup.rename(destination)
+            rename_directory(backup, destination)
         raise
     if backup is not None:
         remove_managed(backup, previous_names)

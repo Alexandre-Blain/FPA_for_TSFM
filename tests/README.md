@@ -56,6 +56,15 @@ uniquely timed.
 
 ## API Contracts
 
+L'itération exploratoire ajoute `test_discovery.py`,
+`test_discovery_validation.py`, `test_discovery_finalization.py` et
+`test_discovery_collections.py` : événements absolus, partition probabiliste,
+SGA analytique, caps, partage des références, préfixes H64, tests binaires et
+frontière temporelle. `test_chatgpt_handout.py` vérifie aussi les verrous
+transitoires de publication Windows et la conservation après échec permanent.
+L'audit offline des vrais objets est séparé dans
+`scripts/viz/finalize_chronos_discovery.py`; aucune inférence supplémentaire.
+
 The first extended batch adds direct distributional-baseline tests (including
 late-support AR1 indexing and equally distant but different distributions),
 future-invariant cohort selection with legacy exclusions, predeclared independent
