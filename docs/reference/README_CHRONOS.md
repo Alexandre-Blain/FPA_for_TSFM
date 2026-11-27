@@ -1,7 +1,23 @@
 # Chronos FPA - Guide Pratique
 
+La campagne H1/H2 du26–27 novembre2026 est terminée, en revue chercheur :
+[rapport courant](FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md),
+[autorisation et reprise](../research/FPA_HANDOFF.md).
+`configs/chronos_incremental/campaign_v1.json` et
+`scripts/runs/run_chronos_incremental.py` utilisent les sources et entrées gelées
+sous le RUN indiqué dans le handoff. Ne jamais lancer deux superviseurs.
+L'audit offline est `scripts/viz/audit_chronos_incremental.py --run RUN --preservation`;
+l'analyse est `scripts/viz/analyze_chronos_incremental.py --run RUN`.
+L'arrêt documenté utilise `--partial` :320 H1 et29 H2 complets. Résultats dans
+`analysis_v2/`, liés par `analysis_complete.json`. Après l'erreur d'arrondi Wilson,
+`scripts/viz/finalize_chronos_incremental.py --run RUN` a terminé les figures
+en conservant à l'identique les29 tables et le gel initial; ne pas relancer
+l'ancien main avec un source différent de son gel. Audit validé, plafond de
+temps dépassé de24,883 s,320 tests passent. Aucune inférence supplémentaire
+n'est autorisée. La prochaine étape est la revue du rapport et du handout.
+
 L'itération exploratoire du 24–26 novembre 2026 est terminée :
-[rapport courant](FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md).
+[rapport précédent](FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md).
 Ses scripts `run_chronos_discovery.py` et `replay_chronos_discovery.py` ne
 constituent pas une autorisation de répéter la collecte. L'analyse offline
 utilise `review_chronos_discovery.py`, puis `finalize_chronos_discovery.py`

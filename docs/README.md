@@ -15,15 +15,17 @@ courant. Les rapports et archives ne constituent pas des ordres d'exécution.
 | Quelles décisions ont été validées ? | [Journal chronologique](research/FPA_DECISIONS.md) |
 | Comment travailler entre chercheur, Codex et ChatGPT ? | [Workflow](research/README_WORKFLOW_V2.md) |
 
-L'**itération exploratoire est terminée; STOP pour revue scientifique**.
-Collecte du 24 novembre, synthèse et complément du superviseur du 26 novembre
-2026 : six fenêtres H32, validations N120, CPD H64 et replay ciblé. Son
-autorisation et sa limite d'arrêt sont conservées dans
+La **campagne H1/H2 du26–27 novembre2026 est terminée** :320 H1 et29 H2 complets,
+audit et320 tests validés. Aucun avantage FPA robuste démontré; appariement
+primaire H2 manqué et dépassement de temps explicitement signalés. Le rapport
+courant contient résultats, figures et limites. Revue chercheur avant toute suite.
+L'autorisation originale, ses plafonds et son arrêt sont conservés dans
 [la tâche courante](../codex-prompts/CURRENT_TASK.md).
 
 ## Documentation de référence — docs/reference/
 
-- **[Rapport courant : benchmarks et découvertes exploratoires](reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)**.
+- **[Rapport courant : valeur incrémentale et estimation d'événements](reference/FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md)**.
+- [Itération exploratoire précédente, terminée](reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md).
 - [Lot précédent terminé : baselines directes et N60](reference/FPA_EXTENDED_BATCH_REPORT.md).
 - [Analyse précédente : précision MC du pilote](reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md).
 - [Rapport original : pilote multi-séries et calibration](reference/LOCAL_PILOT_REPORT.md),

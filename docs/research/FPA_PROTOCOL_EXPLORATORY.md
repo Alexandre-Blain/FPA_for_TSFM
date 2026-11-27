@@ -1,4 +1,14 @@
-# Protocole expérimental actuel — Chronos H32
+# Définitions expérimentales — Chronos H32
+
+**Variante autorisée le26 novembre 2026 :** la campagne H1/H2 emploie les
+estimands de distance ci-dessous, avec le dessin et les événements spécifiques
+du [rapport courant](../reference/FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md)
+et de `configs/chronos_incremental/campaign_v1.json`. H1 : sparse0/4/9,
+cap5, deux N20 par loi, nullN20 et naturel3N20. H2 : stratification exhaustive
+et première déviation b0..4, références indépendantes et allocations figées.
+Ces variantes sont explicitement autorisées par le chercheur. Les sections
+de collecte dense et CPD ci-dessous définissent les pilotes historiques et
+n'imposent aucune collecte dense/CPD supplémentaire à cette campagne.
 
 Ce document est la source des définitions scientifiques. L'autorisation
 d'exécution est distincte : [tâche courante](../../codex-prompts/CURRENT_TASK.md)

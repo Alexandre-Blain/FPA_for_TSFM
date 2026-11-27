@@ -40,4 +40,7 @@ L'unité indépendante principale est la série originale. Les résultats négat
 et effets proches du contrôle doivent être conservés. Attention et hidden
 states ne suffisent pas à établir une explication causale. UCR n'est pas une
 validation obligatoire de Paper 1. CPD, white-box et efficacité restent des
-axes exploratoires; aucun nouveau score composite n'est recherché.
+axes exploratoires. La campagne explicitement autorisée le26 novembre teste
+deux voies : valeur prédictive incrémentale H1 via une calibration supervisée
+équitable, et variance/coût d'estimation des conséquences H2. Le modèle de
+risque simple est autorisé; aucun score arbitraire choisi sur le test n'est admis.

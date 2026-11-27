@@ -25,6 +25,7 @@ scripts/
   maintenance/          Research audit and disposable ChatGPT handout refresh.
 
 configs/
+  chronos_incremental/     Frozen H1/H2 campaign policy; RUN binds cohort/costs.
   chronos_local_pilot/     Frozen six-series / ten-cell pilot configuration.
   chronos_microbenchmark/  Dated opt-in single-context Prompt 2 configuration.
   chronos_benchmark_scan/
@@ -41,6 +42,17 @@ tests/chronos_fpa/       Offline unit, integration and regression tests.
 ```
 
 ## Current Chronos Commands
+
+La campagne H1/H2 utilise `scripts/data/prepare_chronos_incremental.py`,
+`scripts/runs/run_chronos_incremental.py` et le gel d'allocation
+`freeze_chronos_incremental_plan.py`. Mathématiques/features/Ridge restent dans
+`analysis/chronos_incremental*.py`; collection dans `pipeline/chronos_incremental*.py`.
+Les scripts `scripts/viz/audit_chronos_incremental.py` et
+`analyze_chronos_incremental.py` ne lancent aucune inférence. Voir le
+finaliseur `finalize_chronos_incremental.py` pour la correction graphique
+versionnée qui conserve les29 tables numériques d'origine. Voir le
+[rapport courant](FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md) et le handoff
+pour le RUN, les ressources autorisées et l'arrêt scientifique.
 
 Main scan:
 

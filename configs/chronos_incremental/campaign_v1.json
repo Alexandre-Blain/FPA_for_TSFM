@@ -1,0 +1,88 @@
+{
+  "authorization": "2026-11-26 incremental-value and consequence-sampling campaign",
+  "stage": "frozen primary protocol; full collection authorized",
+  "model_id": "amazon/chronos-t5-mini",
+  "model_revision": "bd6a4fde8403b8469acd0abd52852b29dbe61c7b",
+  "context_length": 512,
+  "horizon": 32,
+  "cpu_threads": 4,
+  "batch_size": 32,
+  "maximum_model_seconds": 57600,
+  "maximum_new_bytes": 21474836480,
+  "h1_target": 320,
+  "h1_minimum": 240,
+  "h1_maximum": 360,
+  "h1_positions": [
+    0,
+    4,
+    9
+  ],
+  "h1_max_selected_tokens": 5,
+  "h1_conditional_blocks": [
+    20,
+    20
+  ],
+  "h1_natural_blocks": [
+    20,
+    20,
+    20
+  ],
+  "h1_null_samples": 20,
+  "h1_matched_subset": 160,
+  "h1_matched_extra_N": 736,
+  "h2_target": 36,
+  "h2_minimum": 24,
+  "h2_reference_blocks": [
+    1000,
+    1000
+  ],
+  "h2_rare_reference_extra_N": 0,
+  "h2_allocation_pilot_per_stratum": 4,
+  "h2_budget_anchors": [
+    60,
+    120,
+    240,
+    480
+  ],
+  "h2_replicated_windows": 12,
+  "h2_target_repetitions": 10,
+  "h2_minimum_per_stratum": 2,
+  "root_seed": 2026112609,
+  "risk_ridge_alphas": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "risk_target_transform": "log1p; same transform and validation MSE for all methods",
+  "primary_h1": "M3 versus M1, MASE risk ranking; within-dataset and held-out weather separately",
+  "secondary_h1": "M2 versus M0; independently learned MAE/IQR target; raw within-dataset MAE",
+  "primary_h2": "cost-aware Neyman first-deviation estimator versus actual-cost matched natural MC at anchor480; four events averaged equally per original window",
+  "h2_methods": [
+    "MC",
+    "first_token_proportional",
+    "first_deviation_uniform",
+    "first_deviation_proportional",
+    "first_deviation_neyman_cost",
+    "stratum_mixture_IS"
+  ],
+  "h2_pilot_charging": "Neyman and pilot-based IS each pay their entire independent pilot cost per single production estimate; fixed uniform/proportional rules do not require outcome pilot",
+  "bootstrap_replicates": 999,
+  "final_allocation": "allocation.json and methodology.json under campaign run",
+  "h2_cost_model": {
+    "single_b0": 0.032698755001183605,
+    "mixed_b0": 0.03548263000266161,
+    "single_b1": 0.03525232999818399,
+    "mixed_b1": 0.037314100004732606,
+    "single_b2": 0.031595860002562405,
+    "mixed_b2": 0.03499547999817878,
+    "single_b3": 0.03189379000104964,
+    "mixed_b3": 0.03420516999904066,
+    "single_b4": 0.02961621999857016,
+    "mixed_b4": 0.029299330001231284,
+    "prefix_b5": 0.029574944998603313,
+    "natural": 0.030981029687609407
+  },
+  "h2_final_repetitions": 10,
+  "h2_matched_natural_cap": 4000
+}

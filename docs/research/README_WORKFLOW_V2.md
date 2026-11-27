@@ -8,7 +8,7 @@ Il distingue six documents actifs, les références et les archives.
    prévalent sur les résumés narratifs.
 2. **Autorisation.** Le chercheur définit la tâche, les cellules ou ressources
    permises et les critères d'arrêt. La tâche actuelle est
-   [l'exploration et les benchmarks bornés, terminés](../../codex-prompts/CURRENT_TASK.md); son état d'exécution
+   [la campagne bornée H1/H2](../../codex-prompts/CURRENT_TASK.md); son état d'exécution
    est tenu dans le [statut](FPA_STATUS.md).
    Aucun ancien prompt archivé ne vaut autorisation.
 3. **Travail.** Codex implémente, teste et exécute seulement le périmètre autorisé.

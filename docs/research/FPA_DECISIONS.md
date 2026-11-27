@@ -206,3 +206,35 @@ Préserver la collecte déjà autorisée et ses gels. Le chercheur demande aussi
 un audit final du code, de la logique mathématique et des risques de biais.
 Copie exacte : `result/exploratory_benchmark_20261124T095906Z/SUPERVISOR_ADDENDUM.txt`.
 Le prochain choix d'application appartient à la revue chercheur–superviseur.
+
+## 2026-11-26 - campagne de valeur incrémentale et estimation des conséquences
+
+Nouvelle autorisation explicite du chercheur : H1 risque prédictif supervisé,
+primaire M3(conventionnel+SGA+FPA) vs M1(conventionnel+SGA), et H2 estimation
+de probabilités d'événements sous q50. C512/H32, Chronos-T5-mini épinglé,
+CPU local; plafonds16 h cumulées de processus modèle et20 Gio nouveaux.
+H1 cible320 IDs, max360, minimum informatif240; H2 cible36, minimum24.
+Au plus4 datasets publics supplémentaires après provenance/licence.
+
+H1 utilise les positions0/4/9, cap5 incluant greedy, résidu exhaustif, N40
+en2N20 et null indépendant≥N20; naturel3N20 et SGA sur les mêmes chemins.
+Splits source/série et test entier d'un dataset si faisable; calibration
+supervisée équitable pour tous. H2 compare MC, stratification b0 et première
+déviation b0..4, allocations indépendantes du pilote, références N2000 et
+budgets de temps correspondant approximativement à N60/120/240/480.
+L'option IS/splitting doit être mathématiquement valide; aucune hausse
+de N pour obtenir un résultat favorable.
+
+Gates A hors modèle, B pilote technique, C gel, D exécution bornée,
+E intégrité/analyse/handoff. L'allocation finale dépend des coûts et de la
+disponibilité, pas des erreurs futures ou d'effets FPA. Aucun nouveau modèle,
+TSFM training, dépendance non nécessaire, cloud, UCR, Kronos ou CPD étendu.
+Copie exacte : `result/incremental_campaign_20261126T132759Z/AUTHORIZED_REQUEST.txt`.
+Arrêt après analyses et handout; aucune seconde campagne automatique.
+
+## 2026-11-26 - collecte autonome et reprise de la revue
+
+Le chercheur demande que les scripts continuent sans tour Codex actif et
+prévoit de relancer Codex après les calculs. H1, les tests offline et H2
+s'enchaînent dans le périmètre déjà autorisé; audit, analyse et rapport restent
+à reprendre à son retour. Plafonds, protocole et arrêt sur erreur inchangés.

@@ -1,81 +1,71 @@
-# Handoff — 26 novembre 2026
+# Handoff — campagne H1/H2 terminée, revue chercheur, 27 novembre 2026
 
-**TERMINÉ; STOP pour revue scientifique.** Commencer par le
-[rapport courant](../reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md),
-qui contient résultats, littérature, audit, limites et commandes offline.
-Le [lot précédent](../reference/FPA_EXTENDED_BATCH_REPORT.md) était déjà terminé
-le22 novembre; ses preuves sont préservées. Le complément du superviseur
-n'a ajouté aucune expérience UCR/Kronos.
+**Gate E terminé. STOP : aucune nouvelle inférence ou campagne.**
+Lire le [rapport scientifique](../reference/FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md),
+puis les figures et CSV dans `result/incremental_campaign_20261126T132759Z/analysis_v2/`.
+Le dossier `docs/chatgpt-handout.zip` rassemble les pièces courantes de revue.
 
-## État et preuves
+## Conclusion
 
-Branche `main`; HEAD initial et pré-commit
-`302b98782cd5ed5a25754c44501526d85b2226cb`; arbre initial propre.
-Aucun stage/commit/push/pull/changement de branche par Codex.
-Un nouveau SHA est inconnu jusqu'au commit du chercheur.
+**Narration C : résultats limités.** H1 n'établit pas d'information prédictive
+FPA robuste au-delà de SGA et des contrôles conventionnels. Le delta NEAURC
+MASE M3−M1 est−0,0510 [−0,4285;0,2058] sur52 tests internes, mais+0,0542
+[−0,0339;0,1462] sur64 Weather OOD. Les deux p ajustés Holm valent1.
+M3 coûte en moyenne50,08 s composées contre9,72 s pour M1.
+Les contrôles secondaires favorables ne remplacent pas le primaire.
 
-Run : `result/exploratory_benchmark_20261124T095906Z/`.
-Collecte le24 novembre, terminée à11:23:23 UTC; synthèse finale le26 novembre.
-Chronos-T5-mini original CPU float32, quatre threads, batch8, révision
-`bd6a4fde8403b8469acd0abd52852b29dbe61c7b`.
+H2 n'établit pas d'avantage à coût égal. Neyman480 a RMSE0,01638 en25,29 s;
+le MC prévu apparié a0,00974 en47,78 s : coût1,879 fois plus grand,
+aucune paire dans la tolérance. Ce défaut interdit la conclusion primaire
+à coût égal. Le MC N480 fixé, secondaire, atteint0,01191 en27,71 s.
+Les poids/estimateurs corrects ne suffisent pas à démontrer une utilité pratique.
 
-Deux datasets nouveaux, Londres/Australie : six séries originales C512/H32,
-b0..9,3N20 par loi;8 contrastes frais N120 (6 scientifiques,2 contrôles);
-6 références naturelles N120 réservées. H64 :3 contextes réutilisés,31 préfixes
-×3N20 et9 transitions,17 lois fraîches N120. Total1 916 ensembles et43 020
-trajectoires;1 916 flux et graines dérivées distincts.44 processus modèle,
-62,70 min cumulées, zéro échec; pic Job1,26 Gio. Aucun entraînement ni expansion.
+## Exécution et preuves
 
-Gels : `frozen.json`, `source_at_collection/`, `validation_plan.json`,
-`benchmark_plan.json`, `source_at_validation/`; provenance, RNG et captures
-dans le run. `remaining_execution.json` confirme la fin de toutes les phases.
-Replays : `whitebox/pass1.json`, `pass2.json`, exacts sur deux processus.
-Les tenseurs du sampling online initial n'existent pas : pas de preuve
-d'équivalence rétroactive online. Rapports historiques intacts.
+Run : `result/incremental_campaign_20261126T132759Z/` (RUN).
+Autorisation originale `AUTHORIZED_REQUEST.txt`; protocole/configuration figés
+dans `methodology.json`, `allocation.json`, `frozen_config.json`, `frozen.json`.
+Cohorte et splits : `cohort_and_splits.csv`, une fenêtre par ID original.
 
-## Ce que nous avons appris
+- Pilote5 fenêtres/7 620 chemins; H1 complet320, avec153 train/51 validation/
+  52 test interne/64 Weather OOD;160 contrôles avec736 chemins supplémentaires.
+- H2 complet29/36, références N2000;11 fenêtres à dix répétitions.
+  Répartition9 London/9 Electricity/9 Weather/2 Traffic : l'ordre groupé a
+  manqué le retrait équilibré prévu. Les7 autres sorties restent conservées.
+- Arrêt27 novembre07 h28 Luxembourg. Temps57 624,883 s, dépassement24,883 s
+  du plafond16 h : **conformité au temps en échec**, aucune inférence relancée.
+  Environ486 Mo nouveaux à la coupure, sous20 Gio.
+- Audit brut :30 225 flux distincts,833 164 trajectoires,2 026 cellules H2
+  recalculées. Conservation validée pour11 611 fichiers, index Git et `.gitignore`.
+- **320 tests réussis en217,35 s**, `gate_E_final_tests.*`.
+  Six pages PDF/PNG inspectées. Liens du handout vérifiés par le générateur.
 
-**Observé :** T000004 b1/2204, écart de direction_reversal +0,55, reproduit
-holdout et N120, Holm8=0,0016. Cet événement existe déjà dans31/120 chemins
-naturels; ce n'est pas un gain de découverte ou de décision démontré.
-La plupart des autres contrastes sélectionnés s'atténuent; CPD0/9 validé.
+La première analyse a échoué après ses29 tableaux sur un arrondi Wilson
+négatif dans une figure. Source/gel/log préservés sous
+`analysis_v1_failed_plot_provenance/`; le finaliseur offline version2 corrige
+le tracé seul. Les29 fichiers numériques sont identiques par SHA256.
+`analysis_complete.json` et `analysis_v2_freeze.json` lient la version finale.
+Ne pas relancer l'ancien `main` contre un source différent de son gel.
+Les anciennes erreurs dans les logs sont de la provenance, pas l'état actuel.
 
-**Non établi :** supériorité FPA de fiabilité, précision ou utilité aval.
-SGA adapté H32 classe mieux les erreurs ici (NEAURC0,103 vs FPA W1 0,961),
-sur seulement six sources dépendantes et deux datasets. Pas de mémorisation
-démontrée, ni d'explication causale par les cartes d'attention.
+## Limites et reprise
 
-**Hypothèse :** localiser des décisions plausibles changeant une conséquence
-utile, puis démontrer un gain de risque ou de décision face à SGA à coût égal.
-UCR et Kronos sont des pistes de faisabilité dans le rapport, pas des acquis.
+Un seul dataset OOD; dépendances physiques Weather inconnues; forte exposition
+potentielle des cibles in-domain au pré-entraînement TSFM. Les IC maintiennent
+les modèles ajustés fixes; quatre blocs dataset donnent des tests grossiers.
+H2 est partiel; répétitions conditionnelles à un même pilote; référence N2000
+finie. F6 peut inclure le saut forcé à b9, contrairement à W1/ED.
+Les contrôles secondaires ont été fixés avant les cibles, sans changer le primaire.
 
-## Vérifications et fichiers
+**Unique suite proposée, non exécutée :** diagnostic offline des préfixes des
+pools MC existants, choisis par leurs temps seuls. Plafond proposé2 h de travail/
+30 min CPU offline/0 s modèle. Exiger≥80% d'appariements dans[0,8;1,25] et un
+gain RMSE≥10% avec IC de delta MSE négatif; sinon pas de gain démontré.
+Les données ont déjà été vues : analyse exploratoire. **Revue et approbation
+du chercheur requises avant cette nouvelle tâche**, selon le gate de l'autorisation.
 
-299 tests offline passent en97,69 s;11 tests handout en3,27 s.
-11 contrôles d'audit réels passent; partition q50, indices, plafonds, sélection
-bloc0, préfixes, RNG, W1 et replay vérifiés. Les6 998 fichiers préexistants
-data/result, poids, `.gitignore` et index Git sont inchangés.
-Preuves : `analysis/postcollection_audit.json`, `tests_final.txt`,
-`preservation_after.json`, `resume_verification.json`, `final_checks.json`.
-
-`git status --short` exact : `RUN/git_status_final.txt` (RUN=chemin ci-dessus).
-Nouveaux : descripteurs discovery, configuration datée, préparateur, collecteur,
-replay, quatre analyses/figures, quatre tests et rapport. Modifiés : navigation,
-documents actifs, tâche, générateur/tests handout. Aucun fichier supprimé.
-Les chemins complets et commandes `git add --` sélectives proposées sont dans
-le rapport; ne pas utiliser `git add -A`. Message proposé :
-`Add bounded FPA discovery benchmarks and critical application review`.
-Le chercheur relit et exécute lui-même ces commandes.
-
-Handout jetable : `docs/chatgpt-handout/CHATGPT_HANDOUT.md` et
-`docs/chatgpt-handout.zip`, avec PDF7 pages et CSV scientifiques explicites.
-Garder data/result, poids, venv et handout hors Git.
-
-## Prochain gate unique
-
-Revue chercheur–superviseur avant toute nouvelle inférence. Recommandation
-proposée : benchmark prospectif commun FPA/SGA/sampling,24 séries nouvelles
-sur au moins4 datasets éligibles, politiques figées et coût total mesuré.
-Préparation4–8 h, plafond proposé1 h CPU modèle après timing.
-Falsificateur : aucun gain incrémental reproductible au-delà des baselines
-et de son coût. Aucun choix d'application ni ce budget n'est encore autorisé.
+Branche `main`, HEAD avant commit chercheur
+`a5b6ef6743832f09bfa096078104b727dc84f373`; modifications locales non commitées.
+`RUN/GIT_HANDOFF.md` contient le statut complet, les chemins et propositions
+de staging sélectif. Données/résultats/checkpoints/handout restent hors Git.
+Aucun staging, commit ou push Codex; prochain SHA inconnu jusqu'au commit chercheur.

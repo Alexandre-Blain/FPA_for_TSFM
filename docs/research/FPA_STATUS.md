@@ -1,47 +1,49 @@
-# État du projet — 26 novembre 2026
+# État du projet — 27 novembre 2026
 
-**Itération exploratoire terminée; STOP pour revue chercheur–superviseur.**
-Lire le [rapport scientifique courant](../reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)
-puis le [handoff](FPA_HANDOFF.md). Le complément du superviseur est intégré;
-aucune application UCR/Kronos implémentée ou exécutée.
+**Campagne H1/H2 terminée au gate E. Revue chercheur avant toute nouvelle tâche.**
+Résultats et limites détaillés dans le
+[rapport scientifique](../reference/FPA_INCREMENTAL_VALUE_AND_EVENT_SAMPLING.md);
+pièces de transmission et reprise dans le [handoff](FPA_HANDOFF.md).
 
-Branche `main`, HEAD de collecte et pré-commit
-`302b98782cd5ed5a25754c44501526d85b2226cb`, arbre propre au départ.
-Modifications locales non stagées; seul le chercheur réalise les écritures Git.
+**Observé : aucun gain FPA robuste démontré.** H1 M3−M1 donne un petit gain
+MASE interne (delta NEAURC−0,0510, IC comprenant zéro), puis une dégradation
+sur Weather OOD (+0,0542). Aucun des trois tests primaires n'est significatif
+après Holm. Les contrôles secondaires ne remplacent pas ces résultats.
 
-| Exécution réelle | État / source de vérité |
-| --- | --- |
-| Pilote multi-séries et revue offline | [Collecte](../reference/LOCAL_PILOT_REPORT.md), [analyse](../reference/LOCAL_PILOT_OFFLINE_ANALYSIS.md) |
-| Baselines directes et premier lot étendu du22 novembre | [Rapport original](../reference/FPA_EXTENDED_BATCH_REPORT.md), conservé |
-| Exploration et benchmarks du24 novembre | 6 nouvelles fenêtres H32;18 blocs denses;8 contrastes N120;6 références naturelles N120 |
-| CPD H64 | 3 fenêtres;31 préfixes ×3N20;9 transitions;17 lois fraîches N120 |
-| SGA et white-box | Entropies sur chemins existants;2 passes de reload, zéro nouveau tirage |
+H2 ne valide pas la comparaison primaire à coût égal : le MC destiné à apparier
+Neyman consomme1,879 fois son temps réel. Poids et estimateurs sont validés,
+sans avantage pratique démontré. Cela ne prouve ni équivalence ni impossibilité
+d'une autre méthode FPA. La narration C, résultats limités, est retenue.
 
-Run courant : `result/exploratory_benchmark_20261124T095906Z/`.
-**1 916 ensembles,43 020 trajectoires,1 314 720 tokens stochastiques**;
-1 916 flux et graines dérivées uniques. 44 processus modèle,62,70 min cumulées,
-zéro échec. Collecte terminée le24 novembre à11:23:23 UTC.
+Run : `result/incremental_campaign_20261126T132759Z/`.
+Résultats courants : `analysis_v2/`, PDF six pages et29 tables d'origine
+inchangées. H1 complet320/320, cinq datasets/trois domaines :
+153 train,51 validation,52 test interne,64 Weather OOD.
+H2 complet29/36, références N2000;11 fenêtres à dix répétitions,
+9 London/9 Electricity/9 Weather/2 Traffic. Les7 autres fenêtres sont préservées
+et exclues; le retrait équilibré prévu n'a pas été respecté.
 
-**Observé :** Australie T000004 b1/2204 conserve un écart d'événement d'environ
-+0,55 sur holdout et N120 frais, Holm8=0,0016. Cet événement est déjà découvert
-par le sampling naturel. Un seul des six contrastes scientifiques valide ce
-seuil; les contrôles et contre-exemples sont conservés.
+Arrêt automatique27 novembre07 h28 Luxembourg, au plafond :
+57 624,883 s enregistrées, soit24,883 s au-delà de16 h.
+**Échec de conformité au temps**, sans nouvelle inférence. Environ486 Mo nouveaux
+à la coupure, sous20 Gio. Les effectifs minimaux sont atteints, sans garantie
+de puissance ou représentativité; sous-ensemble figé avant les cibles.
 
-**Non établi :** gain FPA de fiabilité, précision ou décision aval à coût égal.
-Sur les six nouvelles fenêtres, SGA adapté H32 donne NEAURC0,103 contre0,961
-pour FPA W1; aucune généralisation avec ce petit panel. Le gain de couverture
-des groupes dépasse le gain de masse couverte. CPD :0/9 transition validée.
-Aucune preuve de mémorisation ni mécanisme causal par attention.
+**Validé :**320 tests en217,35 s; audit des30 225 flux RNG,833 164 trajectoires,
+2 026 cellules stratifiées/IS et alignement des349 cibles; conservation des
+11 611 anciens fichiers, index Git et `.gitignore`. Source et gel du calcul
+initial préservés après une erreur d'arrondi graphique; finalisation version2
+limitée au tracé, sans changer une valeur des29 tables. Six figures inspectées.
 
-**Vérifié :**299 tests offline en97,69 s;11 tests handout en3,27 s;
-11 contrôles sur objets réels. Les6 998 fichiers data/result préexistants,
-poids, index Git et `.gitignore` sont inchangés. Les gels et sources archivées
-restent valides. L'audit distingue indices absolus, q50/p_sel, préfixes,
-covariance de réutilisation et biais de sélection. Détails et reçus dans le rapport.
+**Limites :** un seul dataset OOD, canaux corrélés possibles, exposition
+pré-entraînement in-domain, faibles nombres de datasets, pilote H2 partagé,
+référence finie, échec d'appariement. L'audit mathématique ne supprime pas
+ces biais de dessin. Le rapport quantifie les effets et les coûts.
 
-**Proposition unique, non autorisée :** benchmark prospectif de fiabilité
-FPA vs SGA/sampling sur24 nouvelles séries et au moins4 datasets disponibles,
-avec politiques et pertes figées, coût total comparable. Préparation4–8 h;
-plafond proposé1 h CPU modèle après gate de timing. Falsificateur : aucun gain
-incrémental reproductible une fois le coût payé. La revue doit choisir et
-autoriser la suite; ne relancer aucun collecteur depuis une ancienne configuration.
+Une seule suite proposée, **non autorisée/non exécutée** : diagnostic offline
+d'appariement sur les pools naturels existants,0 s modèle, après revue chercheur.
+Le handout courant est régénéré avec PDF/CSV explicites, sans archives.
+Branche `main`, HEAD avant commit chercheur
+`a5b6ef6743832f09bfa096078104b727dc84f373`; aucun Git write Codex.
+Les [résultats précédents](../reference/FPA_EXPLORATORY_BENCHMARK_AND_FINDINGS.md)
+et les artefacts historiques sont conservés.

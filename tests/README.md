@@ -56,6 +56,25 @@ uniquely timed.
 
 ## API Contracts
 
+La campagne H1/H2 ajoute `test_incremental_math.py`, `test_incremental_sampling.py`,
+`test_incremental_protocol.py`, `test_incremental_risk.py` et
+`integration/test_incremental_analysis.py`. Ils vérifient la partition exhaustive,
+les moyennes et variances sur des espaces de Bernoulli énumérés exactement,
+la décomposition de variance avec résidu, les véritables conditionnements par
+chemin, les coûts/pilotes, IS sans clipping de l'estimation et reprise sans
+nouveaux tirages. Remplacer les cibles test ne doit changer aucun modèle ajusté.
+Une collection H2 factice est auditée depuis ses chemins bruts; les exports
+scientifiques sont testés avec données synthétiques. Aucun de ces tests ne
+charge des poids préentraînés. L'audit des vrais artefacts se fait séparément
+avec `scripts/viz/audit_chronos_incremental.py`.
+
+La suite finale du27 novembre passe320 tests. Le contrôle
+`test_incremental_audit_resources.py` conserve l'échec d'un dépassement de temps,
+même si l'audit brut réussit. La régression graphique couvre les bornes Wilson
+à zéro/tous succès : seules les longueurs d'arrondi du tracé sont corrigées;
+un intervalle substantiellement incompatible avec son centre reste une erreur.
+Le finaliseur versionné vérifie aussi l'identité SHA256 des29 tables originales.
+
 L'itération exploratoire ajoute `test_discovery.py`,
 `test_discovery_validation.py`, `test_discovery_finalization.py` et
 `test_discovery_collections.py` : événements absolus, partition probabiliste,
